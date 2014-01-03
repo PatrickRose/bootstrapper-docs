@@ -27,7 +27,6 @@
       </small>
     </h1>
   </div>
-
   <section id='quick'>
     <div class='page-header'>
       <h2>
