@@ -12,9 +12,13 @@
  */
 
 Route::get('/', function() {
-    return View::make('home');
+  return View::make('home');
 });
 
 Route::get('installation',  function() {
-    return View::make('installation');
+  return View::make('installation');
+});
+
+Route::get('css', function() {
+  return View::make('css');
 });
