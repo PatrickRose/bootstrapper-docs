@@ -4,7 +4,8 @@
   Installation
 @stop
 
-@section('sidebar')
+@section('content')
+<div class='subnav'>
   {{
     Navigation::pills(
       Navigation::links(
@@ -12,13 +13,11 @@
           array('Quick', '#quick'),
           array('Detailed', '#detailed'),
         )
-      ),
-      true
+      )
     )
     }}
-@stop
+</div>
 
-@section('content')
   <div class='page-header'>
     <h1>
       Installation
