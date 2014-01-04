@@ -22,3 +22,7 @@ Route::get('installation',  function() {
 Route::get('css', function() {
   return View::make('css');
 });
+
+Route::get('migration', function() {
+  return View::make('migration');
+});
