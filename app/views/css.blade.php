@@ -27,5 +27,7 @@
   @include('css.tables')
 
   @include('css.forms')
+
+  @include('css.buttons')
   
 @stop

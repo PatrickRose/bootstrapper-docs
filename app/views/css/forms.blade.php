@@ -357,5 +357,70 @@ Form::prepend_buttons(Form::text('appendedInputButton'), array(Form::button('Sea
 </pre>
     </div>
   </div>
+ <div class="row">
+   <div class="col-md-5">
+     <h3>Checkboxes &amp; Radios</h3>
+     <form class="form-horizontal">
+       <fieldset>
+	 <div class="control-group">
+	   <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
+	   <div class="controls">
+             {{ Form::inline_labelled_checkbox('inlineCheckbox1', '1', 'option1') }}
+             {{ Form::inline_labelled_checkbox('inlineCheckbox2', '2', 'option2') }}
+             {{ Form::inline_labelled_checkbox('inlineCheckbox3', '3', 'option3') }}
+	   </div>
+	 </div>
+	 <div class="control-group">
+	   <label class="control-label" for="optionsCheckboxList">Checkboxes</label>
+	   <div class="controls">
+             {{ Form::labelled_checkbox('optionsCheckboxList1', 'Option one is great', 'option1') }}
+             {{ Form::labelled_checkbox('optionsCheckboxList2', 'Option two can also be checked', 'option2') }}
+             {{ Form::labelled_checkbox('optionsCheckboxList3', 'Option three is excellent also', 'option3') }}
+	   </div>
+	 </div>
+	 <div class="control-group">
+	   <label class="control-label" for="inlineCheckboxes">Inline radios</label>
+	   <div class="controls">
+             {{ Form::inline_labelled_radio('inlineRadios', '1', 'option1') }}
+             {{ Form::inline_labelled_radio('inlineRadios', '2', 'option2') }}
+             {{ Form::inline_labelled_radio('inlineRadios', '3', 'option3') }}
+	   </div>
+	 </div>
+	 <div class="control-group">
+	   <label class="control-label" for="optionsCheckboxList">Radios</label>
+	   <div class="controls">
+             {{ Form::labelled_radio('optionsRadio', 'Option one is great', 'option1') }}
+             {{ Form::labelled_radio('optionsRadio', 'Option two can also be checked', 'option2') }}
+             {{ Form::labelled_radio('optionsRadio', 'Option three is excellent also', 'option3') }}
+	   </div>
+	 </div>
+       </fieldset>
+     </form>
+   </div>
+   <div class="col-md-7">
+     <h3>Checkbox &amp; Radio calls</h3>
+     <p>{{ Label::info('Note:') }} Labels surround all the options for much larger click areas and a more usable form.</p>
+     <pre class="prettyprint linenums">
+//Inline checkboxes
+Form::inline_labelled_checkbox('inlineCheckbox1', '1', 'option1')
+Form::inline_labelled_checkbox('inlineCheckbox2', '2', 'option2')
+Form::inline_labelled_checkbox('inlineCheckbox3', '3', 'option3')
 
+//Labelled checkboxes
+Form::labelled_checkbox('optionsCheckboxList1', 'Option one is great', 'option1')
+Form::labelled_checkbox('optionsCheckboxList2', 'Option two can also be checked', 'option2')
+Form::labelled_checkbox('optionsCheckboxList3', 'Option three is excellent also', 'option3')
+
+//Inline radios
+Form::inline_labelled_radio('inlineRadios', '1', 'option1')
+Form::inline_labelled_radio('inlineRadios', '2', 'option2')
+Form::inline_labelled_radio('inlineRadios', '3', 'option3')
+
+//Labelled checkboxes
+Form::labelled_radio('optionsRadio', 'Option one is great', 'option1')
+Form::labelled_radio('optionsRadio', 'Option two can also be checked', 'option2')
+Form::labelled_radio('optionsRadio', 'Option three is excellent also', 'option3')
+</pre>
+   </div>
+ </div>
 </section>
