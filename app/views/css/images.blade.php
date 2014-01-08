@@ -34,9 +34,7 @@ Image::polaroid('http://placehold.it/140x140')
 	Responsive Images
       </h3>
       <p>
-	{{ Image::rounded('http://placehold.it/140x140')->responsive() }}
-	{{ Image::circle('http://placehold.it/140x140')->responsive() }}
-	{{ Image::polaroid('http://placehold.it/140x140')->responsive() }}
+	{{ Image::rounded('http://lorempixel.com/output/abstract-q-g-1920-1920-2.jpg')->responsive() }}
       </p>
     </div>
     <div class='col-md-6'>
@@ -45,12 +43,10 @@ Image::polaroid('http://placehold.it/140x140')
       </h3>
       <p>
 	Use the chained method <code>responsive()</code> to make your
-	images responsive
+	images scale nicely to the parent element.
       </p>
       <pre class='prettyprint linenums'>
-Image::rounded('http://placehold.it/140x140')->responsive()
-Image::circle('http://placehold.it/140x140')->responsive()
-Image::polaroid('http://placehold.it/140x140')->responsive()
+Image::rounded('http://lorempixel.com/output/abstract-q-g-1920-1920-2.jpg')->responsive()
 </pre>
     </div>
   </div>
