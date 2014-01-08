@@ -29,5 +29,7 @@
   @include('css.forms')
 
   @include('css.buttons')
+
+  @include('css.images')
   
 @stop
