@@ -30,3 +30,7 @@ Route::get('migration', function() {
 Route::get('components', function() {
   return View::make('components');
 });
+
+Route::get('extras', function() {
+  return View::make('extras');
+});
