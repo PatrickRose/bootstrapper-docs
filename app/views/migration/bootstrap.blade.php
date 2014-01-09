@@ -47,4 +47,58 @@ Form::span3_select('s_span3', array('1', '2', '3', '4', '5'))
     </div>
   </div>
 
+  <h2>
+    Button Groups
+  </h2>
+  <p>
+    Button Groups have now changed completely from before - instead of
+    calling
+    <code>ButtonGroup::open(ButtonGroup::TOGGLE_CHECKBOX)</code>,
+    <code>Button::primary('foo')</code> and
+    <code>ButtonGroup::close()</code>,
+    now you call
+    <code>ButtonGroup::checkbox(array(array(ButtonGroup::PRIMARY, 'foo')))</code>
+  <div class='row'>
+    <div class='col-md-6'>
+      <h3>
+	Old Way <small>doesn't work</small>
+      </h3>
+      <pre class='prettyprint linenums'>
+//Checkbox  
+ButtonGroup::open(ButtonGroup::TOGGLE_CHECKBOX)
+Button::danger_normal('Left')
+Button::danger_normal('Middle')
+Button::danger_normal('Right')
+ButtonGroup::close()
+
+//Radio  
+ButtonGroup::open(ButtonGroup::TOGGLE_RADIO)
+Button::primary_normal('Left')
+Button::primary_normal('Middle')
+Button::primary_normal('Right')
+ButtonGroup::close()
+</pre>
+    </div>
+    <div class='col-md-6'>
+      <h3>
+	New Way
+      </h3>
+      <pre class='prettyprint linenums'>
+//Checkbox  
+ButtonGroup::checkbox(array(
+	array(ButtonGroup::DANGER, 'Left'),
+	array(ButtonGroup::DANGER, 'Middle'),
+	array(ButtonGroup::DANGER, 'Right')
+	))
+
+//Radio  
+ButtonGroup::radio(array(
+	array(ButtonGroup::PRIMARY, 'Left'),
+	array(ButtonGroup::PRIMARY, 'Middle'),
+	array(ButtonGroup::PRIMARY, 'Right')
+	))
+</pre>      
+    </div>
+  </div>
+
 </section>

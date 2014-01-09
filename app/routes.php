@@ -26,3 +26,7 @@ Route::get('css', function() {
 Route::get('migration', function() {
   return View::make('migration');
 });
+
+Route::get('components', function() {
+  return View::make('components');
+});

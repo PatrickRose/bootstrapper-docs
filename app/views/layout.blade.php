@@ -25,6 +25,7 @@
               array('Home', url('')),
               array('Installation', url('installation')),
               array('Base CSS', url('css')),
+	      array('Components', url('components')),
 	      array('Migration', url('migration')),
             ))
         )
