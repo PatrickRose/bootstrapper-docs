@@ -63,14 +63,14 @@
       {{ Form::submit('Submit') }}
       {{ Form::close() }}
       <pre class="prettyprint linenums">
-        Form::vertical_open()
-        Form::label('something', 'Label name')
-        Form::span3_text('something', 'Type something...')
-        Form::block_help('Example block-level help text here.')
-        Form::labelled_checkbox('checker', 'Check me out')
-        Form::submit('Submit')
-        Form::close()
-      </pre>
+Form::vertical_open()
+Form::label('something', 'Label name')
+Form::span3_text('something', 'Type something...')
+Form::block_help('Example block-level help text here.')
+Form::labelled_checkbox('checker', 'Check me out')
+Form::submit('Submit')
+Form::close()
+</pre>
     </div>
     <div class='col-md-6'>
 
@@ -87,11 +87,11 @@
       {{ Form::close() }}
 
       <pre class="prettyprint linenums">
-        Form::search_open()
-        Form::search_box('search',null, array('class' => 'input-medium'))
-        Form::submit('Search')
-        Form::close()
-      </pre>
+Form::search_open()
+Form::search_box('search',null, array('class' => 'input-medium'))
+Form::submit('Search')
+Form::close()
+</pre>
 
       <h3>Inline form</h3>
       <p>Using <code>Form::inline_open()</code></p>
@@ -103,13 +103,13 @@
       {{ Form::close() }}
 
       <pre class="prettyprint linenums">
-        Form::inline_open()
-        Form::text('email', null, array('class' => 'input-small', 'placeholder' => 'Email'))
-        Form::password('pass', array('class' => 'input-small', 'placeholder' => 'Password'))
-        Form::labelled_checkbox('checkme', 'Remember me')
-        Form::submit('Sign in')
-        Form::close()
-      </pre>
+Form::inline_open()
+Form::text('email', null, array('class' => 'input-small', 'placeholder' => 'Email'))
+Form::password('pass', array('class' => 'input-small', 'placeholder' => 'Password'))
+Form::labelled_checkbox('checkme', 'Remember me')
+Form::submit('Sign in')
+Form::close()
+</pre>
 
     </div>
   </div>
@@ -135,22 +135,22 @@
 
       {{ Form::control_group(Form::label('input01', 'Text input'),
                              Form::xlarge_text('input01'), '',
-                             Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.')) }}
+                             Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.'), 2) }}
 
       {{ Form::control_group(Form::label('optionsCheckbox', 'Checkbox'),
-                             Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1')) }}
+                             Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1'), null, null, 2) }}
 
       {{ Form::control_group(Form::label('select01', 'Select list'),
-                             Form::select('select01', array('something', '2', '3', '4', '5'))) }}
+                             Form::select('select01', array('something', '2', '3', '4', '5')), null, null, 2) }}
 
       {{ Form::control_group(Form::label('multiSelect', 'Select list'),
-                             Form::multiselect('multiSelect', array('1', '2', '3', '4', '5'))) }}
+                             Form::multiselect('multiSelect', array('1', '2', '3', '4', '5')), null, null, 2) }}
 
       {{ Form::control_group(Form::label('fileInput', 'File input'),
-                             Form::file('fileInput')) }}
+                             Form::file('fileInput'), null, null, 2) }}
 
       {{ Form::control_group(Form::label('textarea', 'Textarea'),
-                             Form::xlarge_textarea('textarea', '', array('rows' => '3'))) }}
+                             Form::xlarge_textarea('textarea', '', array('rows' => '3')), null, null, 2) }}
 
       {{ Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel'))) }}
 
@@ -167,27 +167,43 @@ Form::horizontal_open()
 Form::control_group(
   Form::label('input01', 'Text input'),
   Form::xlarge_text('input01'), '',
-  Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.')
+  Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.'),
+  2  
 )
 Form::control_group(
   Form::label('optionsCheckbox', 'Checkbox'),
-  Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1')
+  Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1'),
+  null,
+  null,
+  2
 )
 Form::control_group(
   Form::label('select01', 'Select list'),
-  Form::select('select01', array('something', '2', '3', '4', '5'))
+  Form::select('select01', array('something', '2', '3', '4', '5')),
+  null,
+  null,
+  2
 )
 Form::control_group(
   Form::label('multiSelect', 'Select list'),
-  Form::multiselect('multiSelect', array('1', '2', '3', '4', '5'))
+  Form::multiselect('multiSelect', array('1', '2', '3', '4', '5')),
+  null,
+  null,
+  2
 )
 Form::control_group(
   Form::label('fileInput', 'File input'),
-  Form::file('fileInput')
+  Form::file('fileInput'),
+  null,
+  null,
+  2
 )
 Form::control_group(
   Form::label('textarea', 'Textarea'),
-  Form::xlarge_textarea('textarea', '', array('rows' => '3'))
+  Form::xlarge_textarea('textarea', '', array('rows' => '3'),
+  null,
+  null,
+  2)
 )
 Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel')))
 Form::close()
@@ -224,18 +240,18 @@ Form::close()
           </div>
 
           <pre class="prettyprint linenums">
-            //Focused
-            echo Form::xlarge_text('focusedInput', 'This is focused...', array('class' => 'focused'));
+//Focused
+Form::xlarge_text('focusedInput', 'This is focused...', array('class' => 'focused'))
 
-            //Uneditable
-            echo Form::xlarge_uneditable('Some value here');
+//Uneditable
+Form::xlarge_uneditable('Some value here')
 
-            //Disabled
-            echo Form::xlarge_text('disabledInput', 'Disabled input here...', array('class' => 'disabled', 'disabled' => 'disabled'));
+//Disabled
+Form::xlarge_text('disabledInput', 'Disabled input here...', array('class' => 'disabled', 'disabled' => 'disabled'))
 
-            //Disabled Checkbox
-            echo Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'option1', false, array('disabled' => 'disabled'));
-          </pre>
+//Disabled Checkbox
+Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'option1', false, array('disabled' => 'disabled'))
+</pre>
         </fieldset>
       </form>
     </div>
@@ -261,22 +277,30 @@ Form::close()
 
 
           <pre class="prettyprint linenums">
-            Form::control_group(Form::label('inputWarning', 'Input with warning'),
-            Form::text('inputWarning'), 'warning',
-            Form::block_help('Something went wrong'))
+Form::control_group(
+  Form::label('inputWarning', 'Input with warning'),
+  Form::text('inputWarning'), 'warning',
+  Form::block_help('Something went wrong')
+)
 
-            Form::control_group(Form::label('inputError', 'Input with error'),
-            Form::text('inputError'), 'error',
-            Form::block_help('Please correct the error'))
+Form::control_group(
+  Form::label('inputError', 'Input with error'),
+  Form::text('inputError'), 'error',
+  Form::block_help('Please correct the error')
+)
 
-            Form::control_group(Form::label('inputSuccess', 'Input with success'),
-            Form::text('inputSuccess'), 'success',
-            Form::block_help('Woohoo!'))
+Form::control_group(
+  Form::label('inputSuccess', 'Input with success'),
+  Form::text('inputSuccess'), 'success',
+  Form::block_help('Woohoo!')
+)
 
-            Form::control_group(Form::label('inputSuccess', 'Select with success'),
-            Form::select('select01', array('1', '2', '3', '4', '5')), 'success',
-            Form::block_help('Woohoo!'))
-          </pre>
+Form::control_group(
+  Form::label('inputSuccess', 'Select with success'),          
+  Form::select('select01', array('1', '2', '3', '4', '5')), 'success',
+  Form::block_help('Woohoo!')
+)
+</pre>
         </fieldset>
       </form>
     </div>
