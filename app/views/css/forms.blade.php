@@ -163,23 +163,35 @@
   </h3>
 
   <pre class='prettyprint linenums'>
-    Form::horizontal_open()
-    Form::control_group(Form::label('input01', 'Text input'),
-    Form::xlarge_text('input01'), '',
-    Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.'))
-    Form::control_group(Form::label('optionsCheckbox', 'Checkbox'),
-    Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1'))
-    Form::control_group(Form::label('select01', 'Select list'),
-    Form::select('select01', array('something', '2', '3', '4', '5')))
-    Form::control_group(Form::label('multiSelect', 'Select list'),
-    Form::multiselect('multiSelect', array('1', '2', '3', '4', '5')))
-    Form::control_group(Form::label('fileInput', 'File input'),
-    Form::file('fileInput'))
-    Form::control_group(Form::label('textarea', 'Textarea'),
-    Form::xlarge_textarea('textarea', '', array('rows' => '3')))
-    Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel')))
-    Form::close()
-  </pre>
+Form::horizontal_open()
+Form::control_group(
+  Form::label('input01', 'Text input'),
+  Form::xlarge_text('input01'), '',
+  Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.')
+)
+Form::control_group(
+  Form::label('optionsCheckbox', 'Checkbox'),
+  Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1')
+)
+Form::control_group(
+  Form::label('select01', 'Select list'),
+  Form::select('select01', array('something', '2', '3', '4', '5'))
+)
+Form::control_group(
+  Form::label('multiSelect', 'Select list'),
+  Form::multiselect('multiSelect', array('1', '2', '3', '4', '5'))
+)
+Form::control_group(
+  Form::label('fileInput', 'File input'),
+  Form::file('fileInput')
+)
+Form::control_group(
+  Form::label('textarea', 'Textarea'),
+  Form::xlarge_textarea('textarea', '', array('rows' => '3'))
+)
+Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel')))
+Form::close()
+</pre>
 
   <h2>Form control states</h2>
   <div class='row'>
