@@ -56,30 +56,30 @@
     </p>
 
     <pre class="prettyprint linenums lang-php">
-      'Alert' => 'Bootstrapper\\Alert',
-      'Badge' => 'Bootstrapper\\Badge',
-      'Breadcrumb' => 'Bootstrapper\\Breadcrumb',
-      'Button' => 'Bootstrapper\\Button',
-      'ButtonGroup' => 'Bootstrapper\\ButtonGroup',
-      'ButtonToolbar' => 'Bootstrapper\\ButtonToolbar',
-      'Carousel' => 'Bootstrapper\\Carousel',
-      'DropdownButton' => 'Bootstrapper\\DropdownButton',
-      'Form' => 'Bootstrapper\\Form',
-      'Helpers' => 'Bootstrapper\\Helpers',
-      'Icon' => 'Bootstrapper\\Icon',
-      'Image' => 'Bootstrapper\\Image',
-      'Label' => 'Bootstrapper\\Label',
-      'MediaObject' => 'Bootstrapper\\MediaObject',
-      'Navbar' => 'Bootstrapper\\Navbar',
-      'Navigation' => 'Bootstrapper\\Navigation',
-      'Paginator' => 'Bootstrapper\\Paginator',
-      'Progress' => 'Bootstrapper\\Progress',
-      'Tabbable' => 'Bootstrapper\\Tabbable',
-      'Table' => 'Bootstrapper\\Table',
-      'Thumbnail' => 'Bootstrapper\\Thumbnail',
-      'Typeahead' => 'Bootstrapper\\Typeahead',
-      'Typography' => 'Bootstrapper\\Typography',
-    </pre>
+'Alert' => 'Bootstrapper\Alert',
+'Badge' => 'Bootstrapper\Badge',
+'Breadcrumb' => 'Bootstrapper\Breadcrumb',
+'Button' => 'Bootstrapper\Button',
+'ButtonGroup' => 'Bootstrapper\ButtonGroup',
+'ButtonToolbar' => 'Bootstrapper\ButtonToolbar',
+'Carousel' => 'Bootstrapper\Carousel',
+'DropdownButton' => 'Bootstrapper\DropdownButton',
+'Form' => 'Bootstrapper\Form',
+'Helpers' => 'Bootstrapper\Helpers',
+'Icon' => 'Bootstrapper\Icon',
+'Image' => 'Bootstrapper\Image',
+'Label' => 'Bootstrapper\Label',
+'MediaObject' => 'Bootstrapper\MediaObject',
+'Navbar' => 'Bootstrapper\Navbar',
+'Navigation' => 'Bootstrapper\Navigation',
+'Paginator' => 'Bootstrapper\Paginator',
+'Progress' => 'Bootstrapper\Progress',
+'Tabbable' => 'Bootstrapper\Tabbable',
+'Table' => 'Bootstrapper\Table',
+'Thumbnail' => 'Bootstrapper\Thumbnail',
+'Typeahead' => 'Bootstrapper\Typeahead',
+'Typography' => 'Bootstrapper\Typography',
+</pre>
 
     <p>
       Download and include the Twitter Bootstrap CSS and Javascript files and you're good to go!
@@ -98,10 +98,10 @@
       First, open up your <code>composer.json</code> file and add the following to your require list:
     </p>
     <pre class="prettyprint linenums lang-javascript">
-      "require": {
-      "patricktalmadge/bootstrapper": "dev-develop"
-      }
-    </pre>
+"require": {
+  "patricktalmadge/bootstrapper": "dev-develop"
+}
+</pre>
 
     <p>
       Then run <code>composer update</code> in your terminal and get a coffee/tea/your beverage of choice while it updates. I find that makes the wait much nicer.
@@ -112,10 +112,10 @@
     </p>
 
     <pre class="prettyprint linenums lang-php">
-      'providers' => array(
-      'Bootstrapper\BootstrapperServiceProvider'
-      )
-    </pre>
+'providers' => array(
+  'Bootstrapper\BootstrapperServiceProvider'
+)
+</pre>
 
     <p>
       This means you'll get to use all the juicy goodness that Bootstrapper provides.
@@ -126,32 +126,32 @@
     </p>
 
     <pre class="prettyprint linenums lang-php">
-      'aliases' => array(
-      'Alert' => 'Bootstrapper\\Alert',
-      'Badge' => 'Bootstrapper\\Badge',
-      'Breadcrumb' => 'Bootstrapper\\Breadcrumb',
-      'Button' => 'Bootstrapper\\Button',
-      'ButtonGroup' => 'Bootstrapper\\ButtonGroup',
-      'ButtonToolbar' => 'Bootstrapper\\ButtonToolbar',
-      'Carousel' => 'Bootstrapper\\Carousel',
-      'DropdownButton' => 'Bootstrapper\\DropdownButton',
-      'Form' => 'Bootstrapper\\Form',
-      'Helpers' => 'Bootstrapper\\Helpers',
-      'Icon' => 'Bootstrapper\\Icon',
-      'Image' => 'Bootstrapper\\Image',
-      'Label' => 'Bootstrapper\\Label',
-      'MediaObject' => 'Bootstrapper\\MediaObject',
-      'Navbar' => 'Bootstrapper\\Navbar',
-      'Navigation' => 'Bootstrapper\\Navigation',
-      'Paginator' => 'Bootstrapper\\Paginator',
-      'Progress' => 'Bootstrapper\\Progress',
-      'Tabbable' => 'Bootstrapper\\Tabbable',
-      'Table' => 'Bootstrapper\\Table',
-      'Thumbnail' => 'Bootstrapper\\Thumbnail',
-      'Typeahead' => 'Bootstrapper\\Typeahead',
-      'Typography' => 'Bootstrapper\\Typography',
-      )
-    </pre>
+'aliases' => array(
+  'Alert' => 'Bootstrapper\Alert',
+  'Badge' => 'Bootstrapper\Badge',
+  'Breadcrumb' => 'Bootstrapper\Breadcrumb',
+  'Button' => 'Bootstrapper\Button',
+  'ButtonGroup' => 'Bootstrapper\ButtonGroup',
+  'ButtonToolbar' => 'Bootstrapper\ButtonToolbar',
+  'Carousel' => 'Bootstrapper\Carousel',
+  'DropdownButton' => 'Bootstrapper\DropdownButton',
+  'Form' => 'Bootstrapper\Form',
+  'Helpers' => 'Bootstrapper\Helpers',
+  'Icon' => 'Bootstrapper\Icon',
+  'Image' => 'Bootstrapper\Image',
+  'Label' => 'Bootstrapper\Label',
+  'MediaObject' => 'Bootstrapper\MediaObject',
+  'Navbar' => 'Bootstrapper\Navbar',
+  'Navigation' => 'Bootstrapper\Navigation',
+  'Paginator' => 'Bootstrapper\Paginator',
+  'Progress' => 'Bootstrapper\Progress',
+  'Tabbable' => 'Bootstrapper\Tabbable',
+  'Table' => 'Bootstrapper\Table',
+  'Thumbnail' => 'Bootstrapper\Thumbnail',
+  'Typeahead' => 'Bootstrapper\Typeahead',
+  'Typography' => 'Bootstrapper\Typography',
+)
+</pre>
 
     <p>
       Now all you need to do is include the Bootstrap files. Feel free to do this however you want:
