@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css') }}
+    {{ Bootstrapper\Helpers::get_CSS() }}
     <title>@yield('title') - Bootstrapper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,9 +54,9 @@
           Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div>
-    {{ HTML::script('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js') }}
-    {{ HTML::script('http://code.jquery.com/jquery-1.10.1.min.js') }}
-    {{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
+     {{ HTML::script('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js') }}
+    {{ Bootstrapper\Helpers::get_JS() }}
+
     {{ HTML::script('app.js') }}
   </body>
 </html>

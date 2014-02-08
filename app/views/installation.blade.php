@@ -160,31 +160,28 @@
     <ul>
       <li>
 	Download <code>bootstrap.min.css</code> and <code>bootstrap.min.js</code> from <a href='http://getbootstrap.com'>Bootstrap</a>, and pop them in your public folder. Then do the same with <a href='http://jquery.com/download/'>Jquery</a>. Then use the following in your views to include Bootstrap and Jquery:
-	<ul>
-	  <li>
-	    <code class='prettyprint'>HTML::style('css/bootstrap.min.css')</code>
-	  </li>
-	  <li>
-	    <code class='prettyprint'>HTML::script('js/jquery.min.js')</code>
-	  </li>
-	  <li>
-	    <code class='prettyprint'>HTML::script('js/bootstrap.min.js')</code>
-	  </li>
-	</ul>
+	<pre class='prettyprint'>
+HTML::style('css/bootstrap.min.css')
+HTML::script('js/jquery.min.js')
+HTML::script('js/bootstrap.min.js')
+</pre>
       </li>
       <li>
 	Use the various CDNs to include the relevant files:
-	<ul>
-	  <li>
-	    <code class='prettyprint'>HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')</code>
-	  </li>
-	  <li>
-	    <code class='prettyprint'>HTML::script('http://code.jquery.com/jquery-1.10.1.min.js')</code>
-	  </li>
-	  <li>
-	    <code class='prettyprint'>HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')</code>
-	  </li>
-	</ul>
+	<pre class='prettyprint'>
+HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')
+HTML::script('http://code.jquery.com/jquery-1.10.1.min.js')
+HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+</pre>
+      </li>
+      <li>
+	Let Bootstrapper handle it using the helper method:
+	<pre class='prettyprint'>
+Bootstrapper\Helpers::get_CSS()
+Bootstrapper\Helpers::get_JS()
+	</pre>
+	This will get the latest versions. If you want a specific version of either,
+	run <code class='prettyprint'>artisan config:publish patricktalmadge/bootstrapper</code> and edit the values in <code class='prettyprint'>app/config/packages/patricktalmadge/bootstrapper/config.php</code>.
       </li>
     </ul>
 
