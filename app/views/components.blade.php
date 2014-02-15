@@ -48,6 +48,7 @@
           array('label'=>'Alerts', 'url' => '#alerts'),
           array('label'=>'Progress bars', 'url'=>'#progress'),
           array('label'=>'Media object', 'url'=>'#mediaobject'),
+	  array('label'=>'Panels ', 'url'=>'#panel'),
         )
       ) }}
   </div>
@@ -73,5 +74,7 @@
   @include('components.progress')
 
   @include('components.mediaobject')
+
+  @include('components.panels')
 
 @stop

@@ -190,6 +190,7 @@ return array(
         'Navbar'         => 'Bootstrapper\\Navbar',
         'Navigation'     => 'Bootstrapper\\Navigation',
         'Paginator'      => 'Bootstrapper\\Paginator',
+        'Panel'          => 'Bootstrapper\\Panel',
         'Progress'       => 'Bootstrapper\\Progress',
         'Tabbable'       => 'Bootstrapper\\Tabbable',
         'Table'          => 'Bootstrapper\\Table',
