@@ -172,6 +172,7 @@ return array(
         'URL'             => 'Illuminate\Support\Facades\URL',
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
+        'Accordion'      => 'Bootstrapper\\Accordion',
         'Alert'          => 'Bootstrapper\\Alert',
         'Badge'          => 'Bootstrapper\\Badge',
         'Breadcrumb'     => 'Bootstrapper\\Breadcrumb',

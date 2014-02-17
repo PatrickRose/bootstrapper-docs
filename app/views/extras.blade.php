@@ -16,6 +16,7 @@
         array(
           array('label'=>'Carousel', 'url'=>'#carousel'),
 	  array('label'=>'Modals', 'url'=>'#modals'),
+	  array('label'=>'Accordions', 'url'=>'#accordions'),
         )
       ) }}
   </div>
@@ -23,5 +24,7 @@
   @include("extras.carousel")
 
   @include("extras.modals")
+
+  @include("extras.accordions")
 
 @stop

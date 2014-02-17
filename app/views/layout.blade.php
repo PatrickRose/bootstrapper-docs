@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css') }}
+    {{ HTML::style('bootstrap.min.css') }}
     <title>@yield('title') - Bootstrapper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,8 +55,8 @@
       </footer>
     </div>
     {{ HTML::script('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js') }}
-    {{ HTML::script('http://code.jquery.com/jquery-1.10.1.min.js') }}
-    {{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
+    {{ HTML::script('jquery-1.10.2.js') }}
+    {{ HTML::script('bootstrap.min.js') }}
     {{ HTML::script('app.js') }}
   </body>
 </html>

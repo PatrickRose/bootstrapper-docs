@@ -73,5 +73,4 @@ Modal::withFooter('footer', 'header')
 </pre>
     </div>
   </div>
-  
 </section>

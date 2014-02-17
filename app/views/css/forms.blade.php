@@ -115,9 +115,7 @@ Form::close()
   </div>
 
   <h3>Horizontal Form</h3>
-  <div class='row'>
-    <div class='col-md-6'>
-      <p>Shown on the right are all the default form controls we support. Here's the bulleted list:</p>
+      <p>Shown  below are all the default form controls we support. Here's the bulleted list:</p>
       <ul>
         <li>text inputs (text, password, email, etc)</li>
         <li>checkbox</li>
@@ -129,7 +127,7 @@ Form::close()
       </ul>
       <p><em>Note that with a Horizontal form you need to wrap your controls in a <code>Form::control_group</code>
         for the form to layout correctly. See the example for more details</em></p>
-    </div>
+  <div class='row'>
     <div class='col-md-6'>
       {{ Form::horizontal_open() }}
 
@@ -156,12 +154,7 @@ Form::close()
 
       {{ Form::close() }}
     </div>
-  </div>
-
-  <h3>
-    Example Form
-  </h3>
-
+  <div class='col-md-6'>
   <pre class='prettyprint linenums'>
 Form::horizontal_open()
 Form::control_group(
@@ -208,8 +201,10 @@ Form::control_group(
 Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel')))
 Form::close()
 </pre>
+  </div>
+  </div>
 
-  <h2>Form control states</h2>
+  <h3>Form control states</h3>
   <div class='row'>
     <div class='col-md-6'>
       <form class="form-horizontal">
@@ -238,7 +233,10 @@ Form::close()
               {{ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'option1', false, array('disabled' => 'disabled')) }}
             </div>
           </div>
-
+	</fieldset>
+      </form>
+    </div>
+    <div class='col-md-6'>
           <pre class="prettyprint linenums">
 //Focused
 Form::xlarge_text('focusedInput', 'This is focused...', array('class' => 'focused'))
@@ -255,6 +253,8 @@ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'opti
         </fieldset>
       </form>
     </div>
+  </div>
+  <div class='row'>
     <div class='col-md-6'>
       <h3>Form validation</h3>
       <form class="form-horizontal">
@@ -275,7 +275,10 @@ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'opti
                                  Form::select('select01', array('1', '2', '3', '4', '5')), 'has-success',
                                  Form::block_help('Woohoo!')) }}
 
-
+	</fieldset>
+      </form>
+    </div>
+    <div class='col-md-6'>
           <pre class="prettyprint linenums">
 Form::control_group(
   Form::label('inputWarning', 'Input with warning'),
