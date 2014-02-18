@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    {{ HTML::style('bootstrap.min.css') }}
+    {{ Bootstrapper\Helpers::get_CSS() }}
     <title>@yield('title') - Bootstrapper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,8 +55,7 @@
       </footer>
     </div>
     {{ HTML::script('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js') }}
-    {{ HTML::script('jquery-1.10.2.js') }}
-    {{ HTML::script('bootstrap.min.js') }}
+    {{ Bootstrapper\Helpers::get_JS() }}
     {{ HTML::script('app.js') }}
   </body>
 </html>
