@@ -51,5 +51,32 @@ Accordion::create("basic")->withContents(
   </p>
 
   {{ Alert::info(Label::info("Heads up") . "The numbering starts at <strong>1</strong>, not 0 since the ids of the inner panels begin at 1")->open() }}
+
+  
+
+  <div class='row'>
+    <div class='col-md-6'>
+      {{ Accordion::create("basic")->withContents(
+	  array(
+	    array('First Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	    array('Second Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	    array('Third Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	  ),
+	  1
+	) }}
+    </div>
+    <div class='col-md-6'>
+      <pre class='prettyprint'>
+Accordion::create("basic")->withContents(
+	  array(
+	    array('First Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	    array('Second Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	    array('Third Panel', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit'),
+	  ),
+	  1
+	)
+</pre>
+    </div>
+  </div>  
   
 </section>
