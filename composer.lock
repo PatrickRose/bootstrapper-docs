@@ -428,12 +428,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "08f09c20805695212ebe713b6706b8efb24f96e7"
+                "reference": "6b81ac8153be8ae33a877a79be3f61809f1448d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/08f09c20805695212ebe713b6706b8efb24f96e7",
-                "reference": "08f09c20805695212ebe713b6706b8efb24f96e7",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6b81ac8153be8ae33a877a79be3f61809f1448d9",
+                "reference": "6b81ac8153be8ae33a877a79be3f61809f1448d9",
                 "shasum": ""
             },
             "require": {
@@ -443,7 +443,7 @@
             "require-dev": {
                 "aws/aws-sdk-php": "~2.4.8",
                 "doctrine/couchdb": "dev-master",
-                "mlehner/gelf-php": "1.0.*",
+                "graylog2/gelf-php": "~1.0",
                 "phpunit/phpunit": "~3.7.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*"
@@ -453,7 +453,7 @@
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
-                "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "raven/raven": "Allow sending log messages to a Sentry server",
                 "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
@@ -487,7 +487,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-02-20 10:38:44"
+            "time": "2014-02-23 15:06:45"
         },
         {
             "name": "nesbot/carbon",
@@ -637,12 +637,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/patricktalmadge/bootstrapper.git",
-                "reference": "28f928133ce7f0aedb1ba16c40533b613cfd8dc7"
+                "reference": "058ef800d906fb4fdc6eedced81445ffb9f61faa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/patricktalmadge/bootstrapper/zipball/28f928133ce7f0aedb1ba16c40533b613cfd8dc7",
-                "reference": "28f928133ce7f0aedb1ba16c40533b613cfd8dc7",
+                "url": "https://api.github.com/repos/patricktalmadge/bootstrapper/zipball/058ef800d906fb4fdc6eedced81445ffb9f61faa",
+                "reference": "058ef800d906fb4fdc6eedced81445ffb9f61faa",
                 "shasum": ""
             },
             "require": {
@@ -684,7 +684,7 @@
                 "bootstrap",
                 "laravel"
             ],
-            "time": "2014-02-18 17:27:51"
+            "time": "2014-02-24 10:22:03"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -692,12 +692,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc"
+                "reference": "76c9692908a6c25601df2db373043fcbb335332e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8dc659d694d3e0af68688600908ff1cac9d079dc",
-                "reference": "8dc659d694d3e0af68688600908ff1cac9d079dc",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/76c9692908a6c25601df2db373043fcbb335332e",
+                "reference": "76c9692908a6c25601df2db373043fcbb335332e",
                 "shasum": ""
             },
             "require": {
@@ -778,7 +778,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-02-17 17:53:54"
+            "time": "2014-02-23 01:03:22"
         },
         {
             "name": "predis/predis",
