@@ -37,7 +37,7 @@
     </p>
     <pre class="prettyprint linenums lang-javascript">
       "require": {
-      "patricktalmadge/bootstrapper": "dev-develop"
+      "patricktalmadge/bootstrapper": "4.1.*"
       }
     </pre>
 
