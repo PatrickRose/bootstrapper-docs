@@ -260,19 +260,19 @@ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'opti
       <form class="form-horizontal">
         <fieldset>
           {{ Form::control_group(Form::label('inputWarning', 'Input with warning'),
-                                 Form::text('inputWarning'), 'has-warning',
+                                 Form::text('inputWarning'), Form::WARNING,
                                  Form::block_help('Something went wrong')) }}
 
           {{ Form::control_group(Form::label('inputError', 'Input with error'),
-                                 Form::text('inputError'), 'has-error',
+                                 Form::text('inputError'), Form::ERROR,
                                  Form::block_help('Please correct the error')) }}
 
           {{ Form::control_group(Form::label('inputSuccess', 'Input with success'),
-                                 Form::text('inputSuccess'), 'has-success',
+                                 Form::text('inputSuccess'), Form::SUCCESS,
                                  Form::block_help('Woohoo!')) }}
 
           {{ Form::control_group(Form::label('inputSuccess', 'Select with success'),
-                                 Form::select('select01', array('1', '2', '3', '4', '5')), 'has-success',
+                                 Form::select('select01', array('1', '2', '3', '4', '5')), Form::SUCCESS,
                                  Form::block_help('Woohoo!')) }}
 
 	</fieldset>
@@ -282,25 +282,25 @@ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'opti
           <pre class="prettyprint linenums">
 Form::control_group(
   Form::label('inputWarning', 'Input with warning'),
-  Form::text('inputWarning'), 'warning',
+  Form::text('inputWarning'), Form::WARNING,
   Form::block_help('Something went wrong')
 )
 
 Form::control_group(
   Form::label('inputError', 'Input with error'),
-  Form::text('inputError'), 'error',
+  Form::text('inputError'), Form::ERROR,
   Form::block_help('Please correct the error')
 )
 
 Form::control_group(
   Form::label('inputSuccess', 'Input with success'),
-  Form::text('inputSuccess'), 'success',
+  Form::text('inputSuccess'), Form::SUCCESS,
   Form::block_help('Woohoo!')
 )
 
 Form::control_group(
   Form::label('inputSuccess', 'Select with success'),          
-  Form::select('select01', array('1', '2', '3', '4', '5')), 'success',
+  Form::select('select01', array('1', '2', '3', '4', '5')), Form::SUCCESS,
   Form::block_help('Woohoo!')
 )
 </pre>
