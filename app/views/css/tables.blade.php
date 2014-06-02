@@ -164,7 +164,7 @@ Table::body($body)
   }
 })
 ->edit(function($client) {
-  return HTML::link('#', 'Edit');
+  return HTML::link('#', 'Edit')
 })
 </pre>
  <p>Also when dynamically creating columns, as their name will be used as classes you can set
@@ -173,6 +173,15 @@ several classes by calling per example <code>->edit_action_center()</code>.</p>
 <pre class="prettyprint linenums">
 Table::body($body)
 ->order('fname', 'lname')
+</pre>
+
+    <p>
+        You can also only only return the contents of certain column with the
+        <code>only()</code> method.
+    </p>
+    <pre class="prettyprint linenums">
+Table::body($body)
+        ->only("foo", "bar")
 </pre>
 
   </section>
