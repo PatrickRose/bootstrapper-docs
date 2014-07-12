@@ -1,7 +1,9 @@
 <section id='bootstrap2'>
-  <div class='page-header'>
-    <h2>From Bootstrap 2</h2>
-  </div>
+
+        <h1 class='page-header'>
+            Migrating <small>to 4.1 of Bootstrapper</small>
+        </h1>
+    <h2 class='page-header'>From Bootstrap 2</h2>
 
   <h2>Sizing calls</h2>
     <p>

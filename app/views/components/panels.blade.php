@@ -14,17 +14,17 @@
   @foreach(array('default' => "Default", 'danger' => "Danger", 'info' => "Info", 'success' => "Success", 'warning' => "Warning") as $type => $heading)
     <div class='row'>
       <div class='col-md-6'>
-	  {{ Panel::$type()->header($heading)->body("Panel body")->footer("Panel footer") }}
+	   Panel::$type()->header($heading)->body("Panel body")->footer("Panel footer") 
       </div>
       <div class='col-md-6'>
       <pre class='prettyprint'>
-{{ "Panel::$type()" }}
+ "Panel::$type()" 
 	
-	{{ "->header('$heading')" }}
+	 "->header('$heading')" 
 
-	{{ "->body('Panel body')" }}
+	 "->body('Panel body')" 
 
-	{{ "->footer('Panel footer')" }}
+	 "->footer('Panel footer')" 
 </pre>
       </div>
     </div>

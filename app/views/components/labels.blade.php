@@ -20,7 +20,7 @@
     <tbody>
       <tr>
         <td>
-          {{ Label::normal('Default') }}
+           Label::normal('Default') 
         </td>
         <td>
           <code>Label::normal('Default')</code>
@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td>
-          {{ Label::primary('Primary') }}
+           Label::primary('Primary') 
         </td>
         <td>
           <code>Label::primary('Primary')</code>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td>
-          {{ Label::success('Success') }}
+           Label::success('Success') 
         </td>
         <td>
           <code>Label::success('Success')</code>
@@ -44,7 +44,7 @@
       </tr>
       <tr>
         <td>
-          {{ Label::info('Info') }}
+           Label::info('Info') 
         </td>
         <td>
           <code>Label::info('Info')</code>
@@ -52,7 +52,7 @@
       </tr>
       <tr>
         <td>
-          {{ Label::warning('Warning') }}
+           Label::warning('Warning') 
         </td>
         <td>
           <code>Label::warning('Warning')</code>
@@ -60,7 +60,7 @@
       </tr>
       <tr>
         <td>
-          {{ Label::danger('Danger') }}
+           Label::danger('Danger') 
         </td>
         <td>
           <code>Label::danger('Danger')</code>

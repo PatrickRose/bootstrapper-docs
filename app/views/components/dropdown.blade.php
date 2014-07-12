@@ -23,7 +23,7 @@
       </p>
       <p>
         <div class="btn-toolbar">
-          {{ DropdownButton::normal('Action',
+           DropdownButton::normal('Action',
                                     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -32,9 +32,9 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
 
-          {{ DropdownButton::primary('Primary',
+           DropdownButton::primary('Primary',
                                      Navigation::links(
                 array(
                   array('Action', '#'),
@@ -43,9 +43,9 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
 
-          {{ DropdownButton::danger('Danger',
+           DropdownButton::danger('Danger',
                                     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -54,12 +54,12 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
         </div>
       </p>
       <p>
         <div class='btn-toolbar'>
-          {{ DropdownButton::warning('Warning',
+           DropdownButton::warning('Warning',
                                      Navigation::links(
                 array(
                   array('Action', '#'),
@@ -68,8 +68,8 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
-          {{ DropdownButton::success('Success',
+              )) 
+           DropdownButton::success('Success',
                                      Navigation::links(
                 array(
                   array('Action', '#'),
@@ -78,9 +78,9 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
 
-          {{ DropdownButton::info('Info',
+           DropdownButton::info('Info',
                                   Navigation::links(
                 array(
                   array('Action', '#'),
@@ -89,7 +89,7 @@
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
         </div>
       </p>
     </div>
@@ -132,7 +132,7 @@ DropdownButton::normal('Action',
 	<code>DropdownButton::xs</code>.
       </p>
       <div class="btn-toolbar">
-	{{ DropdownButton::lg('Action',
+	 DropdownButton::lg('Action',
               Navigation::links(
                 array(
                   array('Action', '#'),
@@ -142,8 +142,8 @@ DropdownButton::normal('Action',
                   array('Separated link', '#'),
                 )
               )
-            ) }}
-	{{ DropdownButton::sm('Action',
+            ) 
+	 DropdownButton::sm('Action',
               Navigation::links(
                 array(
                   array('Action', '#'),
@@ -153,9 +153,9 @@ DropdownButton::normal('Action',
                   array('Separated link', '#'),
                 )
               )
-            ) }}
+            ) 
 	
-	{{ DropdownButton::xs('Action',
+	 DropdownButton::xs('Action',
               Navigation::links(
                 array(
                   array('Action', '#'),
@@ -165,7 +165,7 @@ DropdownButton::normal('Action',
                   array('Separated link', '#'),
                 )
               )
-            ) }}	
+            ) 	
       </div>
     </div>
     <div class='col-md-6'>
@@ -178,7 +178,7 @@ DropdownButton::normal('Action',
 	<code>DropdownButton::lg_danger</code>) and pass in
 	the same link array.
       </p>
-      {{ DropdownButton::lg_danger('Action',
+       DropdownButton::lg_danger('Action',
               Navigation::links(
                 array(
                   array('Action', '#'),
@@ -187,7 +187,7 @@ DropdownButton::normal('Action',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              )) }}
+              )) 
     </div>
   </div>
   <h2>
@@ -202,7 +202,7 @@ DropdownButton::normal('Action',
       </p>
       <p>
 	<div class="btn-toolbar" style="margin-top: 18px;">
-	  {{ DropdownButton::normal('Action',
+	   DropdownButton::normal('Action',
 				    Navigation::links(
                 array(
                   array('Action', '#'),
@@ -211,9 +211,9 @@ DropdownButton::normal('Action',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->split() }}
+              ))->split() 
 
-	{{ DropdownButton::primary('Primary',
+	 DropdownButton::primary('Primary',
 				   Navigation::links(
               array(
                 array('Action', '#'),
@@ -222,9 +222,9 @@ DropdownButton::normal('Action',
                 array(Navigation::DIVIDER),
                 array('Separated link', '#'),
               )
-            ))->split() }}
+            ))->split() 
 
-	{{ DropdownButton::danger('Primary',
+	 DropdownButton::danger('Primary',
 				  Navigation::links(
               array(
                 array('Action', '#'),
@@ -233,12 +233,12 @@ DropdownButton::normal('Action',
                 array(Navigation::DIVIDER),
                 array('Separated link', '#'),
               )
-            ))->split() }}
+            ))->split() 
       </div>
       </p>
       <p>
 	<div class='btn-toolbar'>
-	  {{ DropdownButton::warning('Warning',
+	   DropdownButton::warning('Warning',
 				     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -247,9 +247,9 @@ DropdownButton::normal('Action',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->split() }}
+              ))->split() 
 
-	  {{ DropdownButton::success('Success',
+	   DropdownButton::success('Success',
 				     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -258,9 +258,9 @@ DropdownButton::normal('Action',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
 		)
-            ))->split() }}
+            ))->split() 
 
-	  {{ DropdownButton::info('Info',
+	   DropdownButton::info('Info',
 				  Navigation::links(
                 array(
                   array('Action', '#'),
@@ -269,7 +269,7 @@ DropdownButton::normal('Action',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->split() }}
+              ))->split() 
 	</div>
       </p>
     </div>
@@ -285,7 +285,7 @@ DropdownButton::normal('Action',
        </p>
        <p>
 	 <div class="btn-toolbar">
-	   {{ DropdownButton::normal('Dropup',
+	    DropdownButton::normal('Dropup',
               Navigation::links(
                 array(
                   array('Action', '#'),
@@ -295,7 +295,7 @@ DropdownButton::normal('Action',
                   array('Separated link', '#'),
                 )
               )
-            )->dropup() }}
+            )->dropup() 
 	 </div>
        </p>
        <pre class='prettyprint linenums'>
@@ -326,7 +326,7 @@ DropdownButton::normal('Dropup',
       
       <p>
 	<div class="btn-toolbar" style="margin-top: 18px;">
-	  {{ DropdownButton::normal('Action',
+	   DropdownButton::normal('Action',
 				    Navigation::links(
                 array(
                   array('Action', '#'),
@@ -335,9 +335,9 @@ DropdownButton::normal('Dropup',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->pull_right() }}
+              ))->pull_right() 
 
-	{{ DropdownButton::primary('Primary',
+	 DropdownButton::primary('Primary',
 				   Navigation::links(
               array(
                 array('Action', '#'),
@@ -346,9 +346,9 @@ DropdownButton::normal('Dropup',
                 array(Navigation::DIVIDER),
                 array('Separated link', '#'),
               )
-            ))->pull_right() }}
+            ))->pull_right() 
 
-	{{ DropdownButton::danger('Primary',
+	 DropdownButton::danger('Primary',
 				  Navigation::links(
               array(
                 array('Action', '#'),
@@ -357,12 +357,12 @@ DropdownButton::normal('Dropup',
                 array(Navigation::DIVIDER),
                 array('Separated link', '#'),
               )
-            ))->pull_right() }}
+            ))->pull_right() 
       </div>
       </p>
       <p>
 	<div class='btn-toolbar'>
-	  {{ DropdownButton::warning('Warning',
+	   DropdownButton::warning('Warning',
 				     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -371,9 +371,9 @@ DropdownButton::normal('Dropup',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->pull_right() }}
+              ))->pull_right() 
 
-	  {{ DropdownButton::success('Success',
+	   DropdownButton::success('Success',
 				     Navigation::links(
                 array(
                   array('Action', '#'),
@@ -382,9 +382,9 @@ DropdownButton::normal('Dropup',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
 		)
-            ))->pull_right() }}
+            ))->pull_right() 
 
-	  {{ DropdownButton::info('Info',
+	   DropdownButton::info('Info',
 				  Navigation::links(
                 array(
                   array('Action', '#'),
@@ -393,7 +393,7 @@ DropdownButton::normal('Dropup',
                   array(Navigation::DIVIDER),
                   array('Separated link', '#'),
                 )
-              ))->pull_right() }}
+              ))->pull_right() 
 	</div>
       </p>
       <pre class='prettyprint linenums'>

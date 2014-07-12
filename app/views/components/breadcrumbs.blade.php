@@ -21,11 +21,11 @@ public static function create($links, $attributes = array())
 	multiple pages.
       </p>
 
-      {{ Breadcrumb::create(array('Home')) }}
+       Breadcrumb::create(array('Home')) 
 
-      {{ Breadcrumb::create(array('Home' => '#', 'Library')) }}
+       Breadcrumb::create(array('Home' => '#', 'Library')) 
 
-      {{ Breadcrumb::create(array('Home' => '#', 'Library' => '#', 'Data')) }}
+       Breadcrumb::create(array('Home' => '#', 'Library' => '#', 'Data')) 
 
     </div>
     <div class="col-md-6">

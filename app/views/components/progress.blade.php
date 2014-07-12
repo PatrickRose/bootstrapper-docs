@@ -17,7 +17,7 @@
       <p>
 	Default progress bar with a vertical gradient.
       </p>
-      {{ Progress::normal(60) }}
+       Progress::normal(60) 
       <pre class="prettyprint linenums">
 Progress::normal(60)
 </pre>
@@ -29,7 +29,7 @@ Progress::normal(60)
       <p>
 	Uses a gradient to create a striped effect (no IE).
       </p>
-      {{ Progress::normal_striped(20) }}
+       Progress::normal_striped(20) 
       <pre class="prettyprint linenums">
 Progress::normal_striped(20);
 </pre>
@@ -41,7 +41,7 @@ Progress::normal_striped(20);
       <p>
 	Takes the striped example and animates it (no IE).
       </p>
-      {{ Progress::normal_striped_active(40) }}
+       Progress::normal_striped_active(40) 
       <pre class="prettyprint linenums">
 Progress::normal_striped_active(40)
 </pre>
@@ -61,13 +61,13 @@ Progress::normal_striped_active(40)
 	consistent styles.
       </p>
 
-      {{ Progress::info(20, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::info(20, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::success(40, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::success(40, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::warning(60, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::warning(60, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::danger(80, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::danger(80, array('style' => 'margin-bottom: 9px;')) 
 
     </div>
     <div class="col-md-4">
@@ -78,13 +78,13 @@ Progress::normal_striped_active(40)
 	Similar to the solid colors, we have varied striped progress
 	bars.
       </p>
-      {{ Progress::info_striped(20, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::info_striped(20, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::success_striped(40, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::success_striped(40, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::warning_striped(60, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::warning_striped(60, array('style' => 'margin-bottom: 9px;')) 
 
-      {{ Progress::danger_striped(80, array('style' => 'margin-bottom: 9px;')) }}
+       Progress::danger_striped(80, array('style' => 'margin-bottom: 9px;')) 
     </div>
     <div class="col-md-4">
       <h3>
@@ -109,13 +109,13 @@ Progress::normal_striped_active(40)
   <div class="row">
     <div class="col-md-8">
       <h3>Stacked</h3>
-      {{ Progress::normal(
+       Progress::normal(
       array(
       35 => 'success',
       20 => 'warning',
       10 => 'danger',
       )
-      ) }}
+      ) 
       <pre class="prettyprint linenums">
 Progress::normal(array(35 => 'success', 20 => 'warning', 0 => 'danger'))
 </pre>
@@ -137,10 +137,10 @@ Progress::normal(array(35 => 'success', 20 => 'warning', 0 => 'danger'))
       </h3>
     </div>
     <div class="col-md-6">
-      {{ Progress::automatic(20) }}
-      {{ Progress::automatic(40) }}
-      {{ Progress::automatic_striped(60) }}
-      {{ Progress::automatic_striped_active(80) }}
+       Progress::automatic(20) 
+       Progress::automatic(40) 
+       Progress::automatic_striped(60) 
+       Progress::automatic_striped_active(80) 
     </div>
     <div class="col-md-6">
       <pre class="prettyprint linenums">

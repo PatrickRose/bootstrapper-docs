@@ -24,7 +24,7 @@
 	Pass an array of links to <code>Navigation::tabs()</code>:
       </p>
       <p>
-	{{ Navigation::tabs(
+	 Navigation::tabs(
             Navigation::links(
               array(
                 array('Home', '#', true),
@@ -32,7 +32,7 @@
                 array('Messages', '#'),
               )
             )
-          ) }}
+          ) 
       </p>
       <pre class='prettyprint linenums'>
 Navigation::tabs(
@@ -54,7 +54,7 @@ Navigation::tabs(
 	Pass an array of links to <code>Navigation::pills()</code>:
       </p>
       <p>
-	{{ Navigation::pills(
+	 Navigation::pills(
             Navigation::links(
               array(
                 array('Home', '#', true),
@@ -62,7 +62,7 @@ Navigation::tabs(
                 array('Messages', '#'),
               )
             )
-          ) }}
+          ) 
       </p>
       <pre class='prettyprint linenums'>
 Navigation::pills(
@@ -100,7 +100,7 @@ Navigation::pills(
 	Tabs Example
       </h3>
       <p>
-	{{ Navigation::tabs(
+	 Navigation::tabs(
             Navigation::links(
               array(
                 array('Home', '#', true),
@@ -108,7 +108,7 @@ Navigation::pills(
                 array('Messages', '#'),
               )
             ), true
-        ) }}
+        ) 
       </p>
       <pre class='prettyprint linenums'>
 Navigation::tabs(
@@ -127,7 +127,7 @@ Navigation::tabs(
 	Pills Example
       </h3>
       <p>
-	{{ Navigation::pills(
+	 Navigation::pills(
             Navigation::links(
               array(
                 array('Home', '#', true),
@@ -135,7 +135,7 @@ Navigation::tabs(
                 array('Messages', '#'),
               )
             ), true
-        ) }}
+        ) 
       </p>
       <pre class='prettyprint linenums'>
 Navigation::pills(

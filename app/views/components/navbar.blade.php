@@ -11,7 +11,7 @@
     An example of a static (not fixed to the top) navbar with project
     name, navigation, and search form.
   </p>
-  {{ Navbar::create()
+   Navbar::create()
     ->with_brand('Project name', '#')
     ->with_menus(
       Navigation::links(
@@ -59,7 +59,7 @@
         )
       ),
       array('class' => 'pull-right')
-    ) }}
+    ) 
  <h3>
    Navbar create function
  </h3>
@@ -211,7 +211,7 @@ Navbar::FIX_BOTTOM
       Links are created using
       <code>link($label, $url, $active = false, $disabled = false, $items = null, $icon = null)</code> or <code>links($links)</code> which
       takes an array or arrays in the same order as the link function
-      inputs. {{ Label::info('See the sample on the left.') }}
+      inputs.  Label::info('See the sample on the left.') 
     </p>
 
      <h3>

@@ -11,7 +11,7 @@
     </h1>
   </div>
   <div class="subnav">
-    {{ Navigation::pills(
+    Navigation::pills(
         array(
           array('label'=>'Buttons',
                 'url'=>'#',
@@ -50,7 +50,7 @@
           array('label'=>'Media object', 'url'=>'#mediaobject'),
 	  array('label'=>'Panels ', 'url'=>'#panel'),
         )
-      ) }}
+      )
   </div>
 
   @include('components.buttons')

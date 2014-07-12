@@ -17,11 +17,11 @@
     <code>Button</code> elements
   </p>
   <p>
-    {{  ButtonGroup::radio(array(
+      ButtonGroup::radio(array(
 	array(ButtonGroup::NORMAL, 'Left'),
 	array(ButtonGroup::NORMAL, 'Middle'),
 	array(ButtonGroup::NORMAL, 'Right')
-      )) }}
+      ))
   </p>
       <pre class='prettyprint linenums'>
 ButtonGroup::open()
@@ -37,16 +37,16 @@ ButtonGroup::close()
     buttons may be active.
   </p>
   <p>
-    {{  ButtonGroup::checkbox(array(
+      ButtonGroup::checkbox(array(
 	array(ButtonGroup::DANGER, 'Left'),
 	array(ButtonGroup::DANGER, 'Middle'),
 	array(ButtonGroup::DANGER, 'Right')
-      )) }}
-    {{ ButtonGroup::radio(array(
+      ))
+     ButtonGroup::radio(array(
 	array(ButtonGroup::PRIMARY, 'Left'),
 	array(ButtonGroup::PRIMARY, 'Middle'),
 	array(ButtonGroup::PRIMARY, 'Right')
-      )) }}
+      )) 
   </p>
 <pre class="prettyprint linenums">
 //Checkbox  
@@ -69,22 +69,22 @@ ButtonGroup::radio(array(
   You can combine sets of <code>ButtonGroup</code> into a
   <code>ButtonToolbar</code> for more complex components.
   <p>
-    {{ ButtonToolbar::open() }}
-    {{  ButtonGroup::radio(array(
+     ButtonToolbar::open()
+      ButtonGroup::radio(array(
 	array(ButtonGroup::NORMAL, '1'),
 	array(ButtonGroup::NORMAL, '2'),
 	array(ButtonGroup::NORMAL, '3'),
 	array(ButtonGroup::NORMAL, '4'),
-      )) }}      
-    {{  ButtonGroup::radio(array(
+      ))       
+      ButtonGroup::radio(array(
 	array(ButtonGroup::NORMAL, '5'),
 	array(ButtonGroup::NORMAL, '6'),
 	array(ButtonGroup::NORMAL, '7'),
-      )) }}      
-    {{  ButtonGroup::radio(array(
+      ))       
+      ButtonGroup::radio(array(
 	array(ButtonGroup::NORMAL, '8'),
-      )) }}      
-    {{ ButtonToolbar::close() }}
+      ))       
+     ButtonToolbar::close() 
   </p>
   <pre class="prettyprint linenums">
 ButtonToolbar::open();
@@ -103,7 +103,7 @@ ButtonToolbar::close()
 </pre>
   <h3>Dropdowns in button groups</h3>
   <p>
-    {{ Label::info('Heads up!') }}
+     Label::info('Heads up!') 
     Buttons with dropdowns must be individually wrapped in their
     own <code>ButtonGroup</code> within a
     <code>ButtonToolbar</code> for proper rendering.

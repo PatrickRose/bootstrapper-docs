@@ -9,7 +9,7 @@
   </div>
   <p>
     Badges can be created using the simple function
-    {{ Badge::normal(1) }}
+     Badge::normal(1)
     <pre class='prettyprint linenums'>
 Badge::normal(1)
 </pre>

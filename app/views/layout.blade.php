@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
   <head>
-    {{ Bootstrapper\Helpers::get_CSS() }}
     <title>@yield('title') - Bootstrapper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,32 +10,49 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    {{ Bootstrapper\Helpers::get_CSS() }}
+    {{ Helpers::css() }}
     {{ HTML::style('app.css') }}
   </head>
   <body data-spy="scroll" data-target=".subnav">
 
     <div class='container'>
-      {{
-        Navbar::create(array('role'=>'navigation'), Navbar::FIX_TOP)
-        ->with_brand('Bootstrapper', url(''))
-        ->with_menus(
-          Navigation::links(
-            array(
-              array('Home', url('')),
-              array('Installation', url('installation')),
-              array('Base CSS', url('css')),
-	      array('Components', url('components')),
-	      array('Extras', url('extras')),
-	      array('Migration', url('migration')),
-            ))
-        )
-        ->collapsible()
-        ->render()
-        }}
 
-      @yield('content')
-
+   {{ Navbar::top()
+    ->withBrand('Bootstrapper')
+    ->withContent(
+        Navigation::links([
+            [
+                'link' => url('installation'),
+                'title' => 'Installation'
+            ],
+            [
+                'link' => url('css'),
+                'title' => 'Base CSS'
+            ],
+            [
+                'link' => url('components'),
+                'title' => 'Components'
+            ],
+            [
+                'link' => url('extras'),
+                'title' => 'Extras'
+            ],
+            [
+                'link' => url('migration'),
+                'title' => 'Migration'
+            ]
+        ])
+    ) }}
+        <div class="row">
+        <div class="col-md-8">
+        @yield('content')
+        </div>
+        <div class="col-md-4">
+            <div class="subnav">
+                @yield('sidebar')
+            </div>
+        </div>
+        </div>
       <footer class="footer">
         <p class="pull-right">
           <a href="#">Back to top</a>
@@ -56,7 +72,7 @@
       </footer>
     </div>
     {{ HTML::script('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js') }}
-    {{ Bootstrapper\Helpers::get_JS() }}
+    {{ Helpers::js() }}
     {{ HTML::script('app.js') }}
   </body>
 </html>

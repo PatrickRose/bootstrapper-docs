@@ -1,0 +1,3 @@
+[submodule "workbench/patricktalmadge/bootstrapper"]
+	path = workbench/patricktalmadge/bootstrapper
+	url = git@github.com:patricktalmadge/bootstrapper.git
