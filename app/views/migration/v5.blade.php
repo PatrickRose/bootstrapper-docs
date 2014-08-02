@@ -18,31 +18,31 @@
         the following:
     </p>
             <pre class="prettyprint linenums lang-php">
-'Alert' => 'Bootstrapper\Alert',
-'Badge' => 'Bootstrapper\Badge',
-'Breadcrumb' => 'Bootstrapper\Breadcrumb',
-'Button' => 'Bootstrapper\Button',
-'ButtonGroup' => 'Bootstrapper\ButtonGroup',
-'ButtonToolbar' => 'Bootstrapper\ButtonToolbar',
-'Carousel' => 'Bootstrapper\Carousel',
-'DropdownButton' => 'Bootstrapper\DropdownButton',
-'Form' => 'Bootstrapper\Form',
-'Helpers' => 'Bootstrapper\Helpers',
-'Icon' => 'Bootstrapper\Icon',
-'Image' => 'Bootstrapper\Image',
-'Label' => 'Bootstrapper\Label',
-'MediaObject' => 'Bootstrapper\MediaObject',
-'Modal'          => 'Bootstrapper\\Modal',
-'Navbar' => 'Bootstrapper\Navbar',
-'Navigation' => 'Bootstrapper\Navigation',
-'Paginator' => 'Bootstrapper\Paginator',
-'Panel' => 'Bootstrapper\Panel',
-'Progress' => 'Bootstrapper\Progress',
-'Tabbable' => 'Bootstrapper\Tabbable',
-'Table' => 'Bootstrapper\Table',
-'Thumbnail' => 'Bootstrapper\Thumbnail',
-'Typeahead' => 'Bootstrapper\Typeahead',
-'Typography' => 'Bootstrapper\Typography',
+'Alert' => 'Bootstrapper\Facades\Alert',
+'Badge' => 'Bootstrapper\Facades\Badge',
+'Breadcrumb' => 'Bootstrapper\Facades\Breadcrumb',
+'Button' => 'Bootstrapper\Facades\Button',
+'ButtonGroup' => 'Bootstrapper\Facades\ButtonGroup',
+'ButtonToolbar' => 'Bootstrapper\Facades\ButtonToolbar',
+'Carousel' => 'Bootstrapper\Facades\Carousel',
+'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
+'Form' => 'Bootstrapper\Facades\Form',
+'Helpers' => 'Bootstrapper\Facades\Helpers',
+'Icon' => 'Bootstrapper\Facades\Icon',
+'Image' => 'Bootstrapper\Facades\Image',
+'Label' => 'Bootstrapper\Facades\Label',
+'MediaObject' => 'Bootstrapper\Facades\MediaObject',
+'Modal'          => 'Bootstrapper\Facades\\Modal',
+'Navbar' => 'Bootstrapper\Facades\Navbar',
+'Navigation' => 'Bootstrapper\Facades\Navigation',
+'Paginator' => 'Bootstrapper\Facades\Paginator',
+'Panel' => 'Bootstrapper\Facades\Panel',
+'Progress' => 'Bootstrapper\Facades\Progress',
+'Tabbable' => 'Bootstrapper\Facades\Tabbable',
+'Table' => 'Bootstrapper\Facades\Table',
+'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
+'Typeahead' => 'Bootstrapper\Facades\Typeahead',
+'Typography' => 'Bootstrapper\Facades\Typography',
 </pre>
 
     <h2>
@@ -103,8 +103,24 @@
             of <code>Navigation::links</code>.
         </li>
         <li>
-
+            There is no longer a boolean flag in <code>pills()</code> or <code>tabs()</code> method
+            signatures to make the result stacked. Instead, use the chained method <code>stacked()</code>.
+        </li>
+        <li>
+            The array arguments for <code>pills()</code> or <code>tabs()</code> must be explicit
+            Instead of using <code>['Home', url('home')]</code>, you must use
+            <code>['title' => 'Home', 'link' => url('home')</code>.
+            {{ Label::info('Support for the older shorthand method may return, depending on requests. If you feel it
+                important, please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.') }}
         </li>
     </ul>
+
+    <script type="javascript">
+        document.onload(function()
+        {
+            $('#tooltip').tooltip();
+        });
+
+    </script>
 
 </section>
