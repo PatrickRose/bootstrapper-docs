@@ -65,9 +65,11 @@
             closing &times; to be generated for you, you now <strong>must</strong> use the chainable <code>close()</code>
             method.
         </li>
+        <li>
+            The <code>block()</code> method has now been removed (since <code>.alert-block</code> was removed in
+            Bootstrap 3).
+        </li>
     </ul>
-
-
 
     <h3>
         Helpers
