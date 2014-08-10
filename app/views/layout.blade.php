@@ -21,23 +21,23 @@
     ->withContent(
         Navigation::links([
             [
-                'link' => url('installation'),
+                'link' => route('installation'),
                 'title' => 'Installation'
             ],
             [
-                'link' => url('css'),
+                'link' => route('css'),
                 'title' => 'Base CSS'
             ],
             [
-                'link' => url('components'),
+                'link' => route('components'),
                 'title' => 'Components'
             ],
             [
-                'link' => url('extras'),
+                'link' => route('extras'),
                 'title' => 'Extras'
             ],
             [
-                'link' => url('migration'),
+                'link' => route('migration'),
                 'title' => 'Migration'
             ]
         ])

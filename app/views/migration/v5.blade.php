@@ -32,7 +32,7 @@
 'Image' => 'Bootstrapper\Facades\Image',
 'Label' => 'Bootstrapper\Facades\Label',
 'MediaObject' => 'Bootstrapper\Facades\MediaObject',
-'Modal'          => 'Bootstrapper\Facades\\Modal',
+'Modal' => 'Bootstrapper\Facades\Modal',
 'Navbar' => 'Bootstrapper\Facades\Navbar',
 'Navigation' => 'Bootstrapper\Facades\Navigation',
 'Paginator' => 'Bootstrapper\Facades\Paginator',
@@ -42,8 +42,11 @@
 'Table' => 'Bootstrapper\Facades\Table',
 'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
 'Typeahead' => 'Bootstrapper\Facades\Typeahead',
-'Typography' => 'Bootstrapper\Facades\Typography',
 </pre>
+
+    <p>
+        Secondly, attributes are now passed in using the <code>withAttributes()</code> chained method.
+    </p>
 
     <h2>
         Individual Component Changes
@@ -53,14 +56,28 @@
         href="https://github.com/PatrickRose/bootstrapper-docs/issues"> open an issue</a>!
 
     <h3>
+        Alert
+    </h3>
+
+    <ul>
+        <li>
+            Alerts now default to the old <code>open()</code> method - that is, that if you want the
+            closing &times; to be generated for you, you now <strong>must</strong> use the chainable <code>close()</code>
+            method.
+        </li>
+    </ul>
+
+
+
+    <h3>
         Helpers
     </h3>
 
     <ul>
         <li>
-            <code>Bootstrapper\Helpers::get_CSS()</code> should be replaced with <code>Helpers::css()</code>.
+            <code>Bootstrapper\Facades\Helpers::get_CSS()</code> should be replaced with <code>Helpers::css()</code>.
         <li>
-            <code>Bootstrapper\Helpers::get_JS()</code> should be replaced with <code>Helpers::js()</code>.
+            <code>Bootstrapper\Facades\Helpers::get_JS()</code> should be replaced with <code>Helpers::js()</code>.
         </li>
     </ul>
 
@@ -76,7 +93,8 @@
             <code>Navbar::create(Navbar::FIX_TOP, ['role' => 'navigation'])</code>
         </li>
         <li>
-            Similarly, <code>Navbar::inverse()</code> now has the signature <code>Navbar::inverse($position, $attributes)</code>
+            Similarly, <code>Navbar::inverse()</code> now has the signature <code>Navbar::inverse($position,
+                $attributes)</code>
         </li>
         <li>
             <code>with_brand()</code> has been renamed <code>withBrand()</code>.
@@ -107,17 +125,51 @@
             signatures to make the result stacked. Instead, use the chained method <code>stacked()</code>.
         </li>
         <li>
-            The array arguments for <code>pills()</code> or <code>tabs()</code> must be explicit
+            The array arguments for <code>pills()</code> or <code>tabs()</code> must be explicit.
             Instead of using <code>['Home', url('home')]</code>, you must use
             <code>['title' => 'Home', 'link' => url('home')</code>.
             {{ Label::info('Support for the older shorthand method may return, depending on requests. If you feel it
-                important, please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.') }}
+            important, please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.') }}
         </li>
     </ul>
 
+    <h3>
+        Typography
+    </h3>
+
+    <div class="alert alert-danger">
+        <p>
+            This class has now been <strong>removed</strong>. Use the
+            <a href="http://getbootstrap.com/css/#helper-classes">standard Bootstrap classes</a>
+            for the relevant tags.
+        </p>
+    </div>
+
+    <h4>
+        Why?
+    </h4>
+
+    <p>
+        There was very little that the class provided that was actually difficult to write
+        manually, and many strings could be awkward when using the class. It's cleaner
+        (in my eyes) to write
+        <pre class="prettyprint">
+&lt;p class="text-muted"&gt;
+    Here's a long lead description, and a quote from John Ball "My good friends, things cannot go on well in England, nor ever will until everything shall be in common"
+&lt;p&gt;
+</pre>
+    than
+        <pre class="prettyprint">
+Typography::muted('Here\'s a long lead description, and a quote from John Ball "My good friends, things cannot go on well in England, nor ever will until everything shall be in common"')
+</pre>
+    </p>
+
+    <p>
+        Disagree? Please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.
+    </p>
+
     <script type="javascript">
-        document.onload(function()
-        {
+        document.onload(function () {
             $('#tooltip').tooltip();
         });
 

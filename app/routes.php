@@ -11,26 +11,41 @@
 |
  */
 
-Route::get('/', function() {
-  return View::make('home');
+Route::get('/', function () {
+    return View::make('home');
 });
 
-Route::get('installation',  function() {
-  return View::make('installation');
-});
+Route::get('installation', [
+    'as' => 'installation',
+    function () {
+        return View::make('installation');
+    }
+]);
 
-Route::get('css', function() {
-  return View::make('css');
-});
+Route::get('base-css', [
+    'as' => 'css',
+    function () {
+        return View::make('css');
+    }
+]);
 
-Route::get('migration', function() {
-  return View::make('migration');
-});
+Route::get('migration', [
+    'as' => 'migration',
+    function () {
+        return View::make('migration');
+    }
+]);
 
-Route::get('components', function() {
-  return View::make('components');
-});
+Route::get('components', [
+    'as' => 'components',
+    function () {
+        return View::make('components');
+    }
+]);
 
-Route::get('extras', function() {
-  return View::make('extras');
-});
+Route::get('extras', [
+    'as' => 'extras',
+    function () {
+        return View::make('extras');
+    }
+]);
