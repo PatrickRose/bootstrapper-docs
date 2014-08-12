@@ -56,6 +56,33 @@
         href="https://github.com/PatrickRose/bootstrapper-docs/issues"> open an issue</a>!
 
     <h3>
+        Accordion
+    </h3>
+
+    <ul>
+        <li>
+            The <code>create()</code> method has now been removed in favour of the more
+            descriptive <code>named()</code> method.
+        </li>
+        <li>
+            The Accordion will throw an <code>AccordionException</code> if the accordion is
+            not named using the <code>named()</code> method.
+        </li>
+        <li>
+            <code>withContents()</code> now expects you to be explicit with your array keys.
+            Instead of using <code>withContents([['First', 'Content'], ['Second', 'Content']])</code>,
+            use <code>withContents([['title' => 'First', 'contents' => 'Content']])</code>
+        </li>
+        <li>
+            <code>withContents()</code> no longer accepts a second parameter to default open
+            the accordion. This should be done with the <code>open()</code>
+        </li>
+        <li>
+            Indexing for the open method now begins at <code>0</code>, instead of <code>1</code>.
+        </li>
+    </ul>
+
+    <h3>
         Alert
     </h3>
 
@@ -77,9 +104,9 @@
 
     <ul>
         <li>
-            <code>Bootstrapper\Facades\Helpers::get_CSS()</code> should be replaced with <code>Helpers::css()</code>.
+            <code>Bootstrapper\Helpers::get_CSS()</code> should be replaced with <code>Helpers::css()</code>.
         <li>
-            <code>Bootstrapper\Facades\Helpers::get_JS()</code> should be replaced with <code>Helpers::js()</code>.
+            <code>Bootstrapper\Helpers::get_JS()</code> should be replaced with <code>Helpers::js()</code>.
         </li>
     </ul>
 
@@ -146,25 +173,6 @@
             for the relevant tags.
         </p>
     </div>
-
-    <h4>
-        Why?
-    </h4>
-
-    <p>
-        There was very little that the class provided that was actually difficult to write
-        manually, and many strings could be awkward when using the class. It's cleaner
-        (in my eyes) to write
-        <pre class="prettyprint">
-&lt;p class="text-muted"&gt;
-    Here's a long lead description, and a quote from John Ball "My good friends, things cannot go on well in England, nor ever will until everything shall be in common"
-&lt;p&gt;
-</pre>
-    than
-        <pre class="prettyprint">
-Typography::muted('Here\'s a long lead description, and a quote from John Ball "My good friends, things cannot go on well in England, nor ever will until everything shall be in common"')
-</pre>
-    </p>
 
     <p>
         Disagree? Please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.
