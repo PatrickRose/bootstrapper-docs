@@ -109,6 +109,16 @@
     </ul>
 
     <h3>
+        Breadcrumbs
+    </h3>
+
+    <ul>
+        <li>
+            The <code>create()</code> method has been removed and renamed <code>withLinks()</code>
+        </li>
+    </ul>
+
+    <h3>
         Helpers
     </h3>
 
