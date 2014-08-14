@@ -60,8 +60,7 @@ Alert::danger('Alert::danger()')
         {{ Label::info('Heads up!') }}
         The closing of the alert is dynamically handled by Bootstrap's
         <a href="http://getbootstrap.com/javascript/#alerts">javascript</a>. You don't need to add any custom javascript
-        on
-        your site for this functionality.
+        on your site for this functionality.
     </p>
 
     {{ Alert::warning('Holy moly! You need to close this alert right damn now!')->close() }}
@@ -69,4 +68,16 @@ Alert::danger('Alert::danger()')
     <pre class="prettyprint linenums">
 Alert::warning('Holy moly! You need to close this alert right damn now!')->close()
 </pre>
+
+<p>
+    We default to using a times symbol (&times;) for the closing x. Want to use something else? Just pass it into the
+    close method as a parameter.
+</p>
+
+{{ Alert::warning('I prefer to use an "f" to a &times;')->close('f') }}
+
+    <pre class="prettyprint linenums">
+Alert::warning('I prefer to use an "f" to a &times;')->close('f')
+</pre>
+
 </article>
