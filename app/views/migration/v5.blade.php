@@ -138,6 +138,31 @@
     </ul>
 
     <h3>
+        Button Groups
+    </h3>
+
+    <ul>
+        <li>
+            <code>create()</code> has been renamed <code>withContents()</code>.
+        </li>
+        <li>
+            <code>withContents()</code> no longer expects an array of arrays, instead expecting
+            an array of string-like objects (usually a <code>Button</code> object).
+        </li>
+    </ul>
+
+    <h3>
+        Button Toolbars
+    </h3>
+
+    <ul>
+        <li>
+            This class has now been removed. When grouping Button Groups, wrap them with:
+            <pre class="prettyprint linenums">{{{ '<div class="btn-toolbar" role="toolbar">...</div>' }}}</pre>
+        </li>
+    </ul>
+
+    <h3>
         Helpers
     </h3>
 

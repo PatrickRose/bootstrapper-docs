@@ -13,100 +13,77 @@
   </h3>
   <p>
     Use button groups to join multiple buttons together as one
-    composite component. Build them with a series of
-    <code>Button</code> elements
+    composite component. Build them with an array.
   </p>
   <p>
-      ButtonGroup::radio(array(
-	array(ButtonGroup::NORMAL, 'Left'),
-	array(ButtonGroup::NORMAL, 'Middle'),
-	array(ButtonGroup::NORMAL, 'Right')
-      ))
+      {{ ButtonGroup::withContents([
+             Button::primary('Left'),
+             Button::primary('Middle'),
+             Button::primary('Right'),
+           ]) }}
   </p>
       <pre class='prettyprint linenums'>
-ButtonGroup::open()
-Button::normal('Left')
-Button::normal('Middle')
-Button::normal('Right')
-ButtonGroup::close()
+ButtonGroup::withContents([
+             Button::primary('Left'),
+             Button::primary('Middle'),
+             Button::primary('Right'),
+           ])
 </pre>
+{{ Alert::info(Label::info('Heads Up!') . ' We accept any thing that\'s string-like - either a string or an object with a __toString method')}}
+
   <h3>Checkbox and radio flavors</h3>
   <p>
     Button groups can also function as radios , where only one
     button may be active, or checkboxes, where any number of
     buttons may be active.
   </p>
+  <div class="row">
+  <div class="col-sm-4">
   <p>
-      ButtonGroup::checkbox(array(
-	array(ButtonGroup::DANGER, 'Left'),
-	array(ButtonGroup::DANGER, 'Middle'),
-	array(ButtonGroup::DANGER, 'Right')
-      ))
-     ButtonGroup::radio(array(
-	array(ButtonGroup::PRIMARY, 'Left'),
-	array(ButtonGroup::PRIMARY, 'Middle'),
-	array(ButtonGroup::PRIMARY, 'Right')
-      )) 
-  </p>
+      {{ ButtonGroup::checkbox([
+             Button::primary('Left'),
+             Button::primary('Middle'),
+             Button::primary('Right'),
+           ]) }}
+           </p>
+           </div>
+  <div class="col-sm-8">
 <pre class="prettyprint linenums">
-//Checkbox  
-ButtonGroup::checkbox(array(
-	array(ButtonGroup::DANGER, 'Left'),
-	array(ButtonGroup::DANGER, 'Middle'),
-	array(ButtonGroup::DANGER, 'Right')
-	))
-
+ButtonGroup::checkbox([
+             Button::primary('Left'),
+             Button::primary('Middle'),
+             Button::primary('Right'),
+           ])
+</pre>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+{{ ButtonGroup::radio([
+                Button::primary('Left'),
+                Button::primary('Middle'),
+                Button::primary('Right'),
+              ])
+ }}
+</div>
+<div class="col-sm-8">
+<pre class="prettyprint linenums">
 //Radio  
-ButtonGroup::radio(array(
-	array(ButtonGroup::PRIMARY, 'Left'),
-	array(ButtonGroup::PRIMARY, 'Middle'),
-	array(ButtonGroup::PRIMARY, 'Right')
-	))
+ButtonGroup::radio([
+             Button::primary('Left'),
+             Button::primary('Middle'),
+             Button::primary('Right'),
+           ])
 </pre>
-  <h3>
-    Toolbar example
-  </h3>
-  You can combine sets of <code>ButtonGroup</code> into a
-  <code>ButtonToolbar</code> for more complex components.
-  <p>
-     ButtonToolbar::open()
-      ButtonGroup::radio(array(
-	array(ButtonGroup::NORMAL, '1'),
-	array(ButtonGroup::NORMAL, '2'),
-	array(ButtonGroup::NORMAL, '3'),
-	array(ButtonGroup::NORMAL, '4'),
-      ))       
-      ButtonGroup::radio(array(
-	array(ButtonGroup::NORMAL, '5'),
-	array(ButtonGroup::NORMAL, '6'),
-	array(ButtonGroup::NORMAL, '7'),
-      ))       
-      ButtonGroup::radio(array(
-	array(ButtonGroup::NORMAL, '8'),
-      ))       
-     ButtonToolbar::close() 
-  </p>
-  <pre class="prettyprint linenums">
-ButtonToolbar::open();
-ButtonGroup::radio(array(
-...
-)
-
-ButtonGroup::radio(array(
-...
-)
-
-ButtonGroup::radio(array(
-...
-)
-ButtonToolbar::close()
-</pre>
+</div>
+</div>
+{{ Alert::info(Label::info('Heads Up!') . ' We\'ll convert Button objects into checkboxes or radio buttons. We\'ll just print out anything else')}}
   <h3>Dropdowns in button groups</h3>
   <p>
      Label::info('Heads up!') 
     Buttons with dropdowns must be individually wrapped in their
     own <code>ButtonGroup</code> within a
-    <code>ButtonToolbar</code> for proper rendering.
+    <code>.btn-toolbar</code> for proper rendering.
   </p>
 
 </section>
