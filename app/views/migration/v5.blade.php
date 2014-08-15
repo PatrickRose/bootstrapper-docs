@@ -119,6 +119,25 @@
     </ul>
 
     <h3>
+        Buttons
+    </h3>
+
+    <ul>
+        <li>
+            There are no longer any magic method calls. Calls such as <code>lg_primary('content')</code> should
+            now be <code>primary('content')->large()</code>.
+        </li>
+        <li>
+            The <code>lg()</code>, <code>sm()</code> and <code>xs()</code> functions have been extended
+            to their full names (<code>large()</code>, <code>small()</code>, <code>extraSmall()</code> respectively).
+        </li>
+        <li>
+            The <code>link()</code> function now creates a button with class <code>.btn-link</code>. To create an
+            <code>&lt;a&gt;</code> tag, use the <code>asLinkTo()</code> function.
+        </li>
+    </ul>
+
+    <h3>
         Helpers
     </h3>
 
