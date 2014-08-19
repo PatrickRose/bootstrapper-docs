@@ -163,6 +163,45 @@
     </ul>
 
     <h3>
+        Carousels
+    </h3>
+
+    <ul>
+        <li>
+            The <code>create()</code> method has been renamed <code>withContents()</code>
+        </li>
+        <li>
+            Carousels should be named using the <code>named()</code> method. Failure to
+            do so will throw a <code>Bootstrapper\Exceptions\CarouselException</code>.
+        </li>
+        <li>
+            The inner arrays for <code>withContents()</code> should use the keys
+            <code>image</code>, <code>caption</code> and <code>alt</code>.
+        </li>
+    </ul>
+
+    <h3>
+        Dropdown Buttons
+    </h3>
+
+    <ul>
+        <li>
+            There are no longer any magic method calls. Calls such as <code>lg_primary()</code> should
+            now be <code>primary()->large()</code>.
+        </li>
+        <li>
+            The <code>lg()</code>, <code>sm()</code> and <code>xs()</code> functions have been extended
+            to their full names (<code>large()</code>, <code>small()</code>, <code>extraSmall()</code> respectively).
+        </li>
+        <li>
+            <code>primary()</code>, <code>danger()</code>, <code>warning()</code>,
+            <code>success()</code>, <code>info()</code> and <code>normal()</code>
+            no longer accept 3 arguments. Use <code>withContents()</code> and
+            <code>withAttributes()</code>.
+        </li>
+    </ul>
+
+    <h3>
         Helpers
     </h3>
 

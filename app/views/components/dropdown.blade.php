@@ -6,409 +6,247 @@
   </div>
 
   <h2>Button dropdowns</h2>
-  <div class='row'>
-    <div class='col-md-6'>
       <h3>
         Overview and examples
       </h3>
-      <p>
-        Dropdown button functions expect a value, array of links, and
-        an optional attributes array. Any optional attributes will be
-        applied to the top level div.
-      </p>
-      <p>
-        Use any button to trigger a dropdown menu by placing it within
-        a <code>.btn-group</code> and providing the proper menu
-        markup.
-      </p>
-      <p>
-        <div class="btn-toolbar">
-           DropdownButton::normal('Action',
-                                    Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
 
-           DropdownButton::primary('Primary',
-                                     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-
-           DropdownButton::danger('Danger',
-                                    Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-        </div>
-      </p>
       <p>
-        <div class='btn-toolbar'>
-           DropdownButton::warning('Warning',
-                                     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-           DropdownButton::success('Success',
-                                     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-
-           DropdownButton::info('Info',
-                                  Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-        </div>
+          Create a dropdown button with any of the following methods, then add the contents
+          with <code>withContents()</code>
       </p>
-    </div>
-    <div class='col-md-6'>
+
+      <table class="table">
+      <thead>
+      <tr>
+      <th>Type</th>
+      <th>Example</th>
+      <th>Code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>
+      <strong>Normal</strong>
+      </td>
+      <td>
+      {{ DropdownButton::normal('Normal')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::normal('Normal')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Primary</strong>
+      </td>
+      <td>
+      {{ DropdownButton::primary('Primary')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::primary('Warning')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],
+      ['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Danger</strong>
+      </td>
+      <td>
+      {{ DropdownButton::danger('Danger')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::danger('Danger')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],
+      ['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Warning</strong>
+      </td>
+      <td>
+      {{ DropdownButton::warning('Warning')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::warning('Warning')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],
+      ['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Success</strong>
+      </td>
+      <td>
+      {{ DropdownButton::success('Success')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::success('Success')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],
+      ['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+
+      {{ Alert::info(Label::info('Heads up!') . ' We expect an array with the keys <code>url</code> and <code>label</code>') }}
       <h3>
-	Example call
-      </h3>
-       <p>
-	 Similar to the call below you can use
-	 <code>DropdownButton::primary</code>,
-	 <code>DropdownButton::danger</code>,
-	 <code>DropdownButton::warning</code>,
-	 <code>DropdownButton::success</code>,
-	 <code>DropdownButton::info</code>, or
-	 <code>DropdownButton::inverse</code>.
-       </p>
-       <pre class="prettyprint linenums">
-DropdownButton::normal('Action',
-                       Navigation::links(
-                         array(
-                         array('Action', '#'),
-                         array('Another action', '#'),
-                         array('Something else here', '#'),
-                         array(Navigation::DIVIDER),
-                         array('Separated link', '#'),
-                        )
-                      ))
-</pre>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-6'>
-      <h3>
-	Sizing
+	    Sizing
       </h3>
       <p>
-	Button dropdowns work at any size. your button sizes to
-	<code>DropdownButton::lg</code>,
-	<code>DropdownButton::sm</code>, or
-	<code>DropdownButton::xs</code>.
-      </p>
-      <div class="btn-toolbar">
-	 DropdownButton::lg('Action',
-              Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )
-            ) 
-	 DropdownButton::sm('Action',
-              Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )
-            ) 
-	
-	 DropdownButton::xs('Action',
-              Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )
-            ) 	
-      </div>
-    </div>
-    <div class='col-md-6'>
-      <h3>
-	Combined Calls
-      </h3>
-      <p>
-	You can mix and match the dropdown button color and size.
-	Simply add an underscore between types (eg.
-	<code>DropdownButton::lg_danger</code>) and pass in
-	the same link array.
-      </p>
-       DropdownButton::lg_danger('Action',
-              Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )) 
-    </div>
-  </div>
-  <h2>
+	     Sizing is handled using one of the following chained methods
+	  </p>
+
+      <table class="table">
+      <thead>
+      <tr>
+      <th>Size</th>
+      <th>Example</th>
+      <th>Code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>
+      <strong>Large</strong>
+      </td>
+      <td>
+      {{ DropdownButton::normal('Large')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->large() }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::normal('Large')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+      ])
+      ->large()</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Standard</strong>
+      </td>
+      <td>
+      {{ DropdownButton::normal('Standard')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::normal('Standard')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+      ])</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Small</strong>
+      </td>
+      <td>
+      {{ DropdownButton::normal('Small')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->small() }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::normal('Small')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+      ])
+      ->small()</pre>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <strong>Extra Small</strong>
+      </td>
+      <td>
+      {{ DropdownButton::normal('Extra Small')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->extraSmall() }}
+      </td>
+      <td>
+      <pre class="prettyprint">
+      DropdownButton::normal('Extra Small')
+      ->withContents([
+      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+      ])
+      ->extraSmall()</pre>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+
+  <h3>
     Split button dropdowns
-  </h2>
-  <div class='row'>
-    <div class='col-md-6'>
+  </h3>
       <p>
 	You can create Split button dropdowns just like normal
 	Dropdown Buttons, just use the chained method
 	<code>split()</code>
       </p>
+      <div class="row">
+      <div class="col-sm-2">
       <p>
-	<div class="btn-toolbar" style="margin-top: 18px;">
-	   DropdownButton::normal('Action',
-				    Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->split() 
-
-	 DropdownButton::primary('Primary',
-				   Navigation::links(
-              array(
-                array('Action', '#'),
-                array('Another action', '#'),
-                array('Something else here', '#'),
-                array(Navigation::DIVIDER),
-                array('Separated link', '#'),
-              )
-            ))->split() 
-
-	 DropdownButton::danger('Primary',
-				  Navigation::links(
-              array(
-                array('Action', '#'),
-                array('Another action', '#'),
-                array('Something else here', '#'),
-                array(Navigation::DIVIDER),
-                array('Separated link', '#'),
-              )
-            ))->split() 
+      {{ DropdownButton::normal('Split')
+           ->withContents([
+               ['url' => '#', 'label' => 'First'],
+               ['url' => '#', 'label' => 'Second']
+           ])
+           ->split() }}
+      </p>
       </div>
-      </p>
-      <p>
-	<div class='btn-toolbar'>
-	   DropdownButton::warning('Warning',
-				     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->split() 
+      <div class="col-sm-10">
+      <pre class="prettyprint linenums">
+DropdownButton::normal('Split')
+           ->withContents([
+               ['url' => '#', 'label' => 'First'],
+               ['url' => '#', 'label' => 'Second']
+           ])
+           ->split()
+      </pre>
+      </div>
+      </div>
 
-	   DropdownButton::success('Success',
-				     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-		)
-            ))->split() 
-
-	   DropdownButton::info('Info',
-				  Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->split() 
-	</div>
-      </p>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-6'>
        <h3>
 	 Dropup menus
        </h3>
-       <p>
+      <p>
 	 If you want your dropdown menu to go above the button (dropup)
 	 you can simply call <code>dropup()</code>.
        </p>
+      <div class="row">
+      <div class="col-sm-2">
        <p>
-	 <div class="btn-toolbar">
-	    DropdownButton::normal('Dropup',
-              Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              )
-            )->dropup() 
-	 </div>
+	    {{ DropdownButton::normal('Dropup')
+                      ->withContents([
+                          ['url' => '#', 'label' => 'First'],
+                          ['url' => '#', 'label' => 'Second']
+                      ])
+                      ->dropup() }}
        </p>
+       </div>
+       <div class="col-sm-10">
        <pre class='prettyprint linenums'>
-DropdownButton::normal('Dropup',
-	               Navigation::links(
-                         array(
-                           array('Action', '#'),
-                           array('Another action', '#'),
-                           array('Something else here', '#'),
-                           array(Navigation::DIVIDER),
-                           array('Separated link', '#'),
-                           )
-                         )
-                       )->dropup()
+DropdownButton::normal('Dropup')
+                      ->withContents([
+                          ['url' => '#', 'label' => 'First'],
+                          ['url' => '#', 'label' => 'Second']
+                      ])
+                      ->dropup()->split()
 </pre>
-	 <div class="btn-toolbar">
-	 </div>
-       </p>
-    </div>
-    <div class='col-md-6'>
-      <h3>
-	Right Align Menu
-      </h3>
-      <p>
-	You can right align the dropdown menu by calling the chained
-	method <code>pull_right()</code>.
-      </p>
-      
-      <p>
-	<div class="btn-toolbar" style="margin-top: 18px;">
-	   DropdownButton::normal('Action',
-				    Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->pull_right() 
-
-	 DropdownButton::primary('Primary',
-				   Navigation::links(
-              array(
-                array('Action', '#'),
-                array('Another action', '#'),
-                array('Something else here', '#'),
-                array(Navigation::DIVIDER),
-                array('Separated link', '#'),
-              )
-            ))->pull_right() 
-
-	 DropdownButton::danger('Primary',
-				  Navigation::links(
-              array(
-                array('Action', '#'),
-                array('Another action', '#'),
-                array('Something else here', '#'),
-                array(Navigation::DIVIDER),
-                array('Separated link', '#'),
-              )
-            ))->pull_right() 
-      </div>
-      </p>
-      <p>
-	<div class='btn-toolbar'>
-	   DropdownButton::warning('Warning',
-				     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->pull_right() 
-
-	   DropdownButton::success('Success',
-				     Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-		)
-            ))->pull_right() 
-
-	   DropdownButton::info('Info',
-				  Navigation::links(
-                array(
-                  array('Action', '#'),
-                  array('Another action', '#'),
-                  array('Something else here', '#'),
-                  array(Navigation::DIVIDER),
-                  array('Separated link', '#'),
-                )
-              ))->pull_right() 
-	</div>
-      </p>
-      <pre class='prettyprint linenums'>
-DropdownButton::normal('Dropup',
-	               Navigation::links(
-                         array(
-                           array('Action', '#'),
-                           array('Another action', '#'),
-                           array('Something else here', '#'),
-                           array(Navigation::DIVIDER),
-                           array('Separated link', '#'),
-                           )
-                         )
-                       )->pull_right()
-</pre>
-    </div>
-  </div>
+</div>
+</div>
 </section>
