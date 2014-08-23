@@ -7,63 +7,86 @@
       </small>
     </h1>
   </div>
-  <div class="row">
-    <div class="col-md-3 columns">
-      <h3>
-	Carousel create function
-      </h3>
-      <p>
-	Creates a Bootstrap Carousel by passing an associative array
-	of Carousel items.
-      </p>
-      <pre class="prettyprint linenums">
-public static function create($items, $attributes = array())
+
+  <p>
+      Create a carousel with the <code>withContents()</code> function.
+  </p>
+
+  {{ Alert::danger(Label::danger('Heads up!') . ' You <strong>must</strong> name your carousel using the <code>named()</code>. Forgetting to do so will throw a <code>Bootstrapper\Exceptions\CarouselException</code>.') }}
+
+  <p>
+  {{ Carousel::named('example')->withContents([
+      [
+          'image' => '//lorempixel.com/800/400/city',
+          'alt' => 'something',
+      ],
+      [
+          'image' => '//lorempixel.com/800/400/people',
+          'alt' => 'something else',
+      ],
+  ]) }}
+  </p>
+  <pre class="prettyprint linenums">
+Carousel::named('example')->withContents([
+    [
+        'image' => '//lorempixel.com/800/400/city',
+        'alt' => 'something',
+    ],
+    [
+        'image' => '//lorempixel.com/800/400/people',
+        'alt' => 'something else',
+    ],
+])
 </pre>
 
-      <h3>
-	Carousel item elements
-      </h3>
-      <ul>
-        <li>image (required)</li>
-        <li>alt_text</li>
-        <li>attributes</li>
-        <li>label</li>
-        <li>caption</li>
-      </ul>
-    </div>
-    <div class="col-md-9 columns">
-      <h2>
-	Example carousel
-      </h2>
-      <p>
-	Watch the slideshow below.
-      </p>
+{{ Alert::info('The inner arrays expect the keys <code>image</code> and <code>alt</code>.') }}
 
-      {{ Carousel::create(array(
-	  array('image'=>'img/bootstrap-mdo-sfmoma-01.jpg', 'label'=>'First Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
-	  array('image'=>'img/bootstrap-mdo-sfmoma-02.jpg', 'label'=>'Second Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
-	  array('image'=>'img/bootstrap-mdo-sfmoma-03.jpg', 'label'=>'Third Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
-      )) }}
-      <pre class="prettyprint linenums">
-Carousel::create(array(
-                   array(
-                     'image'=>'img/bootstrap-mdo-sfmoma-01.jpg',
-                     'label'=>'First Thumbnail label',
-                     'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'
-                   ),
-                   array(
-                     'image'=>'img/bootstrap-mdo-sfmoma-02.jpg',
-                     'label'=>'Second Thumbnail label',
-                     'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'
-                   ),
-                   array(
-'image'=>'img/bootstrap-mdo-sfmoma-03.jpg',
-                     'label'=>'Third Thumbnail label',
-                     'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                     gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'
-                     ),
-                ));
+<h3>
+    Adding captions
+</h3>
+
+<p>
+    If you want to add a caption, use the <code>caption</code> key in the inner array
+</p>
+
+  <p>
+  {{ Carousel::named('captions')->withContents([
+      [
+          'image' => '//lorempixel.com/800/400/abstract',
+          'alt' => 'something',
+          'caption' => 'Here is a caption'
+      ],
+      [
+          'image' => '//lorempixel.com/800/400/nature',
+          'alt' => 'something else',
+          'caption' => 'Here is a another caption!'
+      ],
+      [
+          'image' => '//lorempixel.com/800/400/cats',
+          'alt' => 'MORE CAPTIONS',
+          'caption' => 'Jesus, what\'s with these captions!?'
+      ]
+  ]) }}
+  </p>
+  <pre class="prettyprint linenums">
+Carousel::named('example')->withContents([
+    [
+        'image' => '//lorempixel.com/800/400/abstract',
+        'alt' => 'something',
+        'caption' => 'Here is a caption'
+    ],
+    [
+        'image' => '//lorempixel.com/800/400/nature',
+        'alt' => 'something else',
+        'caption' => 'Here is a another caption!'
+    ],
+    [
+        'image' => '//lorempixel.com/800/400/cats',
+        'alt' => 'MORE CAPTIONS',
+        'caption' => 'Jesus, what\'s with these captions!?'
+    ]
+])
 </pre>
-    </div>
-  </div>
+
+
 </section>
