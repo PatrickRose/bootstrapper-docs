@@ -4,19 +4,17 @@
   Installation
 @stop
 
+@section('sidebar')
+    {{ Navigation::pills(
+           [
+                 array('title' => 'Quick', 'link' => '#quick'),
+                 array('title' => 'Detailed', 'link' => '#detailed'),
+           ],
+           ['data-spy' => 'affix']
+       )->stacked() }}
+@stop
+
 @section('content')
-<div class='subnav'>
-  {{
-    Navigation::pills(
-      Navigation::links(
-        array(
-          array('Quick', '#quick'),
-          array('Detailed', '#detailed'),
-        )
-      )
-    )
-    }}
-</div>
 
   <div class='page-header'>
     <h1>
@@ -36,9 +34,9 @@
       Add the following to your <code>composer.json</code>:
     </p>
     <pre class="prettyprint linenums lang-javascript">
-      "require": {
-      "patricktalmadge/bootstrapper": "4.1.*"
-      }
+"require": {
+    "patricktalmadge/bootstrapper": "4.1.*"
+}
     </pre>
 
     <p>
@@ -46,41 +44,40 @@
     </p>
 
     <pre class="prettyprint linenums lang-php">
-      'providers' => array(
-      'Bootstrapper\BootstrapperServiceProvider'
-      )
-    </pre>
+'providers' => array(
+    'Bootstrapper\BootstrapperServiceProvider'
+)
+</pre>
 
     <p>
       (Optional) Add the following aliases:
     </p>
 
     <pre class="prettyprint linenums lang-php">
-'Alert' => 'Bootstrapper\Alert',
-'Badge' => 'Bootstrapper\Badge',
-'Breadcrumb' => 'Bootstrapper\Breadcrumb',
-'Button' => 'Bootstrapper\Button',
-'ButtonGroup' => 'Bootstrapper\ButtonGroup',
-'ButtonToolbar' => 'Bootstrapper\ButtonToolbar',
-'Carousel' => 'Bootstrapper\Carousel',
-'DropdownButton' => 'Bootstrapper\DropdownButton',
-'Form' => 'Bootstrapper\Form',
-'Helpers' => 'Bootstrapper\Helpers',
-'Icon' => 'Bootstrapper\Icon',
-'Image' => 'Bootstrapper\Image',
-'Label' => 'Bootstrapper\Label',
-'MediaObject' => 'Bootstrapper\MediaObject',
-'Modal'          => 'Bootstrapper\\Modal',
-'Navbar' => 'Bootstrapper\Navbar',
-'Navigation' => 'Bootstrapper\Navigation',
-'Paginator' => 'Bootstrapper\Paginator',
-'Panel' => 'Bootstrapper\Panel',
-'Progress' => 'Bootstrapper\Progress',
-'Tabbable' => 'Bootstrapper\Tabbable',
-'Table' => 'Bootstrapper\Table',
-'Thumbnail' => 'Bootstrapper\Thumbnail',
-'Typeahead' => 'Bootstrapper\Typeahead',
-'Typography' => 'Bootstrapper\Typography',
+'Accordion' => 'Bootstrapper\Facades\Accordion',
+'Alert' => 'Bootstrapper\Facades\Alert',
+'Badge' => 'Bootstrapper\Facades\Badge',
+'Breadcrumb' => 'Bootstrapper\Facades\Breadcrumb',
+'Button' => 'Bootstrapper\Facades\Button',
+'ButtonGroup' => 'Bootstrapper\Facades\ButtonGroup',
+'Carousel' => 'Bootstrapper\Facades\Carousel',
+'ControlGroup' => 'Bootstrapper\Facades\ControlGroup',
+'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
+'Form' => 'Bootstrapper\Facades\Form',
+'Helpers' => 'Bootstrapper\Facades\Helpers',
+'Icon' => 'Bootstrapper\Facades\Icon',
+'InputGroup' => 'Bootstrapper\Facades\InputGroup',
+'Image' => 'Bootstrapper\Facades\Image',
+'Label' => 'Bootstrapper\Facades\Label',
+'MediaObject' => 'Bootstrapper\Facades\MediaObject',
+'Modal' => 'Bootstrapper\Facades\Modal',
+'Navbar' => 'Bootstrapper\Facades\Navbar',
+'Navigation' => 'Bootstrapper\Facades\Navigation',
+'Panel' => 'Bootstrapper\Facades\Panel',
+'ProgressBar' => 'Bootstrapper\Facades\ProgressBar',
+'Tabbable' => 'Bootstrapper\Facades\Tabbable',
+'Table' => 'Bootstrapper\Facades\Table',
+'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
 </pre>
 
     <p>
@@ -101,7 +98,7 @@
     </p>
     <pre class="prettyprint linenums lang-javascript">
 "require": {
-  "patricktalmadge/bootstrapper": "dev-develop"
+  "patricktalmadge/bootstrapper": "~5"
 }
 </pre>
 
@@ -124,36 +121,35 @@
     </p>
 
     <p>
-      This bit's optional, but it does make life a lot easier in the long run so it's advised. <em>If you don't want to do this, that's fine - but since it saves you writing <code>Bootstrapper\Navbar::create()</code> (and lets you write <code>Navbar::create()</code>) with no performance hit...</em>. Add the following to your aliases array:
+      This bit's optional, but it does make life a lot easier in the long run so it's advised. <em>If you don't want to do this, that's fine - but since it saves you writing <code>Navbar::create()</code>) with no performance hit...</em>. Add the following to your aliases array:
     </p>
 
     <pre class="prettyprint linenums lang-php">
 'aliases' => array(
-  'Alert' => 'Bootstrapper\Alert',
-  'Badge' => 'Bootstrapper\Badge',
-  'Breadcrumb' => 'Bootstrapper\Breadcrumb',
-  'Button' => 'Bootstrapper\Button',
-  'ButtonGroup' => 'Bootstrapper\ButtonGroup',
-  'ButtonToolbar' => 'Bootstrapper\ButtonToolbar',
-  'Carousel' => 'Bootstrapper\Carousel',
-  'DropdownButton' => 'Bootstrapper\DropdownButton',
-  'Form' => 'Bootstrapper\Form',
-  'Helpers' => 'Bootstrapper\Helpers',
-  'Icon' => 'Bootstrapper\Icon',
-  'Image' => 'Bootstrapper\Image',
-  'Label' => 'Bootstrapper\Label',
-  'MediaObject' => 'Bootstrapper\MediaObject',
-  'Modal'          => 'Bootstrapper\\Modal',
-  'Navbar' => 'Bootstrapper\Navbar',
-  'Navigation' => 'Bootstrapper\Navigation',
-  'Panel' => 'Bootstrapper\Panel',
-  'Paginator' => 'Bootstrapper\Paginator',
-  'Progress' => 'Bootstrapper\Progress',
-  'Tabbable' => 'Bootstrapper\Tabbable',
-  'Table' => 'Bootstrapper\Table',
-  'Thumbnail' => 'Bootstrapper\Thumbnail',
-  'Typeahead' => 'Bootstrapper\Typeahead',
-  'Typography' => 'Bootstrapper\Typography',
+    'Accordion' => 'Bootstrapper\Facades\Accordion',
+    'Alert' => 'Bootstrapper\Facades\Alert',
+    'Badge' => 'Bootstrapper\Facades\Badge',
+    'Breadcrumb' => 'Bootstrapper\Facades\Breadcrumb',
+    'Button' => 'Bootstrapper\Facades\Button',
+    'ButtonGroup' => 'Bootstrapper\Facades\ButtonGroup',
+    'Carousel' => 'Bootstrapper\Facades\Carousel',
+    'ControlGroup' => 'Bootstrapper\Facades\ControlGroup',
+    'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
+    'Form' => 'Bootstrapper\Facades\Form',
+    'Helpers' => 'Bootstrapper\Facades\Helpers',
+    'Icon' => 'Bootstrapper\Facades\Icon',
+    'InputGroup' => 'Bootstrapper\Facades\InputGroup',
+    'Image' => 'Bootstrapper\Facades\Image',
+    'Label' => 'Bootstrapper\Facades\Label',
+    'MediaObject' => 'Bootstrapper\Facades\MediaObject',
+    'Modal' => 'Bootstrapper\Facades\Modal',
+    'Navbar' => 'Bootstrapper\Facades\Navbar',
+    'Navigation' => 'Bootstrapper\Facades\Navigation',
+    'Panel' => 'Bootstrapper\Facades\Panel',
+    'ProgressBar' => 'Bootstrapper\Facades\ProgressBar',
+    'Tabbable' => 'Bootstrapper\Facades\Tabbable',
+    'Table' => 'Bootstrapper\Facades\Table',
+    'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
 )
 </pre>
 
@@ -163,29 +159,34 @@
 
     <ul>
       <li>
-	Download <code>bootstrap.min.css</code> and <code>bootstrap.min.js</code> from <a href='http://getbootstrap.com'>Bootstrap</a>, and pop them in your public folder. Then do the same with <a href='http://jquery.com/download/'>Jquery</a>. Then use the following in your views to include Bootstrap and Jquery:
+	Download <code>bootstrap.min.js</code> from
+	<a href='http://getbootstrap.com'>Bootstrap</a>, and pop them in your public folder.
+	Then do the same with <a href='http://jquery.com/download/'>Jquery</a>.
+	Then use the following in your views to include Bootstrap and Jquery:
 	<pre class='prettyprint'>
 HTML::style('css/bootstrap.min.css')
 HTML::script('js/jquery.min.js')
 HTML::script('js/bootstrap.min.js')
 </pre>
+{{ Alert::info('Since v5.0.0, we have Twitter Bootstrap as a dependency in the composer.json so these files will be included in <code>vendor/twbs/bootstrap/dist</code> (except jQuery). You\'ll still need to move them manually') }}
       </li>
       <li>
 	Use the various CDNs to include the relevant files:
 	<pre class='prettyprint'>
-HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')
+HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
 HTML::script('http://code.jquery.com/jquery-1.10.1.min.js')
-HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
 </pre>
       </li>
       <li>
 	Let Bootstrapper handle it using the helper method:
 	<pre class='prettyprint'>
-Bootstrapper\Helpers::get_CSS()
-Bootstrapper\Helpers::get_JS()
-	</pre>
-	This will get the latest versions. If you want a specific version of either,
-	run <code class='prettyprint'>artisan config:publish patricktalmadge/bootstrapper</code> and edit the values in <code class='prettyprint'>app/config/packages/patricktalmadge/bootstrapper/config.php</code>.
+Helpers::css()
+Helpers::js()
+</pre>
+	This will get the latest version that we support. If you want a specific version of either,
+	run <kbd>artisan config:publish patricktalmadge/bootstrapper</kbd> and edit the values in
+	<code>app/config/packages/patricktalmadge/bootstrapper/config.php</code>.
       </li>
     </ul>
 
