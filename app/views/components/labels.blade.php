@@ -7,20 +7,22 @@
       </small>
     </h1>
   </div>
-  <h3>
-    Available functions
-  </h3>
+
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Labels</th>
+        <th>Output</th>
         <th>Function call</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-           Label::normal('Default') 
+          Normal
+        </td>
+        <td>
+           {{ Label::normal('Default') }}
         </td>
         <td>
           <code>Label::normal('Default')</code>
@@ -28,7 +30,10 @@
       </tr>
       <tr>
         <td>
-           Label::primary('Primary') 
+          Primary
+        </td>
+        <td>
+           {{ Label::primary('Primary') }}
         </td>
         <td>
           <code>Label::primary('Primary')</code>
@@ -36,7 +41,10 @@
       </tr>
       <tr>
         <td>
-           Label::success('Success') 
+          Success
+        </td>
+        <td>
+           {{ Label::success('Success') }}
         </td>
         <td>
           <code>Label::success('Success')</code>
@@ -44,7 +52,10 @@
       </tr>
       <tr>
         <td>
-           Label::info('Info') 
+          Info
+        </td>
+        <td>
+           {{ Label::info('Info') }}
         </td>
         <td>
           <code>Label::info('Info')</code>
@@ -52,7 +63,10 @@
       </tr>
       <tr>
         <td>
-           Label::warning('Warning') 
+            Warning
+        </td>
+        <td>
+           {{ Label::warning('Warning') }}
         </td>
         <td>
           <code>Label::warning('Warning')</code>
@@ -60,7 +74,10 @@
       </tr>
       <tr>
         <td>
-           Label::danger('Danger') 
+          Danger
+        </td>
+        <td>
+           {{ Label::danger('Danger') }}
         </td>
         <td>
           <code>Label::danger('Danger')</code>
