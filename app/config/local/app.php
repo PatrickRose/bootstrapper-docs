@@ -3,7 +3,7 @@
 return [
     'providers' => append_config(
         [
-        //    'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
+            'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
         ]
     )
 ];
