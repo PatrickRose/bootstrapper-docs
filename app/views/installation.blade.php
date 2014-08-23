@@ -185,7 +185,7 @@ Helpers::css()
 Helpers::js()
 </pre>
 	This will get the latest version that we support. If you want a specific version of either,
-	run <kbd>artisan config:publish patricktalmadge/bootstrapper</kbd> and edit the values in
+	run <kbd>php artisan config:publish patricktalmadge/bootstrapper</kbd> and edit the values in
 	<code>app/config/packages/patricktalmadge/bootstrapper/config.php</code>.
       </li>
     </ul>
