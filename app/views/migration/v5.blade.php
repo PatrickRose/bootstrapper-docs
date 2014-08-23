@@ -18,30 +18,30 @@
         the following:
     </p>
             <pre class="prettyprint linenums lang-php">
+'Accordion' => 'Bootstrapper\Facades\Accordion',
 'Alert' => 'Bootstrapper\Facades\Alert',
 'Badge' => 'Bootstrapper\Facades\Badge',
 'Breadcrumb' => 'Bootstrapper\Facades\Breadcrumb',
 'Button' => 'Bootstrapper\Facades\Button',
 'ButtonGroup' => 'Bootstrapper\Facades\ButtonGroup',
-'ButtonToolbar' => 'Bootstrapper\Facades\ButtonToolbar',
 'Carousel' => 'Bootstrapper\Facades\Carousel',
+'ControlGroup' => 'Bootstrapper\Facades\ControlGroup',
 'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
 'Form' => 'Bootstrapper\Facades\Form',
 'Helpers' => 'Bootstrapper\Facades\Helpers',
 'Icon' => 'Bootstrapper\Facades\Icon',
+'InputGroup' => 'Bootstrapper\Facades\InputGroup',
 'Image' => 'Bootstrapper\Facades\Image',
 'Label' => 'Bootstrapper\Facades\Label',
 'MediaObject' => 'Bootstrapper\Facades\MediaObject',
 'Modal' => 'Bootstrapper\Facades\Modal',
 'Navbar' => 'Bootstrapper\Facades\Navbar',
 'Navigation' => 'Bootstrapper\Facades\Navigation',
-'Paginator' => 'Bootstrapper\Facades\Paginator',
 'Panel' => 'Bootstrapper\Facades\Panel',
-'Progress' => 'Bootstrapper\Facades\Progress',
+'ProgressBar' => 'Bootstrapper\Facades\ProgressBar',
 'Tabbable' => 'Bootstrapper\Facades\Tabbable',
 'Table' => 'Bootstrapper\Facades\Table',
 'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
-'Typeahead' => 'Bootstrapper\Facades\Typeahead',
 </pre>
 
     <p>
@@ -158,7 +158,11 @@
     <ul>
         <li>
             This class has now been removed. When grouping Button Groups, wrap them with:
-            <pre class="prettyprint linenums">{{{ '<div class="btn-toolbar" role="toolbar">...</div>' }}}</pre>
+            <pre class="prettyprint linenums">
+{{{ '<div class="btn-toolbar" role="toolbar">' }}}
+
+...
+{{{'</div>' }}}</pre>
         </li>
     </ul>
 
@@ -198,6 +202,27 @@
             <code>success()</code>, <code>info()</code> and <code>normal()</code>
             no longer accept 3 arguments. Use <code>withContents()</code> and
             <code>withAttributes()</code>.
+        </li>
+    </ul>
+
+    <h3>
+        Form
+    </h3>
+
+    <ul>
+        <li>
+            <code>*_open()</code> methods have been removed.
+        </li>
+        <li>
+             <code>*_open_for_files()</code>, <code>*_open_secure()</code>,
+             <code>*_open_secure_for_files()</code> have been removed. Use the standard
+             <a href="http://laravel.com/docs/html#opening-a-form">Laravel methods for secure or file forms</a>.
+        </li>
+        <li>
+            <code>horizontal_model()</code> etc have been renamed <code>horizontalModel</code>.
+        </li>
+        <li>
+            <code>*_append_with_button</code> etc have been removed. Use the <code>InputGroup</code> class instead.
         </li>
     </ul>
 

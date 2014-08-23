@@ -1,5 +1,4 @@
 <section id='forms'>
-
   <div class='page-header'>
     <h1>Forms</h1>
   </div>
@@ -18,448 +17,261 @@
     </thead>
     <tbody>
       <tr>
-        <th>Vertical (default)</th>
-        <td><code>Form::vertical_open()</code></td>
-        <td>Stacked, left-aligned labels over controls</td>
-      </tr>
-      <tr>
         <th>Inline</th>
-        <td><code>Form::inline_open()</code></td>
+        <td><code>Form::inline()</code></td>
         <td>Left-aligned label and inline-block controls for compact style</td>
       </tr>
       <tr>
-        <th>Search</th>
-        <td><code>Form::search_open()</code></td>
-        <td>Extra-rounded text input for a typical search aesthetic</td>
-      </tr>
-      <tr>
         <th>Horizontal</th>
-        <td><code>Form::horizontal_open()</code></td>
+        <td><code>Form::horizontal()</code></td>
         <td>Float left, right-aligned labels on same line as controls</td>
       </tr>
     </tbody>
   </table>
+
   <p>
-    Just like the standard Laravel Form you can use <code>{type}_open_secure()</code>,
-    <code>{type}_open_for_files()</code>, or <code>{type}_open_secure_for_files()</code>
-    for all form types.
+    The form methods take the same arguments as a standard Laravel forms, so you can make
+    them secure by passing in <code>'secure' => true</code> to your array arguments.
   </p>
 
-  <h2>
-    Example Forms <small>using just form controls, no extra markup</small>
-  </h2>
+  <p>
+      You can also use <code>inlineModel()</code> or <code>horizontalModel()</code>, which
+      will add the relevant classes to a <code>Form::model()</code> call.
+  </p>
 
-  <div class='row'>
-    <div class='col-md-6'>
-      <h3>
-        Basic Form
-      </h3>
-      <p>You could use the default <code>Form::open()</code> or a more descriptive <code>Form::vertical_open()</code></p>
-      {{ Form::vertical_open(null,'POST', array('class' => 'well')) }}
-      {{ Form::label('something', 'Label name') }}
-      {{ Form::span3_text('something', 'Type something...') }}
-      {{ Form::block_help('Example block-level help text here.') }}
-      {{ Form::labelled_checkbox('checker', 'Check me out') }}
-      {{ Form::submit('Submit') }}
-      {{ Form::close() }}
-      <pre class="prettyprint linenums">
-Form::vertical_open()
-Form::label('something', 'Label name')
-Form::span3_text('something', 'Type something...')
-Form::block_help('Example block-level help text here.')
-Form::labelled_checkbox('checker', 'Check me out')
-Form::submit('Submit')
-Form::close()
-</pre>
-    </div>
-    <div class='col-md-6'>
+  <h3>
+      Inputs
+  </h3>
 
-      <h3>Search Form</h3>
+  <p>
+    We extend the standard Laravel form inputs to add the <code>.form-control</code> class,
+    as well as the <code>label()</code> method to add the <code>.control-label</code> class.
+    The method signatures are the same as the standard Laravel ones.
+  </p>
 
-      <p>
-        Using <code>Form::search_open()</code> and <code>Form::search_box()</code>.
-        You could also use the standard open and pass in <code>array('class' => Form::TYPE_SEARCH)</code>
-      </p>
+  <h3>
+      Validation messages
+  </h3>
 
-      {{ Form::search_open(null,'POST', array('class' => 'well')) }}
-      {{ Form::search_box('search',null, array('class' => 'input-medium')) }}
-      {{ Form::submit('Search') }}
-      {{ Form::close() }}
+  <p>
+      Validation messages can be added using the <code>success()</code>, <code>warning()</code>,
+      <code>error()</code> methods
+  </p>
 
-      <pre class="prettyprint linenums">
-Form::search_open()
-Form::search_box('search',null, array('class' => 'input-medium'))
-Form::submit('Search')
-Form::close()
+  <p>
+      {{ Form::success(Form::label('success', 'You did well!'), Form::text('success')) }}
+      {{ Form::warning(Form::label('warning', 'You did something wrong maybe?'), Form::text('warning')) }}
+      {{ Form::error(Form::label('error', 'You did something wrong fo sho'), Form::text('error')) }}
+  </p>
+
+  <pre class="prettyprint linenums">
+Form::success(Form::label('success', 'You did well!'), Form::text('success'))
+Form::warning(Form::label('warning', 'You did something wrong maybe?'), Form::text('warning'))
+Form::error(Form::label('error', 'You did something wrong fo sho'), Form::text('error'))
 </pre>
 
-      <h3>Inline form</h3>
-      <p>Using <code>Form::inline_open()</code></p>
-      {{ Form::inline_open(null,'POST', array('class' => 'well')) }}
-      {{ Form::text('email', null, array('class' => 'input-small', 'placeholder' => 'Email')) }}
-      {{ Form::password('pass', array('class' => 'input-small', 'placeholder' => 'Password')) }}
-      {{ Form::labelled_checkbox('checkme', 'Remember me') }}
-      {{ Form::submit('Sign in') }}
-      {{ Form::close() }}
+  <h3>
+      Help blocks
+  </h3>
 
-      <pre class="prettyprint linenums">
-Form::inline_open()
-Form::text('email', null, array('class' => 'input-small', 'placeholder' => 'Email'))
-Form::password('pass', array('class' => 'input-small', 'placeholder' => 'Password'))
-Form::labelled_checkbox('checkme', 'Remember me')
-Form::submit('Sign in')
-Form::close()
+  <p>
+      Create help blocks with the <code>help()</code> method.
+  </p>
+
+  {{ Form::help('You need some help there boyo?') }}
+
+  <pre class="prettyprint linenums">
+Form::help('You need some help there boyo?')
 </pre>
 
-    </div>
-  </div>
+<h3>
+    Control Groups
+</h3>
 
-  <h3>Horizontal Form</h3>
-      <p>Shown  below are all the default form controls we support. Here's the bulleted list:</p>
-      <ul>
-        <li>text inputs (text, password, email, etc)</li>
-        <li>checkbox</li>
-        <li>radio</li>
-        <li>select</li>
-        <li>multiple select</li>
-        <li>file input</li>
-        <li>textarea</li>
-      </ul>
-      <p><em>Note that with a Horizontal form you need to wrap your controls in a <code>Form::control_group</code>
-        for the form to layout correctly. See the example for more details</em></p>
-  <div class='row'>
-    <div class='col-md-6'>
-      {{ Form::horizontal_open() }}
+<p>
+    The <code>ControlGroup</code> class allows you to create a full <code>.form-group</code>
+    block with a label, form input and help.
+</p>
 
-      {{ Form::control_group(Form::label('input01', 'Text input'),
-                             Form::xlarge_text('input01'), '',
-                             Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.'), 2) }}
+{{ ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text')) }}
 
-      {{ Form::control_group(Form::label('optionsCheckbox', 'Checkbox'),
-                             Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1'), null, null, 2) }}
-
-      {{ Form::control_group(Form::label('select01', 'Select list'),
-                             Form::select('select01', array('something', '2', '3', '4', '5')), null, null, 2) }}
-
-      {{ Form::control_group(Form::label('multiSelect', 'Select list'),
-                             Form::multiselect('multiSelect', array('1', '2', '3', '4', '5')), null, null, 2) }}
-
-      {{ Form::control_group(Form::label('fileInput', 'File input'),
-                             Form::file('fileInput'), null, null, 2) }}
-
-      {{ Form::control_group(Form::label('textarea', 'Textarea'),
-                             Form::xlarge_textarea('textarea', '', array('rows' => '3')), null, null, 2) }}
-
-      {{ Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel'))) }}
-
-      {{ Form::close() }}
-    </div>
-  <div class='col-md-6'>
-  <pre class='prettyprint linenums'>
-Form::horizontal_open()
-Form::control_group(
-  Form::label('input01', 'Text input'),
-  Form::xlarge_text('input01'), '',
-  Form::block_help('In addition to freeform text, any HTML5 text-based input appears like so.'),
-  2  
-)
-Form::control_group(
-  Form::label('optionsCheckbox', 'Checkbox'),
-  Form::labelled_checkbox('optionsCheckbox', 'Option one is this and that—be sure to include why it\'s great', 'option1'),
-  null,
-  null,
-  2
-)
-Form::control_group(
-  Form::label('select01', 'Select list'),
-  Form::select('select01', array('something', '2', '3', '4', '5')),
-  null,
-  null,
-  2
-)
-Form::control_group(
-  Form::label('multiSelect', 'Select list'),
-  Form::multiselect('multiSelect', array('1', '2', '3', '4', '5')),
-  null,
-  null,
-  2
-)
-Form::control_group(
-  Form::label('fileInput', 'File input'),
-  Form::file('fileInput'),
-  null,
-  null,
-  2
-)
-Form::control_group(
-  Form::label('textarea', 'Textarea'),
-  Form::xlarge_textarea('textarea', '', array('rows' => '3'),
-  null,
-  null,
-  2)
-)
-Form::actions(array(Button::primary_submit('Save changes'), Form::button('Cancel')))
-Form::close()
-</pre>
-  </div>
-  </div>
-
-  <h3>Form control states</h3>
-  <div class='row'>
-    <div class='col-md-6'>
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Focused input</label>
-            <div class="controls">
-              {{ Form::xlarge_text('focusedInput', 'This is focused...', array('class' => 'focused')) }}
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Uneditable input</label>
-            <div class="controls">
-              {{ Form::xlarge_uneditable('Some value here') }}
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="disabledInput">Disabled input</label>
-            <div class="controls">
-              {{ Form::xlarge_text('disabledInput', 'Disabled input here...', array('class' => 'disabled', 'disabled' => 'disabled')) }}
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
-            <div class="controls">
-              {{ Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'option1', false, array('disabled' => 'disabled')) }}
-            </div>
-          </div>
-	</fieldset>
-      </form>
-    </div>
-    <div class='col-md-6'>
-          <pre class="prettyprint linenums">
-//Focused
-Form::xlarge_text('focusedInput', 'This is focused...', array('class' => 'focused'))
-
-//Uneditable
-Form::xlarge_uneditable('Some value here')
-
-//Disabled
-Form::xlarge_text('disabledInput', 'Disabled input here...', array('class' => 'disabled', 'disabled' => 'disabled'))
-
-//Disabled Checkbox
-Form::labelled_checkbox('optionsCheckbox2', 'This is a disabled checkbox', 'option1', false, array('disabled' => 'disabled'))
-</pre>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-6'>
-      <h3>Form validation</h3>
-      <form class="form-horizontal">
-        <fieldset>
-          {{ Form::control_group(Form::label('inputWarning', 'Input with warning'),
-                                 Form::text('inputWarning'), Form::WARNING,
-                                 Form::block_help('Something went wrong')) }}
-
-          {{ Form::control_group(Form::label('inputError', 'Input with error'),
-                                 Form::text('inputError'), Form::ERROR,
-                                 Form::block_help('Please correct the error')) }}
-
-          {{ Form::control_group(Form::label('inputSuccess', 'Input with success'),
-                                 Form::text('inputSuccess'), Form::SUCCESS,
-                                 Form::block_help('Woohoo!')) }}
-
-          {{ Form::control_group(Form::label('inputSuccess', 'Select with success'),
-                                 Form::select('select01', array('1', '2', '3', '4', '5')), Form::SUCCESS,
-                                 Form::block_help('Woohoo!')) }}
-
-	</fieldset>
-      </form>
-    </div>
-    <div class='col-md-6'>
-          <pre class="prettyprint linenums">
-Form::control_group(
-  Form::label('inputWarning', 'Input with warning'),
-  Form::text('inputWarning'), Form::WARNING,
-  Form::block_help('Something went wrong')
-)
-
-Form::control_group(
-  Form::label('inputError', 'Input with error'),
-  Form::text('inputError'), Form::ERROR,
-  Form::block_help('Please correct the error')
-)
-
-Form::control_group(
-  Form::label('inputSuccess', 'Input with success'),
-  Form::text('inputSuccess'), Form::SUCCESS,
-  Form::block_help('Woohoo!')
-)
-
-Form::control_group(
-  Form::label('inputSuccess', 'Select with success'),          
-  Form::select('select01', array('1', '2', '3', '4', '5')), Form::SUCCESS,
-  Form::block_help('Woohoo!')
+    <pre class="prettyprint linenums">
+ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text')
 )
 </pre>
-        </fieldset>
-      </form>
-    </div>
-  </div>
 
-  <div class='page-header'>
-    <h2>
-      Extending Form Controls
-    </h2>
-  </div>
+<p>
+    If you want to change the size of the form label, you can do so with the last parameter (we default to 2)
+</p>
 
-  <div class='row'>
-    <div class='col-md-5'>
+{{ ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text'),
+    4
+    ) }}
 
-      <h3>
-	Height Sizing
-      </h3>
-  
-      {{ Form::lg_text('t_lg', 'large') }}
-      {{ Form::text('t_default', "default") }}
-      {{ Form::sm_text('t_sm', 'small') }}
-
-      {{ Form::lg_select('s_span1', array('large select', '2', '3', '4', '5')) }}
-      {{ Form::select('s_span2', array('default select', '2', '3', '4', '5')) }}
-      {{ Form::sm_select('s_span3', array('small select', '2', '3', '4', '5')) }}
-    </div>
-    <div class='col-md-7'>
-
-      <h3>
-	Height Sizing Calls
-      </h3>
-      
-      You can size input fields by making your standard call with <code>lg_</code> or <code>sm_</code> in front of the function name.
-
-<pre class='prettyprint linenums'>
-Form::lg_text('t_lg', 'large') 
-Form::text('t_default', "default") 
-Form::sm_text('t_sm', 'small') 
-
-Form::lg_select('s_span1', array('large select', '2', '3', '4', '5')) 
-Form::select('s_span2', array('default select', '2', '3', '4', '5')) 
-Form::sm_select('s_span3', array('small select', '2', '3', '4', '5')) 
+    <pre class="prettyprint linenums">
+ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text'),
+    4
+)
 </pre>
-    </div>
-  </div>
 
-  <div class='row'>
-    <div class='col-md-5'>
-      <h3>Prepend &amp; append inputs</h3>      
-      <label>Prepended text</label>
-      {{ Form::prepend(Form::text('prependedInput'), '@') }}
-      <label>Appended text</label>
-      {{ Form::append(Form::text('prependedInput'), '.00') }}
-      <label>Append and prepend text</label>
-      {{ Form::prepend_append(Form::text('prependedInput'), '$', '.00') }}
-      <label>Append with button</label>
-      {{ Form::append_buttons(Form::text('appendedInputButton'), Form::button('Go!')) }}
-      <label>Two-buttons append</label>
-      {{ Form::append_buttons(Form::text('appendedInputButton'), array(Form::button('Search'),Form::button('Options'))) }}
-      <label>Prepend with button</label>
-      {{ Form::prepend_buttons(Form::text('appendedInputButton'), Form::button('Go!')) }}
-      <label>Two-buttons prepend</label>
-      {{ Form::prepend_buttons(Form::text('appendedInputButton'), array(Form::button('Search'),Form::button('Options'))) }}
+<p>
+    You can also pass an array as the second argument if you several items you want to
+    group together (like, for example, checkboxes)
+</p>
 
-    </div>
-    <div class='col-md-7'>
-      <h3>Prepend &amp; append inputs</h3>
-      These are simple with Bootstrapper! Just pass your control into the function and it'll handle the rest:
-<pre class='prettyprint linenums'>
-//Prepended text
-Form::prepend(Form::text('prependedInput'), '@') 
-
-//Appended text
-Form::append(Form::text('prependedInput'), '.00') 
-
-//Append and prepend text
-Form::prepend_append(Form::text('prependedInput'), '$', '.00') 
-
-//Append with button
-Form::append_buttons(Form::text('appendedInputButton'), Form::button('Go!')) 
-
-//Two-buttons append
-Form::append_buttons(Form::text('appendedInputButton'), array(Form::button('Search'),Form::button('Options'))) 
-
-//Prepend with button
-Form::prepend_buttons(Form::text('appendedInputButton'), Form::button('Go!')) 
-
-//Two-buttons prepend
-Form::prepend_buttons(Form::text('appendedInputButton'), array(Form::button('Search'),Form::button('Options'))) 
+{{ ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+            [
+                [
+                    'label' => ['first', 'First'],
+                    'input' => ['type' => 'checkbox', 'first', 'First']
+                ],
+                [
+                    'label' => ['second', 'Second'],
+                    'input' => ['type' => 'checkbox', 'second', 'Second']
+                ]
+            ],
+    Form::help('Here is a help text'),
+    4
+    ) }}
+<pre class="prettyprint linenums">
+ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+            [
+                [
+                    'label' => ['first', 'First'],
+                    'input' => ['type' => 'checkbox', 'first', 'First']
+                ],
+                [
+                    'label' => ['second', 'Second'],
+                    'input' => ['type' => 'checkbox', 'second', 'Second']
+                ]
+            ],
+    Form::help('Here is a help text'),
+    4
+    )->withAttributes(['data-foo' => 'bar'])
 </pre>
-    </div>
-  </div>
- <div class="row">
-   <div class="col-md-5">
-     <h3>Checkboxes &amp; Radios</h3>
-     <form class="form-horizontal">
-       <fieldset>
-	 <div class="control-group">
-	   <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
-	   <div class="controls">
-             {{ Form::inline_labelled_checkbox('inlineCheckbox1', '1', 'option1') }}
-             {{ Form::inline_labelled_checkbox('inlineCheckbox2', '2', 'option2') }}
-             {{ Form::inline_labelled_checkbox('inlineCheckbox3', '3', 'option3') }}
-	   </div>
-	 </div>
-	 <div class="control-group">
-	   <label class="control-label" for="optionsCheckboxList">Checkboxes</label>
-	   <div class="controls">
-             {{ Form::labelled_checkbox('optionsCheckboxList1', 'Option one is great', 'option1') }}
-             {{ Form::labelled_checkbox('optionsCheckboxList2', 'Option two can also be checked', 'option2') }}
-             {{ Form::labelled_checkbox('optionsCheckboxList3', 'Option three is excellent also', 'option3') }}
-	   </div>
-	 </div>
-	 <div class="control-group">
-	   <label class="control-label" for="inlineCheckboxes">Inline radios</label>
-	   <div class="controls">
-             {{ Form::inline_labelled_radio('inlineRadios', '1', 'option1') }}
-             {{ Form::inline_labelled_radio('inlineRadios', '2', 'option2') }}
-             {{ Form::inline_labelled_radio('inlineRadios', '3', 'option3') }}
-	   </div>
-	 </div>
-	 <div class="control-group">
-	   <label class="control-label" for="optionsCheckboxList">Radios</label>
-	   <div class="controls">
-             {{ Form::labelled_radio('optionsRadio', 'Option one is great', 'option1') }}
-             {{ Form::labelled_radio('optionsRadio', 'Option two can also be checked', 'option2') }}
-             {{ Form::labelled_radio('optionsRadio', 'Option three is excellent also', 'option3') }}
-	   </div>
-	 </div>
-       </fieldset>
-     </form>
-   </div>
-   <div class="col-md-7">
-     <h3>Checkbox &amp; Radio calls</h3>
-     <p>{{ Label::info('Note:') }} Labels surround all the options for much larger click areas and a more usable form.</p>
-     <pre class="prettyprint linenums">
-//Inline checkboxes
-Form::inline_labelled_checkbox('inlineCheckbox1', '1', 'option1')
-Form::inline_labelled_checkbox('inlineCheckbox2', '2', 'option2')
-Form::inline_labelled_checkbox('inlineCheckbox3', '3', 'option3')
 
-//Labelled checkboxes
-Form::labelled_checkbox('optionsCheckboxList1', 'Option one is great', 'option1')
-Form::labelled_checkbox('optionsCheckboxList2', 'Option two can also be checked', 'option2')
-Form::labelled_checkbox('optionsCheckboxList3', 'Option three is excellent also', 'option3')
+<p>
+    Each inner array <strong>must</strong> have an <code>input</code> key that maps to an array that <strong>must</strong>
+    have a <code>type</code> key. The value of that key should be the name of the method on the <code>Form</code> object.
+    The rest of the array should be the arguments <em>in the order that the method expects them</em>.
+</p>
 
-//Inline radios
-Form::inline_labelled_radio('inlineRadios', '1', 'option1')
-Form::inline_labelled_radio('inlineRadios', '2', 'option2')
-Form::inline_labelled_radio('inlineRadios', '3', 'option3')
+<p>
+   The inner array can optionally have a <code>label</code> key that should map to an array of arguments for a
+   <code>Form::input</code> method call.
+</p>
 
-//Labelled checkboxes
-Form::labelled_radio('optionsRadio', 'Option one is great', 'option1')
-Form::labelled_radio('optionsRadio', 'Option two can also be checked', 'option2')
-Form::labelled_radio('optionsRadio', 'Option three is excellent also', 'option3')
+<p>
+    And like most Bootstrapper objects, <code>withAttributes()</code> allows you to
+    add custom attributes.
+</p>
+
+{{ ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text'),
+    4
+    )->withAttributes(['data-foo' => 'bar']) }}
+
+    <pre class="prettyprint linenums">
+ControlGroup::generate(
+    Form::label('control', 'Control Group'),
+    Form::text('control'),
+    Form::help('Here is a help text'),
+    4
+)->withAttributes(['data-foo' => 'bar'])
 </pre>
-   </div>
- </div>
+
+<h3>
+    Input Groups
+</h3>
+
+<p>
+    Input groups allow you to wrap your input inside a <code>.input-group</code> div and
+    size them, or add buttons to them. Just add contents using the <code>withContents()</code>
+    method and you're away!
+</p>
+
+<p>
+{{ Form::label('test', 'Example input group') }}
+{{ InputGroup::withContents(Form::text('test')) }}
+</p>
+
+<pre class="prettyprint linenums">
+Form::label('test', 'Example input group')
+InputGroup::withContents(Form::text('test'))
+</pre>
+
+<h4>
+    Addons
+</h4>
+
+<p>
+    Addons can be added using either the <code>append()</code> or <code>prepend()</code> functions
+</p>
+
+<p>{{ InputGroup::withContents(Form::text('username'))->prepend('@') }}</p>
+<p>{{ InputGroup::withContents(Form::text('currency'))->append('.00') }}</p>
+<p>{{ InputGroup::withContents(Form::text('currency'))->prepend('$')->append('.00') }}</p>
+
+<pre class="prettyprint linenums">
+// Prepend an '@'
+InputGroup::withContents(Form::text('username'))->prepend('@')
+// Append a '.00'
+InputGroup::withContents(Form::text('currency'))->append('.00')
+// Prepend a '$' and append a '.00'
+InputGroup::withContents(Form::text('currency'))->prepend('$')->append('.00')
+</pre>
+
+<p>
+    You can also add buttons by using the <code>appendButton()</code> method.
+</p>
+
+<p>{{ InputGroup::withContents(Form::text('username'))->prependButton(Button::normal('Prepend')) }}</p>
+<p>{{ InputGroup::withContents(Form::text('currency'))->appendButton(Button::normal('Append')) }}</p>
+<p>{{ InputGroup::withContents(Form::text('currency'))->prependButton(Button::normal('Prepend'))->appendButton(Button::normal('Append')) }}</p>
+
+<pre class="prettyprint linenums">
+InputGroup::withContents(Form::text('username'))
+          ->prependButton(Button::normal('Prepend'))
+
+InputGroup::withContents(Form::text('currency'))
+          ->appendButton(Button::normal('Append'))
+
+InputGroup::withContents(Form::text('currency'))
+          ->prependButton(Button::normal('Prepend'))
+          ->appendButton(Button::normal('Append'))
+</pre>
+
+<h4>
+    Sizing
+</h4>
+
+<p>
+    Sizing is easy! Just use <code>large()</code> or <code>small</code> to size the input and
+    any appended/prepended blocks
+</p>
+
+<p>{{ InputGroup::withContents(Form::text('large', null, ['placeholder' => 'Large']))->large() }}</p>
+<p>{{ InputGroup::withContents(Form::text('small', null, ['placeholder' => 'Small']))->small() }}</p>
+
+<pre class="prettyprint linenums">
+InputGroup::withContents(Form::text('large'))->large()
+InputGroup::withContents(Form::text('small'))->small()
+</pre>
+
 </section>
