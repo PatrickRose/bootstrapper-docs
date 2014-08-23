@@ -18,8 +18,8 @@
        </div>
        <div class="col-sm-11">
       <pre class='prettyprint linenums'>
-  Badge::withContents(Hello)
-  </pre>
+Badge::withContents(1)
+</pre>
   </div>
   </div>
 
