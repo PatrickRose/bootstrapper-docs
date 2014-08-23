@@ -48,6 +48,18 @@
         Secondly, attributes are now passed in using the <code>withAttributes()</code> chained method.
     </p>
 
+    <p>
+        Finally, all objects that need to be turned into a string will now fail gracefully
+        if an exception is thrown during render. This will print out the following string
+    </p>
+
+    <p class='text-danger'>An exception of type <code>$class</code> was thrown with the message: <code>$message</code></p>
+
+    <p>
+        If you wish to override this behaviour, call the <code>render()</code> method on the object
+        explicitly.
+    </p>
+
     <h2>
         Individual Component Changes
     </h2>
@@ -237,6 +249,30 @@
             <code>Bootstrapper\Helpers::get_JS()</code> should be replaced with <code>Helpers::js()</code>.
         </li>
     </ul>
+
+    <h3>
+        Icons
+    </h3>
+
+    <ul>
+        <li>
+            Icons work exactly the same as before. Woo!
+        </li>
+    </ul>
+
+    <h3>
+        Images
+    </h3>
+
+    <ul>
+        <li>
+            Images work exactly the same as before. Woo!
+        </li>
+    </ul>
+
+    <h3>
+        
+    </h3>
 
     <h3>
         Navbars
