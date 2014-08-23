@@ -17,12 +17,6 @@ body {
     background-position: 0 40px;
 }
 
-/* Space out sub-sections more
-   -------------------------------------------------- */
-section {
-    padding-top: 60px;
-}
-
 /* Faded out hr */
 hr.soften {
     height: 1px;
