@@ -276,7 +276,7 @@
 
     <ul>
         <li>
-
+             Labels work the same as before. Woo!
         </li>
     </ul>
 
