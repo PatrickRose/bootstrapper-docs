@@ -4,117 +4,191 @@
       Media Object
     </h1>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>
-	Basic Example
-      </h3>
-        MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.', 'http://placehold.it/64x64') 
-    </div>
-    <div class="col-md-6">
-      <h3>
-	&nbsp;
-      </h3>
+
+    <p>
+        Creating media objects is simple! Just pass an array into the <code>withContents()</code> method.
+    </p>
+    {{ MediaObject::withContents(
+            [
+                'image' => '//placehold.it/64x64',
+                'link' => '#',
+                'heading' => 'Cras sit amet',
+                'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+            ]
+        )}}
+
       <pre class="prettyprint linenums">
-//Simple form
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-
-//With detailed image
-MediaObject::create('Cras sit amet...')
-	->with_image('http://placehold.it/64x64', 'alt text')
+MediaObject::withContents(
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Cras sit amet',
+        'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+    ]
+)
 </pre>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>
-	With Title
-      </h3>
-       MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.', 'http://placehold.it/64x64')
-      ->with_h4('Media heading') 
-    </div>
-    <div class="col-md-6">
-      <h3>
-	&nbsp;
-      </h3>
-      <pre class="prettyprint linenums">
-// Add a title to the media object
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_title('&lt;h4 class="media-heading"&gt;Media heading&lt;/h4&gt;')
 
-// Automatic titles wrapping
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-</pre>
-    </div>
-  </div>
+   {{ Alert::info('You <strong>must</strong> provide an <code>image</code> and <code>body</code> key.
+                      The <code>link</code> and <code>heading</code> keys are optional.') }}
 
-  <div class="row">
-    <div class="col-md-6">
       <h3>Nested</h3>
- MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.', 'http://placehold.it/64x64')
-      ->with_h4('Media heading')
-      ->nest(
-      MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.', 'http://placehold.it/64x64')
-      ->with_h4('Media heading')
-      ->nest(
-      MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.', 'http://placehold.it/64x64')
-      ->with_h4('Media heading')
-      )
-      )->nest(
-      MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.', 'http://placehold.it/64x64')
-      ->with_h4('Media heading')
-      )->nest(
-      MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.', 'http://placehold.it/64x64')
-      ->with_h4('Pull Right')
-      ->pull_right()
-      ) 
-    </div>
-    <div class="col-md-6">
-      <h3>&nbsp;</h3>
-      <pre class="prettyprint linenums">
-// Add a title to the media object
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-        ->nest(
-        MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-        ->nest(
-        MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-        )
-        )->nest(
-        MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-        )->nest(
-        MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Pull Right')
-        ->pull_right()
-        )
-</pre>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h3>As List</h3>
-       MediaObject::open_list() 
-       MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.', 'http://placehold.it/64x64')
-	->with_h4('Media heading') 
-       MediaObject::create('Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.', 'http://placehold.it/64x64')
-	->with_h4('Media heading') 
-       MediaObject::close_list() 
-    </div>
-    <div class="col-md-6">
-      <h3>&nbsp;</h3>
+      <p>
+          Nesting of media objects is supported by using the <code>nest</code> array key.
+          This array will be passed into a <code>withContents()</code> method, so
+          use the keys you would use there.
+      </p>
+
+      <p>
+      {{ MediaObject::withContents(
+          [
+              'image' => '//placehold.it/64x64',
+              'link' => '#',
+              'heading' => 'Nesting a Media Object',
+              'body' => 'Oh boy, here comes a nested object!',
+              'nest' => [
+                      'image' => '//placehold.it/64x64',
+                      'link' => '#',
+                      'heading' => 'Cras sit amet',
+                      'body' => 'I am all nested and other things like that'
+              ]
+          ]
+          ) }}
+      </p>
       <pre class="prettyprint linenums">
-MediaObject::open_list()
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-MediaObject::create('Cras sit amet...', 'http://placehold.it/64x64')
-        ->with_h4('Media heading')
-MediaObject::close_list()
+MediaObject::withContents(
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Nesting a Media Object',
+        'body' => 'Oh boy, here comes a nested object!',
+        'nest' => MediaObject::withContents(
+            [
+                'image' => '//placehold.it/64x64',
+                'link' => '#',
+                'heading' => 'Cras sit amet',
+                'body' => 'I am all nested and other things like that'
+            ])
+    ]
+)
 </pre>
-    </div>
-  </div>
+
+    <h3>
+        Floating Right
+    </h3>
+
+    <p>
+        If you instead want the image to appear on the right, then use the <code>position</code>
+        array key.
+    </p>
+
+    <p>
+          {{ MediaObject::withContents(
+              [
+                  'image' => '//placehold.it/64x64',
+                  'link' => '#',
+                  'heading' => 'Media Object on the right',
+                  'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.',
+                  'position' => 'right'
+              ]
+              ) }}
+          </p>
+          <pre class="prettyprint linenums">
+    MediaObject::withContents(
+        [
+            'image' => '//placehold.it/64x64',
+            'link' => '#',
+            'heading' => 'Nesting a Media Object',
+            'body' => 'Oh boy, here comes a nested object!',
+            'nest' => MediaObject::withContents(
+                [
+                    'image' => '//placehold.it/64x64',
+                    'link' => '#',
+                    'heading' => 'Cras sit amet',
+                    'body' => 'I am all nested and other things like that'
+                ])
+        ]
+    )
+    </pre>
+
+    <h3>As List</h3>
+         <p>
+             We automatically turn a multiple MediaObjects into a list. You can also
+             force a list by using the <code>asList()</code> method (if, for example, you
+             only have one object).
+         </p>
+
+         <div class="row">
+         <div class="col-md-6">
+             <h4>
+                 Using <code>asList()</code>
+             </h4>
+
+         <p>
+             {{
+                 MediaObject::withContents([
+                     [
+                         'image' => '//placehold.it/64x64',
+                         'link' => '#',
+                         'heading' => 'Cras sit amet',
+                         'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+                     ]
+                 ])->asList()
+             }}
+         </p>
+         </div>
+
+         <div class="col-md-6">
+             <h4>
+                 Passing in multiple arrays
+             </h4>
+
+         <p>
+             {{
+                 MediaObject::withContents([
+                     [
+                         'image' => '//placehold.it/64x64',
+                         'link' => '#',
+                         'heading' => 'Cras sit amet',
+                         'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+                     ],
+                     [
+                         'image' => '//placehold.it/64x64',
+                         'link' => '#',
+                         'heading' => 'Cras sit amet',
+                         'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+                     ],
+                 ])
+             }}
+         </p>
+         </div>
+         </div>
+
+      <pre class="prettyprint linenums">
+// Using asList
+MediaObject::withContents([
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Cras sit amet',
+        'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+    ]
+)->asList()
+
+// Multiple Inner Arrays
+MediaObject::withContents([
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Cras sit amet',
+        'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+    ],
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Cras sit amet',
+        'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.'
+    ],
+])
+</pre>
 </section>

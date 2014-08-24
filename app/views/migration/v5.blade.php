@@ -281,6 +281,25 @@
     </ul>
 
     <h3>
+        Media Objects
+    </h3>
+
+    <ul>
+        <li>
+            <code>create()</code> has been renamed <code>withContents()</code> and expects
+            an array of arrays.
+        </li>
+        <li>
+            All old chained methods have now been removed. Use the inner arrays in
+            <code>withContents()</code> instead.
+        </li>
+        <li>
+            <code>open_list()</code> and <code>close_list()</code> have been removed. Use
+            the <code>asList()</code> chained method instead.
+        </li>
+    </ul>
+
+    <h3>
         Navbars
     </h3>
 
