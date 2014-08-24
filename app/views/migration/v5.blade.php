@@ -300,6 +300,16 @@
     </ul>
 
     <h3>
+       Modals
+    </h3>
+
+    <ul>
+        <li>
+            <code>create()</code> has been removed.
+        </li>
+    </ul>
+
+    <h3>
         Navbars
     </h3>
 
