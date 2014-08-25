@@ -8,148 +8,123 @@
     </h1>
   </div>
 
-  <h2>Examples and markup</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <h3>
-	Basic
-      </h3>
-      <p>
-	Default progress bar with a vertical gradient.
-      </p>
-       Progress::normal(60) 
-      <pre class="prettyprint linenums">
-Progress::normal(60)
+  <table class="table table-striped">
+      <thead>
+	  <tr>
+	      <th>Type</th>
+	      <th>Example</th>
+	      <th>Code</th>
+	  </tr>
+      </thead>
+      <tbody>
+	  @foreach(['normal', 'success', 'info', 'warning', 'danger'] as $type)
+	      <tr>
+		  <td>
+		      <strong>{{ ucwords($type) }}</strong>
+		  </td>
+		  <td>
+		      {{ ProgressBar::$type(20) }}
+		      {{ ProgressBar::$type(40) }}
+		      {{ ProgressBar::$type(60) }}
+		  </td>
+		  <td>
+		      <pre class="prettyprint linenums">
+{{ "ProgressBar::{$type}(20)\n\n" }}
+{{ "ProgressBar::{$type}(40)\n\n" }}
+{{ "ProgressBar::{$type}(60)" }}
 </pre>
-    </div>
-    <div class="col-md-4">
-      <h3>
-	Striped
-      </h3>
-      <p>
-	Uses a gradient to create a striped effect (no IE).
-      </p>
-       Progress::normal_striped(20) 
-      <pre class="prettyprint linenums">
-Progress::normal_striped(20);
-</pre>
-    </div>
-    <div class="col-md-4">
-      <h3>
-	Animated
-      </h3>
-      <p>
-	Takes the striped example and animates it (no IE).
-      </p>
-       Progress::normal_striped_active(40) 
-      <pre class="prettyprint linenums">
-Progress::normal_striped_active(40)
-</pre>
-    </div>
-  </div>
+		  </td>
+	      </tr>
+	  @endforeach
+      </tbody>
+  </table>
 
   <h2>
-    Options and browser support
+      Striping and Animating
   </h2>
-  <div class="row">
-    <div class="col-md-4">
-      <h3>
-	Additional colors
-      </h3>
-      <p>
-	Progress bars use some of the same button and alert classes for
-	consistent styles.
-      </p>
 
-       Progress::info(20, array('style' => 'margin-bottom: 9px;')) 
+  <p>
+      Want a striped Progress Bar? Just use the <code>striped()</code> method. You can
+      also animate the stripes with the <code>animated()</code> method.
+  </p>
 
-       Progress::success(40, array('style' => 'margin-bottom: 9px;')) 
+  <p>
+      {{ ProgressBar::normal(40)->striped() }}
+      {{ ProgressBar::normal(40)->animated() }}
+  </p>
 
-       Progress::warning(60, array('style' => 'margin-bottom: 9px;')) 
-
-       Progress::danger(80, array('style' => 'margin-bottom: 9px;')) 
-
-    </div>
-    <div class="col-md-4">
-      <h3>
-	Striped bars
-      </h3>
-      <p>
-	Similar to the solid colors, we have varied striped progress
-	bars.
-      </p>
-       Progress::info_striped(20, array('style' => 'margin-bottom: 9px;')) 
-
-       Progress::success_striped(40, array('style' => 'margin-bottom: 9px;')) 
-
-       Progress::warning_striped(60, array('style' => 'margin-bottom: 9px;')) 
-
-       Progress::danger_striped(80, array('style' => 'margin-bottom: 9px;')) 
-    </div>
-    <div class="col-md-4">
-      <h3>
-	Functions
-      </h3>
-      <ul>
-        <li>info()</li>
-        <li>success()</li>
-        <li>warning()</li>
-        <li>danger()</li>
-      </ul>
-      <p>
-	You can add <code>_striped</code> and <code>_active</code>
-	to any of the core functions to added these features.
-      </p>
-      <p>
-	Examples: <code>Progress::info_striped(75)</code>,
-	<code>Progress::warning_striped_active(40)</code>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <h3>Stacked</h3>
-       Progress::normal(
-      array(
-      35 => 'success',
-      20 => 'warning',
-      10 => 'danger',
-      )
-      ) 
-      <pre class="prettyprint linenums">
-Progress::normal(array(35 => 'success', 20 => 'warning', 0 => 'danger'))
+  <pre class="prettyprint linenums">
+ProgressBar::normal(40)->striped()
+ProgressBar::normal(40)->animated()
 </pre>
-    </div>
-    <div class="col-md-4">
-      <h3>
-	More info
-      </h3>
-      <p>
-	Check out the Bootstrap documentation for more information
-	about the progress bars and browser support.
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>
-	Automatic
-      </h3>
-    </div>
-    <div class="col-md-6">
-       Progress::automatic(20) 
-       Progress::automatic(40) 
-       Progress::automatic_striped(60) 
-       Progress::automatic_striped_active(80) 
-    </div>
-    <div class="col-md-6">
-      <pre class="prettyprint linenums">
-Progress::automatic(20)
-Progress::automatic(40)
-Progress::automatic_striped(60)
-Progress::automatic_striped_active(80)
-</pre>
-    </div>
-  </div>
 
+<h3>
+    Visible Percentages
+</h3>
+
+  <p>
+      Want to display the actual percentage? Use the <code>visible()</code> method.
+  </p>
+
+  <p>
+      {{ ProgressBar::normal(40)->visible() }}
+      {{ ProgressBar::normal(80)->visible() }}
+  </p>
+
+  <pre class="prettyprint linenums">
+ProgressBar::normal(40)->visible()
+ProgressBar::normal(80)->visible()
+</pre>
+
+  <p>
+      You can override the default message. Use a string compatible with <code>sprintf()</code>,
+      that has space for one parameter.
+  </p>
+
+  <p>
+      {{ ProgressBar::normal(40)->visible('Here is a value! %s%%') }}
+      {{ ProgressBar::normal(80)->visible('Here is a value! %s%%') }}
+  </p>
+
+  <pre class="prettyprint linenums">
+ProgressBar::normal(40)->visible('Here is a value! %s%%')
+ProgressBar::normal(80)->visible('Here is a value! %s%%')
+</pre>
+
+  <h3>
+      Stacking
+  </h3>
+
+  <p>
+      Progress bars can be stacked together if you wish, using the <code>stack()</code>
+      method.
+  </p>
+
+  <p>
+      {{ ProgressBar::stack(
+             [
+                 ['animated', 'value=20'],
+                 ['success', 'value=10'],
+                 ['striped', 'value=30'],
+                 ['visible']
+             ]
+         ) }}
+  </p>
+
+  <pre class="prettyprint linenums">
+ProgressBar::stack(
+    [
+        ['animated', 'value=20'],
+        ['success', 'value=10'],
+        ['striped', 'value=30'],
+        ['visible']
+    ]
+)
+</pre>
+
+   <p>
+       <code>stack()</code> accepts an array of arrays. Each inner array should have
+       a list of method names and arguments that you would like to use to generate each
+       progress bar.
+   </p>
 </section>

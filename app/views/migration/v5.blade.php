@@ -383,6 +383,24 @@
     </ul>
 
     <h3>
+        Progress Bars
+    </h3>
+
+    <div class="alert alert-danger">
+        <p>
+            This class has now been <strong>renamed</strong> to <code>ProgressBar</code>
+            from <code>Progress</code>.
+        </p>
+    </div>
+
+    <ul>
+        <li>
+            Magic methods have been removed. Calls such as <code>Progress::normal_striped(20)</code>
+            should now be <code>ProgressBar::normal(20)->striped()</code>
+        </li>
+    </ul>
+
+    <h3>
         Typography
     </h3>
 
