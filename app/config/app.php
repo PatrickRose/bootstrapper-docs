@@ -179,10 +179,12 @@ return array(
         'Button' => 'Bootstrapper\Facades\Button',
         'ButtonGroup' => 'Bootstrapper\Facades\ButtonGroup',
         'Carousel' => 'Bootstrapper\Facades\Carousel',
+        'ControlGroup' => 'Bootstrapper\Facades\ControlGroup',
         'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
         'Form' => 'Bootstrapper\Facades\Form',
         'Helpers' => 'Bootstrapper\Facades\Helpers',
         'Icon' => 'Bootstrapper\Facades\Icon',
+        'InputGroup' => 'Bootstrapper\Facades\InputGroup',
         'Image' => 'Bootstrapper\Facades\Image',
         'Label' => 'Bootstrapper\Facades\Label',
         'MediaObject' => 'Bootstrapper\Facades\MediaObject',
@@ -194,7 +196,6 @@ return array(
         'Tabbable' => 'Bootstrapper\Facades\Tabbable',
         'Table' => 'Bootstrapper\Facades\Table',
         'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
-
     ),
 
     'cipher' => MCRYPT_RIJNDAEL_256
