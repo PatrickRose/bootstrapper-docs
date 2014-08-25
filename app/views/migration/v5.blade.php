@@ -362,6 +362,16 @@
     </ul>
 
     <h3>
+        Pagination
+    </h3>
+
+    <div class="alert alert-danger">
+        <p>
+            This class has now been <strong>removed</strong>. Use the standard Laravel paginator instead.
+        </p>
+    </div>
+
+    <h3>
         Typography
     </h3>
 
@@ -372,16 +382,5 @@
             for the relevant tags.
         </p>
     </div>
-
-    <p>
-        Disagree? Please <a href="http://github.com/patricktalmadge/bootstrapper/issues">open an issue</a>.
-    </p>
-
-    <script type="javascript">
-        document.onload(function () {
-            $('#tooltip').tooltip();
-        });
-
-    </script>
 
 </section>
