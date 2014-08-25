@@ -27,10 +27,6 @@
               'link'=>'#breadcrumbs'
           ],
           [
-              'title'=>'Pagination',
-              'link'=>'#pagination'
-          ],
-          [
               'title'=>'Labels',
               'link' => '#labels'
           ],
@@ -75,8 +71,6 @@
     @include('components.navbar')
 
     @include('components.breadcrumbs')
-
-    @include('components.pagination')
 
     @include('components.labels')
 
