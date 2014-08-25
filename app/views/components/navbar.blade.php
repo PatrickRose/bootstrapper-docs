@@ -11,147 +11,114 @@
     An example of a static (not fixed to the top) navbar with project
     name, navigation, and search form.
   </p>
-   Navbar::create()
-    ->with_brand('Project name', '#')
-    ->with_menus(
-      Navigation::links(
-        array(
-          array('Home', '#', true),
-          array('Link', '#'),
-          array('Link', '#'),
-          array('Link', '#'),
-          array('Dropdown', '#', false, false,
-            array(
-              array('Action', '#'),
-              array('Another action', '#'),
-              array('Something else here', '#'),
-              array(Navigation::DIVIDER),
-              array(Navigation::HEADER, 'Nav header'),
-              array('Separated link', '#'),
-              array('One more separated link', '#'),
-            )
-          )
-        )
-      )
-    )
-    ->with_menus(
-      '<form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>'
-    )
-    ->with_menus(
-      Navigation::links(
-        array(
-          array('Link', '#'),
-          array(Navigation::VERTICAL_DIVIDER),
-          array('Dropdown', '#', false, false,
-            array(
-              array('Action', '#'),
-              array('Another action', '#'),
-              array('Something else here', '#'),
-              array(Navigation::DIVIDER),
-              array('Separated link', '#'),
-            )
-          )
-        )
-      ),
-      array('class' => 'pull-right')
-    ) 
- <h3>
-   Navbar create function
- </h3>
-<p>
-  The Navbar has a simple create function and multiple helper
-  functions.
-</p>
-<pre class="prettyprint linenums">
-//Standard create
-public static function create($attributes = array(), $type = Navbar::STATIC_BAR)
+   {{ Navbar::withBrand('Project name', '#')
+            ->withContent(Navigation::links([
+                    [
+                        'link' => '#',
+                        'title' => 'Home'
+                    ],
+                    [
+                        'link' => '#',
+                        'title' => 'Link'
+                    ],
+                    [
+                        'link' => '#',
+                        'title' => 'Link'
+                    ],
+                    [
+                        'link' => '#',
+                        'title' => 'Link'
+                    ],
+                    [
+                        'dropdown',
+                        [
+                            [
+                                'link' => '#',
+                                'title' => 'Action'
+                            ],
+                            [
+                                'link' => '#',
+                                'title' => 'Another Action'
+                            ],
+                            Navigation::NAVIGATION_DIVIDER,
+                            [
+                                'link' => '#',
+                                'title' => 'Something else here'
+                            ],
+                        ]
+                    ]
+              ]))->withContent('<form class="navbar-form navbar-left" role="search">
+                                 <div class="form-group">
+                                   <input type="text" class="form-control" placeholder="Search">
+                                 </div>
+                                 <button type="submit" class="btn btn-default">Submit</button>
+                               </form>') }}
 
-//Create a black navbar
-public static function inverse($attributes = array(), $type = Navbar::STATIC_BAR)
-
-//Add menus
-public function with_menus($menus, $attributes = array())
-</pre>
-<div class='row'>
-  <div class='col-md-8'>
     <h3>
       Example
     </h3>
     <pre class='prettyprint linenums'>
-Navbar::create()
-    ->with_brand('Project name', '#')
-    ->with_menus(
-      Navigation::links(
-        array(
-          array('Home', '#', true),
-          array('Link', '#'),
-          array('Link', '#'),
-          array('Link', '#'),
-          array('Dropdown', '#', false, false,
-            array(
-              array('Action', '#'),
-              array('Another action', '#'),
-              array('Something else here', '#'),
-              array(Navigation::DIVIDER),
-              array(Navigation::HEADER, 'Nav header'),
-              array('Separated link', '#'),
-              array('One more separated link', '#'),
-            )
-          )
-        )
-      )
-    )
-    ->with_menus(
+Navbar::withBrand('Project name', '#')
+      ->withContent(Navigation::links([
+              [
+                  'link' => '#',
+                  'title' => 'Home'
+              ],
+              [
+                  'link' => '#',
+                  'title' => 'Link'
+              ],
+              [
+                  'link' => '#',
+                  'title' => 'Link'
+              ],
+              [
+                  'link' => '#',
+                  'title' => 'Link'
+              ],
+              [
+                  'dropdown',
+                  [
+                      [
+                          'link' => '#',
+                          'title' => 'Action'
+                      ],
+                      [
+                          'link' => '#',
+                          'title' => 'Another Action'
+                      ],
+                      Navigation::NAVIGATION_DIVIDER,
+                      [
+                          'link' => '#',
+                          'title' => 'Something else here'
+                      ],
+                  ]
+              ]
+              ]))
+      ->withContent(
       '&lt;form class="navbar-form navbar-left" role="search"&gt;
-  &lt;div class="form-group"&gt;
-    &lt;input type="text" class="form-control" placeholder="Search"&gt;
-  &lt;/div&gt;
-  &lt;button type="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;'
-    )
-    ->with_menus(
-      Navigation::links(
-        array(
-          array('Link', '#'),
-          array(Navigation::VERTICAL_DIVIDER),
-          array('Dropdown', '#', false, false,
-            array(
-              array('Action', '#'),
-              array('Another action', '#'),
-              array('Something else here', '#'),
-              array(Navigation::DIVIDER),
-              array('Separated link', '#'),
-            )
-          )
-        )
-      ),
-      array('class' => 'pull-right')
-    )
+          &lt;div class="form-group"&gt;
+              &lt;input type="text" class="form-control" placeholder="Search"&gt;
+          &lt;/div&gt;
+          &lt;button type="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;')
 </pre>
-  </div>
-  <div class='col-md-4'>
     <h3>
       Route detection
     </h3>
     <p>
-      By default all navigation items will try to auto detect the
-      current page using Laravel's <code>\URL::current()</code>
-      function. You must pass in full links for auto detection to
-      work. You can turn this feature off by passing false to the
-      chainable <code>autoroute(false)</code> function.
+        Route detection is handled by the navigation object. If you want to turn
+        off autorouting, then use <code>autoroute(false)</code> on the
+        <code>Navigation</code> object.
     </p>
 
     <h3>
       Brand name
     </h3>
     <p>
-      Navbar <code>with_brand($brand, $brand_url)</code> creates a
-      simple brand link. Just provide the brand name and url.
+      <code>withBrand()</code> creates a
+      simple brand link. Just provide the brand name and url. We default to the home page
+      if you don't provide one.
     </p>
 
     <h3>
@@ -179,16 +146,14 @@ Navbar::FIX_BOTTOM
     <p>
       When you affix the navbar, remember to account for the hidden
       area underneath. Add 40px or more of padding to the
-      <code>&lt;body&gt;</code>. Be sure to add this after the core
-      Bootstrap CSS and before the optional responsive CSS.
+      <code>&lt;body&gt;</code>.
     </p>
 
     <h3>
       Forms in navbar
     </h3>
     <p>
-      You can provide a string to
-      <code>with_menus($menus, $attributes = array())</code> and it
+      You can provide a string to <code>withContent()</code> and it
       will be output directly in the Navbar. This is perfect for
       inline forms.
     </p>
@@ -203,42 +168,4 @@ Navbar::FIX_BOTTOM
       <code>.search-query</code> to the input for specialized styles
       in the navbar. See the form in the large sample above.
     </p>
-
-    <h3>
-      Nav links
-    </h3>
-    <p>
-      Links are created using
-      <code>link($label, $url, $active = false, $disabled = false, $items = null, $icon = null)</code> or <code>links($links)</code> which
-      takes an array or arrays in the same order as the link function
-      inputs.  Label::info('See the sample on the left.') 
-    </p>
-
-     <h3>
-       Dividers
-     </h3>
-     <p>
-       You can easily add vertical dividers by adding
-       <code>Navigation::VERTICAL_DIVIDER</code> as the first element
-       in the link array.
-     </p>
-     <h3>
-       Component alignment
-     </h3>
-     <p>
-       To align a nav, search form, or text, use the
-       <code>.pull-left</code> or <code>.pull-right</code> classes.
-       You can do this by passing in
-       <code>'attributes' => array('class' => 'pull-right')</code>
-       with your link array
-     </p>
-     <h3>
-       Adding dropdown menus
-     </h3>
-     <p>
-       Adding dropdown menus is simple just add a nested links array
-       to an items element.
-     </p>
-  </div>
-</div>
 </section>

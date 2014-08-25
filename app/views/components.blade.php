@@ -1,80 +1,93 @@
 @extends('layout')
 
 @section('title')
-  Components
+    Components
+@stop
+
+@section('sidebar')
+    {{ Navigation::pills([
+          [
+              'title' => 'Button groups',
+              'link' => '#groups'
+          ],
+          [
+              'title'=>'Button dropdowns',
+              'link'=>'#dropdown'
+          ],
+          [
+              'title'=>'Nav, tabs, pills',
+              'link'=>'#navs'
+          ],
+          [
+              'title'=>'Navbar',
+              'link'=>'#navbar'
+          ],
+          [
+              'title'=>'Breadcrumbs',
+              'link'=>'#breadcrumbs'
+          ],
+          [
+              'title'=>'Pagination',
+              'link'=>'#pagination'
+          ],
+          [
+              'title'=>'Labels',
+              'link' => '#labels'
+          ],
+          [
+              'title'=>'Badges',
+              'link'=>'#badges'
+          ],
+          [
+              'title'=>'Alerts',
+              'link' => '#alerts',
+          ],
+          [
+              'title'=>'Progress bars',
+              'link'=>'#progress'
+          ],
+          [
+              'title'=>'Media object',
+              'link'=>'#mediaobject'
+          ],
+          [
+              'title'=>'Panels',
+              'link'=>'#panel'
+          ],
+      ], ['data-spy' => 'affix'])->stacked() }}
 @stop
 
 @section('content')
-  <div class='page-header'>
-    <h1>
-      Components <small>Navigation, Alerts, Pagination, and much more.</small>
-    </h1>
-  </div>
-  <div class="subnav">
-    Navigation::pills(
-        array(
-          array('label'=>'Buttons',
-                'url'=>'#',
-                'items'=> array(
-              array('label' => 'Button groups',
-                    'url' => '#groups'
-                    ),
-              array('label'=>'Button dropdowns',
-                    'url'=>'#dropdown'
-                    ),
-            )
-                ),
-          array('label'=>'Navigation',
-                'url'=>'#',
-                'items'=> array(
-              array(
-                'label'=>'Nav, tabs, pills',
-                'url'=>'#navs'
-              ),
-              array(
-                'label'=>'Navbar',
-                'url'=>'#navbar'
-              ),
-              array('label'=>'Breadcrumbs',
-                    'url'=>'#breadcrumbs'
-                    ),
-              array('label'=>'Pagination',
-                    'url'=>'#pagination'
-                    ),
-            )
-                ),
-          array('label'=>'Labels', 'url' => '#labels'),
-          array('label'=>'Badges', 'url'=>'#badges'),
-          array('label'=>'Alerts', 'url' => '#alerts'),
-          array('label'=>'Progress bars', 'url'=>'#progress'),
-          array('label'=>'Media object', 'url'=>'#mediaobject'),
-	  array('label'=>'Panels ', 'url'=>'#panel'),
-        )
-      )
-  </div>
+    <div class='page-header'>
+        <h1>
+            Components <small>Navigation, Alerts, Pagination, and much more.</small>
+        </h1>
+    </div>
 
-  @include('components.buttons')
+    @include('components.buttons')
 
-  @include('components.dropdown')
+    @include('components.dropdown')
 
-  @include('components.nav')
+    @include('components.icons')
 
-  @include('components.navbar')
+    @include('components.nav')
 
-  @include('components.breadcrumbs')
+    @include('components.navbar')
 
-  @include('components.pagination')
+    @include('components.breadcrumbs')
 
-  @include('components.labels')
+    @include('components.pagination')
 
-  @include('components.badges')
+    @include('components.labels')
 
-  @include('components.alerts')
+    @include('components.badges')
 
-  @include('components.progress')
+    @include('components.alerts')
 
-  @include('components.mediaobject')
+    @include('components.progress')
 
-  @include('components.panels')
+    @include('components.mediaobject')
+
+    @include('components.panels')
 
 @stop
