@@ -4,6 +4,15 @@
   Extras
 @stop
 
+@section('sidebar')
+{{ Navigation::pills([
+    ['title'=>'Carousel', 'link'=>'#carousel'],
+   	['title'=>'Modals', 'link'=>'#modals'],
+   	['title'=>'Accordions', 'link'=>'#accordions'],
+   	['title'=>'Tabbable', 'link'=>'#tabbables'],
+ ], ['data-spy' => 'affix'])->stacked() }}
+@stop
+
 @section('content')
   <h1>
     Extras
@@ -11,20 +20,13 @@
   <p class="lead">
     More Bootstrap goodness from Laravel Bootstrapper.
   </p>
-  <div class="subnav">
-    {{ Navigation::pills(
-        array(
-          array('label'=>'Carousel', 'url'=>'#carousel'),
-	  array('label'=>'Modals', 'url'=>'#modals'),
-	  array('label'=>'Accordions', 'url'=>'#accordions'),
-        )
-      ) }}
-  </div>
 
   @include("extras.carousel")
 
   @include("extras.modals")
 
   @include("extras.accordions")
+
+  @include("extras.tabbable")
 
 @stop
