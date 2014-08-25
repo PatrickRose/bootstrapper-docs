@@ -372,6 +372,17 @@
     </div>
 
     <h3>
+        Panels
+    </h3>
+
+    <ul>
+        <li>
+            <code>header()</code>, <code>body()</code>, <code>footer()</code> have been
+            renamed <code>withHeader()</code> etc
+        </li>
+    </ul>
+
+    <h3>
         Typography
     </h3>
 

@@ -7,27 +7,42 @@
     All you need to do is call
     <code>Panel::$type($attributes)</code>
     which will give you a panel on its own. Then use the chained
-    methods <code>header($header)</code>, <code>body($body)</code> and
-    <code>footer($footer)</code> to fill it with the information you
+    methods <code>withHeader($header)</code>, <code>withBody($body)</code> and
+    <code>withFooter($footer)</code> to fill it with the information you
     need:
   </p>
-  @foreach(array('default' => "Default", 'danger' => "Danger", 'info' => "Info", 'success' => "Success", 'warning' => "Warning") as $type => $heading)
-    <div class='row'>
-      <div class='col-md-6'>
-	   Panel::$type()->header($heading)->body("Panel body")->footer("Panel footer") 
-      </div>
-      <div class='col-md-6'>
-      <pre class='prettyprint'>
- "Panel::$type()" 
-	
-	 "->header('$heading')" 
+  <table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Example</th>
+          <th>Code</th>
+      </tr>
+  </thead>
+  <tbody>
+  @foreach(array('normal' => "Normal", 'danger' => "Danger", 'info' => "Info", 'success' => "Success", 'warning' => "Warning") as $type => $heading)
+      <tr>
+      <td>
+          <strong>{{ $heading }}</strong>
+      </td>
+      <td>
+          {{ Panel::$type()->withHeader($heading)->withBody("Panel body")->withFooter("Panel footer") }}
+      </td>
+      <td>
+        <pre class='prettyprint linenums'>
+  {{ "Panel::$type()"  }}
 
-	 "->body('Panel body')" 
+       {{ "->withHeader('$heading')"  }}
 
-	 "->footer('Panel footer')" 
-</pre>
-      </div>
-    </div>
-  @endforeach
+       {{ "->withBody('Panel body')"  }}
+
+       {{ "->footer('Panel footer')"  }}
+  </pre>
+  </td>
+  </tr>
+    @endforeach
+    </tbody>
+  </table>
+
 
 </section>
