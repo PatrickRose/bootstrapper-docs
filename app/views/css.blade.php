@@ -6,7 +6,7 @@
 
 @section('content')
 <div class='subnav'>
-  {{ Navigation::pills(
+   Navigation::pills(
       Navigation::links(
         array(
           array('Typography', '#typography'),
@@ -16,13 +16,11 @@
           array('Images', '#images'),
         )
       )
-    )}}
+    )
 </div>
 <div class='page-header'>
     <h1>Base CSS <small>Basic Bootstrap goodness from Laravel Bootstrapper</small></h1>
   </div>
-
-  @include('css.typography')
 
   @include('css.tables')
 
