@@ -10,169 +10,372 @@
       Basic Table
     </h3>
 
-    <div class='row'>
-      <div class='col-md-6'>
-	{{ Table::open()}}
-        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
+    {{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ]) }}
 
-      <div class='col-md-6'>
 	<pre class='prettyprint linenums'>
-$body = array(
-  array(
-    'id' => '1',
-    'fname' => 'Patrick',
-    'lname' => 'Talmadge'
-  ),
-  ...
-);
-Table::open()
-Table::headers('#', 'First Name', 'Last Name')
-Table::body($body)
-Table::close()
-	</pre>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-md-6'>
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])
+</pre>
+
 	<h3>
 	  Striped
 	</h3>
-	Use <code>Table::striped_open()</code> instead of the default <code>Table::open()</code>.
-	{{ Table::striped_open()}}
-        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
-      <div class='col-md-6'>
+	<p>Use the chained method <code>striped()</code>.</p>
+
+    {{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->striped() }}
+
+	<pre class='prettyprint linenums'>
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->striped()
+</pre>
+
 	<h3>
 	  Bordered
 	</h3>
-	Use <code>Table::bordered_open()</code> instead of the default <code>Table::open()</code>.
-	{{ Table::bordered_open()}}
-        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-md-6'>
+	<p>Use the chained method <code>bordered()</code>.</p>
+
+    {{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->bordered() }}
+
+	<pre class='prettyprint linenums'>
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->bordered()
+</pre>
+
 	<h3>
 	  Hover
 	</h3>
-	Use <code>Table::hover_open()</code> instead of the default <code>Table::open()</code>.
-	{{ Table::hover_open()}}
-n        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
-      <div class='col-md-6'>
+	<p>Use the chained method <code>hover()</code>.</p>
+
+    {{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->hover() }}
+
+	<pre class='prettyprint linenums'>
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->hover()
+</pre>
+
 	<h3>
 	  Condensed
 	</h3>
-	Use <code>Table::condensed_open()</code> instead of the default <code>Table::open()</code>.
-	{{ Table::condensed_open()}}
-        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
-    </div>
-	<h3>
-	  Mix and Match
-	</h3>
-    <div class='row'>
-      <div class='col-md-6'>
-	{{ Table::striped_bordered_hover_condensed_open()}}
-        {{ Table::headers('#', 'First Name', 'Last Name')}}
-        {{ Table::body(array(
-                    array('id' => '1', 'fname' => 'Patrick', 'lname' => 'Talmadge'),
-                    array('id' => '2', 'fname' => 'Patrick', 'lname' => 'Rose'),
-                    array('id' => '3', 'fname' => 'Maxime', 'lname' => 'Fabre'),
-                    array('id' => '4', 'fname' => 'Taylor', 'lname' => 'Otwell'),
-                    array('id' => '5', 'fname' => 'Jane', 'lname' => 'Doe'),
-                ))}}
-        {{ Table::close()}}
-      </div>
-      <div class='col-md-6'>
+
+	<p>Use the chained method <code>condensed()</code>.</p>
+
+    {{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->condensed() }}
+
 	<pre class='prettyprint linenums'>
-$body = array(
-  array(
-    'id' => '1',
-    'fname' => 'Patrick',
-    'lname' => 'Talmadge'
-  ),
-  ...
-);
-Table::striped_bordered_hover_condensed_open()
-Table::headers('#', 'First Name', 'Last Name')
-Table::body($body)
-Table::close()	</pre>
-      </div>
-    </div>
-    <h3>Chainable Methods</h3>
-     <p>You can prevent a column from being generated by passing the array index or object attribute name
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->condensed()
+</pre>
+
+	<h3>Chainable Methods</h3>
+     <p>You can prevent a column from being generated by passing the object attribute name
 as a string to <code>ignore()</code> Example: </p>
 <pre class="prettyprint linenums">
-Table::body($body)
-->ignore('id', 'password')
-</pre>
-<p>You can also call the static <code>always_ignore()</code> function to ignore the columns on all new tables.</p>
-<pre class="prettyprint linenums">
-Tables::always_ignore('id', 'updated_at', 'created_at')
-</pre>
- <p>You can dynamically set columns to either append columns to the table or replace current ones. If say you
-create a column named "email" and your content already possesses a column named email, it will overwrite it.</p>
-<pre class="prettyprint linenums">
-Table::body($body)
-->reservations(function($client) {
-  if(isset($client['reservations'])) {
-    return $client['reservations'];
-  } else {
-    return 'No reservations';
-  }
-})
-->edit(function($client) {
-  return HTML::link('#', 'Edit')
-})
-</pre>
- <p>Also when dynamically creating columns, as their name will be used as classes you can set
-several classes by calling per example <code>->edit_action_center()</code>.</p>
-<p>You can order columns manually by calling <code>order()</code>.</p>
-<pre class="prettyprint linenums">
-Table::body($body)
-->order('fname', 'lname')
+Table::body($body)->ignore('id', 'password')
 </pre>
 
     <p>
@@ -181,7 +384,83 @@ Table::body($body)
     </p>
     <pre class="prettyprint linenums">
 Table::body($body)
-        ->only("foo", "bar")
+     ->only(["foo", "bar"])
 </pre>
+
+ <p>
+   You can dynamically set columns to either append columns to the table or replace
+   current ones, using the <code>callback()</code> method.
+ </p>
+{{ Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->callback('id', function ($field, $row) { return 'This is #' . $field; })
+      ->callback('Action', function ($field, $row) { return "<a href=\"#\">Edit {$row['First Name']} {$row['Last Name']}"; })}}
+
+	<pre class='prettyprint linenums'>
+Table::withContents([
+        [
+            'id' => 1,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Talmadge'
+        ],
+        [
+            'id' => 2,
+            'First Name' => 'Patrick',
+            'Last Name' => 'Rose'
+        ],
+        [
+            'id' => 3,
+            'First Name' => 'Maxime',
+            'Last Name' => 'Fabre'
+        ],
+        [
+            'id' => 4,
+            'First Name' => 'Taylor',
+            'Last Name' => 'Otwell'
+        ],
+        [
+            'id' => 5,
+            'First Name' => 'Jane',
+            'Last Name' => 'Doe'
+        ],
+        [
+            'id' => 6,
+            'First Name' => 'John',
+            'Last Name' => 'Smith'
+        ],
+    ])->callback('id', function ($field, $row) { return 'This is #' . $field; })
+      ->callback('Action', function ($field, $row) { return "&lt;a href=\"#\"&gt;Edit {$row['First Name']} {$row['Last Name']}&lt;/a&gt;"; })
+</pre>
+
+{{ Alert::info('Your callback should accept two arguments. The first is the actual <em>value</em> during render. The second is the entire row.') }}
 
   </section>

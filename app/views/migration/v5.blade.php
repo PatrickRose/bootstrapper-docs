@@ -401,6 +401,33 @@
     </ul>
 
     <h3>
+        Tables
+    </h3>
+
+    <ul>
+        <li>
+            <code>open()</code> and <code>close()</code> have been removed.
+        </li>
+        <li>
+            Table types are now added to the table object itself, instead of appended
+            to the <code>open()</code> method.
+        </li>
+        <li>
+            <code>headers()</code> has been removed.
+        </li>
+        <li>
+            <code>body()</code> has been renamed <code>withContents()</code>.
+        </li>
+        <li>
+            <code>always_ignore()</code> has been removed.
+        </li>
+        <li>
+            Dynamic methods have now been removed. Instead, use the <code>callback()</code>
+            function.
+        </li>
+    </ul>
+
+    <h3>
         Typography
     </h3>
 
