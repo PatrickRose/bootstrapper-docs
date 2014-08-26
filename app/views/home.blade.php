@@ -52,7 +52,7 @@
       <p>View the {{ link_to('installation', 'install docs') }} to enable Bootstrapper in your Laravel project.</p>
 
       <p class="download-info">
-        <a href="https://github.com/patricktalmadge/bootstrapper/tree/develop" class="btn btn-primary btn-large">View project on GitHub</a><br />
+        <a href="https://github.com/patricktalmadge/bootstrapper" class="btn btn-primary btn-large">View project on GitHub</a><br />
         <a href="https://github.com/PatrickRose/bootstrapper-docs/tree/v4" class="btn btn-default">Need the old docs? Build them from GitHub here</a>
       </p>
     </div>
