@@ -1,4 +1,4 @@
-<section id="dropdowns">
+<section id="dropdown">
   <div class="page-header">
     <h1>
       Button dropdown menus <small>Built on button groups to provide contextual menus</small>
@@ -15,7 +15,7 @@
           with <code>withContents()</code>
       </p>
 
-      <table class="table">
+      <table class="table table-responsive">
       <thead>
       <tr>
       <th>Type</th>
@@ -33,9 +33,10 @@
       </td>
       <td>
       <pre class="prettyprint">
-      DropdownButton::normal('Normal')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
+DropdownButton::normal('Normal')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
       ])</pre>
       </td>
       </tr>
@@ -47,12 +48,12 @@
       {{ DropdownButton::primary('Primary')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::primary('Warning')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],
-      ['url' => '#', 'label' => 'Second']
-      ])</pre>
+      <pre class="prettyprint linenums">
+DropdownButton::primary('Warning')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
+              ])</pre>
       </td>
       </tr>
       <tr>
@@ -63,11 +64,11 @@
       {{ DropdownButton::danger('Danger')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::danger('Danger')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],
-      ['url' => '#', 'label' => 'Second']
+      <pre class="prettyprint linenums">
+DropdownButton::danger('Danger')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
       ])</pre>
       </td>
       </tr>
@@ -79,11 +80,11 @@
       {{ DropdownButton::warning('Warning')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::warning('Warning')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],
-      ['url' => '#', 'label' => 'Second']
+      <pre class="prettyprint linenums">
+DropdownButton::warning('Warning')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
       ])</pre>
       </td>
       </tr>
@@ -95,11 +96,11 @@
       {{ DropdownButton::success('Success')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::success('Success')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],
-      ['url' => '#', 'label' => 'Second']
+      <pre class="prettyprint linenums">
+DropdownButton::success('Success')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
       ])</pre>
       </td>
       </tr>
@@ -131,12 +132,13 @@
       {{ DropdownButton::normal('Large')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->large() }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::normal('Large')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
-      ])
-      ->large()</pre>
+      <pre class="prettyprint linenums">
+DropdownButton::normal('Large')
+              ->withContents([
+                  ['url' => '#', 'label' => 'First'],
+                  ['url' => '#', 'label' => 'Second']
+])
+->large()</pre>
       </td>
       </tr>
       <tr>
@@ -147,11 +149,12 @@
       {{ DropdownButton::normal('Standard')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']]) }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::normal('Standard')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
-      ])</pre>
+      <pre class="prettyprint linenums">
+DropdownButton::normal('Standard')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
+])</pre>
       </td>
       </tr>
       <tr>
@@ -162,12 +165,13 @@
       {{ DropdownButton::normal('Small')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->small() }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::normal('Small')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
-      ])
-      ->small()</pre>
+      <pre class="prettyprint linenums">
+DropdownButton::normal('Small')
+              ->withContents([
+                   ['url' => '#', 'label' => 'First'],
+                   ['url' => '#', 'label' => 'Second']
+])
+->small()</pre>
       </td>
       </tr>
       <tr>
@@ -178,12 +182,13 @@
       {{ DropdownButton::normal('Extra Small')->withContents([['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']])->extraSmall() }}
       </td>
       <td>
-      <pre class="prettyprint">
-      DropdownButton::normal('Extra Small')
-      ->withContents([
-      ['url' => '#', 'label' => 'First'],['url' => '#', 'label' => 'Second']
-      ])
-      ->extraSmall()</pre>
+      <pre class="prettyprint linenums">
+DropdownButton::normal('Extra Small')
+              ->withContents([
+                    ['url' => '#', 'label' => 'First'],
+                    ['url' => '#', 'label' => 'Second']
+])
+->extraSmall()</pre>
       </td>
       </tr>
       </tbody>

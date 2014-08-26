@@ -1,4 +1,5 @@
-<section id='buttons'>
+<section>
+<article id='groups'>
   <div class='page-header'>
     <h2>
       Button Groups
@@ -78,6 +79,7 @@ ButtonGroup::radio([
 </div>
 </div>
 {{ Alert::info(Label::info('Heads Up!') . ' We\'ll convert Button objects into checkboxes or radio buttons. We\'ll just print out anything else')}}
+</article>
   <h3>Dropdowns in button groups</h3>
   <p>
      Label::info('Heads up!') 
@@ -85,5 +87,4 @@ ButtonGroup::radio([
     own <code>ButtonGroup</code> within a
     <code>.btn-toolbar</code> for proper rendering.
   </p>
-
 </section>
