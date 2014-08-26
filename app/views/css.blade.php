@@ -4,20 +4,28 @@
   Base CSS
 @stop
 
+@section('sidebar')
+    {{ Navigation::pills([
+        [
+            'title' => 'Tables',
+            'link' => '#tables'
+        ],
+        [
+             'title' => 'Forms',
+             'link' => '#forms'
+        ],
+        [
+             'title' => 'Buttons',
+             'link' => '#buttons'
+        ],
+        [
+             'title' => 'Images',
+             'link' => '#images'
+        ],
+    ], ['data-spy' => 'affix'])->stacked()->render() }}
+@stop
+
 @section('content')
-<div class='subnav'>
-   Navigation::pills(
-      Navigation::links(
-        array(
-          array('Typography', '#typography'),
-          array('Tables', '#tables'),
-          array('Forms', '#forms'),
-          array('Buttons', '#buttons'),
-          array('Images', '#images'),
-        )
-      )
-    )
-</div>
 <div class='page-header'>
     <h1>Base CSS <small>Basic Bootstrap goodness from Laravel Bootstrapper</small></h1>
   </div>

@@ -58,6 +58,4 @@ Image::thumbnail('http://placehold.it/140x140', 'thumbnail')
       <pre class='prettyprint linenums'>
 Image::rounded('//placehold.it/1600x1600')->responsive()
 </pre>
-    </div>
-  </div>
 </section>
