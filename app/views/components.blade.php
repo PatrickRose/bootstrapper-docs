@@ -50,6 +50,10 @@
               'title'=>'Panels',
               'link'=>'#panel'
           ],
+          [
+              'title'=>'Thumbnails',
+              'link'=>'#thumbnails'
+          ],
       ], ['data-spy' => 'affix'])->stacked() }}
 @stop
 
@@ -83,5 +87,7 @@
     @include('components.mediaobject')
 
     @include('components.panels')
+
+    @include('components.thumbnails')
 
 @stop
