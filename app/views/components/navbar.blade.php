@@ -112,6 +112,18 @@ Navbar::withBrand('Project name', '#')
         <code>Navigation</code> object.
     </p>
 
+
+
+    <h3>
+        Floating Navigation Dropdowns To The Right
+    </h3>
+
+    <p>
+        If you need to float the text in the navigation dropdown to the
+        right, then use the <code>right()</code> function on the
+        <code>Navigation</code> object.
+    </p>
+
     <h3>
       Brand name
     </h3>

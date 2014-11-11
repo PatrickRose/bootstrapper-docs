@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
- * Generated for Laravel 4.2.6 on 2014-08-25.
+ * Generated for Laravel 4.2.11 on 2014-11-11.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11,17 +11,6 @@ namespace {
     exit("This file should not be included, only analyzed by your IDE");
 
     class App extends \Illuminate\Support\Facades\App{
-        
-        /**
-         * Create a new Illuminate application instance.
-         *
-         * @param \Illuminate\Http\Request
-         * @return void 
-         * @static 
-         */
-        public static function __construct($request = null){
-            \Illuminate\Foundation\Application::__construct($request);
-        }
         
         /**
          * Bind the installation paths to the application.
@@ -190,6 +179,34 @@ namespace {
         }
         
         /**
+         * Determine if the given abstract type has been bound.
+         * 
+         * (Overriding Container::bound)
+         *
+         * @param string $abstract
+         * @return bool 
+         * @static 
+         */
+        public static function bound($abstract){
+            return \Illuminate\Foundation\Application::bound($abstract);
+        }
+        
+        /**
+         * "Extend" an abstract type in the container.
+         * 
+         * (Overriding Container::extend)
+         *
+         * @param string $abstract
+         * @param \Closure $closure
+         * @return void 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function extend($abstract, $closure){
+            \Illuminate\Foundation\Application::extend($abstract, $closure);
+        }
+        
+        /**
          * Register a "before" application filter.
          *
          * @param \Closure|string $callback
@@ -302,7 +319,7 @@ namespace {
          *
          * @param string $class
          * @param array $parameters
-         * @return \Illuminate\Foundation\Application 
+         * @return $this 
          * @static 
          */
         public static function middleware($class, $parameters = array()){
@@ -330,6 +347,7 @@ namespace {
          * @param int $type
          * @param bool $catch
          * @return \Symfony\Component\HttpFoundation\Response 
+         * @throws \Exception
          * @static 
          */
         public static function handle($request, $type = 1, $catch = true){
@@ -610,38 +628,15 @@ namespace {
         }
         
         /**
-         * Dynamically access application services.
-         *
-         * @param string $key
-         * @return mixed 
-         * @static 
-         */
-        public static function __get($key){
-            return \Illuminate\Foundation\Application::__get($key);
-        }
-        
-        /**
-         * Dynamically set application services.
-         *
-         * @param string $key
-         * @param mixed $value
-         * @return void 
-         * @static 
-         */
-        public static function __set($key, $value){
-            \Illuminate\Foundation\Application::__set($key, $value);
-        }
-        
-        /**
-         * Determine if the given abstract type has been bound.
+         * Determine if the given abstract type has been resolved.
          *
          * @param string $abstract
          * @return bool 
          * @static 
          */
-        public static function bound($abstract){
+        public static function resolved($abstract){
             //Method inherited from \Illuminate\Container\Container            
-            return \Illuminate\Foundation\Application::bound($abstract);
+            return \Illuminate\Foundation\Application::resolved($abstract);
         }
         
         /**
@@ -659,7 +654,7 @@ namespace {
         /**
          * Register a binding with the container.
          *
-         * @param string $abstract
+         * @param string|array $abstract
          * @param \Closure|string|null $concrete
          * @param bool $shared
          * @return void 
@@ -701,7 +696,7 @@ namespace {
          * Wrap a Closure such that it is shared.
          *
          * @param \Closure $closure
-         * @return \Illuminate\Container\Closure 
+         * @return \Closure 
          * @static 
          */
         public static function share($closure){
@@ -720,20 +715,6 @@ namespace {
         public static function bindShared($abstract, $closure){
             //Method inherited from \Illuminate\Container\Container            
             \Illuminate\Foundation\Application::bindShared($abstract, $closure);
-        }
-        
-        /**
-         * "Extend" an abstract type in the container.
-         *
-         * @param string $abstract
-         * @param \Closure $closure
-         * @return void 
-         * @throws \InvalidArgumentException
-         * @static 
-         */
-        public static function extend($abstract, $closure){
-            //Method inherited from \Illuminate\Container\Container            
-            \Illuminate\Foundation\Application::extend($abstract, $closure);
         }
         
         /**
@@ -953,7 +934,7 @@ namespace {
         /**
          * Boot the Console application.
          *
-         * @return \Illuminate\Console\Application 
+         * @return $this 
          * @static 
          */
         public static function boot(){
@@ -1022,7 +1003,7 @@ namespace {
          * Set the exception handler instance.
          *
          * @param \Illuminate\Exception\Handler $handler
-         * @return \Illuminate\Console\Application 
+         * @return $this 
          * @static 
          */
         public static function setExceptionHandler($handler){
@@ -1033,7 +1014,7 @@ namespace {
          * Set the Laravel application instance.
          *
          * @param \Illuminate\Foundation\Application $laravel
-         * @return \Illuminate\Console\Application 
+         * @return $this 
          * @static 
          */
         public static function setLaravel($laravel){
@@ -1044,24 +1025,11 @@ namespace {
          * Set whether the Console app should auto-exit when done.
          *
          * @param bool $boolean
-         * @return \Illuminate\Console\Application 
+         * @return $this 
          * @static 
          */
         public static function setAutoExit($boolean){
             return \Illuminate\Console\Application::setAutoExit($boolean);
-        }
-        
-        /**
-         * Constructor.
-         *
-         * @param string $name The name of the application
-         * @param string $version The version of the application
-         * @api 
-         * @static 
-         */
-        public static function __construct($name = 'UNKNOWN', $version = 'UNKNOWN'){
-            //Method inherited from \Symfony\Component\Console\Application            
-            \Illuminate\Console\Application::__construct($name, $version);
         }
         
         /**
@@ -1434,18 +1402,6 @@ namespace {
             return \Illuminate\Console\Application::setDefaultCommand($commandName);
         }
         
-        /**
-         * Dynamically pass all missing methods to console Artisan.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Illuminate\Foundation\Artisan::__call($method, $parameters);
-        }
-        
     }
 
 
@@ -1493,18 +1449,6 @@ namespace {
         }
         
         /**
-         * Create a new manager instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function __construct($app){
-            //Method inherited from \Illuminate\Support\Manager            
-            \Illuminate\Auth\AuthManager::__construct($app);
-        }
-        
-        /**
          * Get a driver instance.
          *
          * @param string $driver
@@ -1521,7 +1465,7 @@ namespace {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return \Illuminate\Support\Manager|static 
+         * @return $this 
          * @static 
          */
         public static function extend($driver, $callback){
@@ -1538,19 +1482,6 @@ namespace {
         public static function getDrivers(){
             //Method inherited from \Illuminate\Support\Manager            
             return \Illuminate\Auth\AuthManager::getDrivers();
-        }
-        
-        /**
-         * Dynamically call the default driver instance.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Illuminate\Auth\AuthManager::__call($method, $parameters);
         }
         
         /**
@@ -1744,10 +1675,11 @@ namespace {
          * Set the event dispatcher instance.
          *
          * @param \Illuminate\Events\Dispatcher
+         * @return void 
          * @static 
          */
         public static function setDispatcher($events){
-            return \Illuminate\Auth\Guard::setDispatcher($events);
+            \Illuminate\Auth\Guard::setDispatcher($events);
         }
         
         /**
@@ -1816,7 +1748,7 @@ namespace {
          * Set the current request instance.
          *
          * @param \Symfony\Component\HttpFoundation\Request
-         * @return \Illuminate\Auth\Guard 
+         * @return $this 
          * @static 
          */
         public static function setRequest($request){
@@ -2012,19 +1944,6 @@ namespace {
         }
         
         /**
-         * Create a new compiler instance.
-         *
-         * @param \Illuminate\Filesystem\Filesystem $files
-         * @param string $cachePath
-         * @return void 
-         * @static 
-         */
-        public static function __construct($files, $cachePath){
-            //Method inherited from \Illuminate\View\Compilers\Compiler            
-            \Illuminate\View\Compilers\BladeCompiler::__construct($files, $cachePath);
-        }
-        
-        /**
          * Get the path to the compiled version of a view.
          *
          * @param string $path
@@ -2096,18 +2015,6 @@ namespace {
         }
         
         /**
-         * Create a new manager instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function __construct($app){
-            //Method inherited from \Illuminate\Support\Manager            
-            \Illuminate\Cache\CacheManager::__construct($app);
-        }
-        
-        /**
          * Get a driver instance.
          *
          * @param string $driver
@@ -2124,7 +2031,7 @@ namespace {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return \Illuminate\Support\Manager|static 
+         * @return $this 
          * @static 
          */
         public static function extend($driver, $callback){
@@ -2141,19 +2048,6 @@ namespace {
         public static function getDrivers(){
             //Method inherited from \Illuminate\Support\Manager            
             return \Illuminate\Cache\CacheManager::getDrivers();
-        }
-        
-        /**
-         * Dynamically call the default driver instance.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Illuminate\Cache\CacheManager::__call($method, $parameters);
         }
         
         /**
@@ -2362,19 +2256,6 @@ namespace {
          * @throws \BadMethodCallException
          * @static 
          */
-        public static function __callStatic($method, $parameters){
-            return \Illuminate\Cache\Repository::__callStatic($method, $parameters);
-        }
-        
-        /**
-         * Dynamically handle calls to the form builder.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
         public static function macroCall($method, $parameters){
             return \Illuminate\Cache\Repository::macroCall($method, $parameters);
         }
@@ -2384,12 +2265,11 @@ namespace {
          *
          * @param string $key
          * @param mixed $value
-         * @return void 
-         * @throws \LogicException
+         * @return int 
          * @static 
          */
         public static function increment($key, $value = 1){
-            \Illuminate\Cache\FileStore::increment($key, $value);
+            return \Illuminate\Cache\FileStore::increment($key, $value);
         }
         
         /**
@@ -2397,12 +2277,11 @@ namespace {
          *
          * @param string $key
          * @param mixed $value
-         * @return void 
-         * @throws \LogicException
+         * @return int 
          * @static 
          */
         public static function decrement($key, $value = 1){
-            \Illuminate\Cache\FileStore::decrement($key, $value);
+            return \Illuminate\Cache\FileStore::decrement($key, $value);
         }
         
         /**
@@ -2467,18 +2346,6 @@ namespace {
 
 
     class Config extends \Illuminate\Support\Facades\Config{
-        
-        /**
-         * Create a new configuration repository.
-         *
-         * @param \Illuminate\Config\LoaderInterface $loader
-         * @param string $environment
-         * @return void 
-         * @static 
-         */
-        public static function __construct($loader, $environment){
-            \Illuminate\Config\Repository::__construct($loader, $environment);
-        }
         
         /**
          * Determine if the given configuration value exists.
@@ -2800,7 +2667,7 @@ namespace {
          *
          * @param string $path
          * @param string $domain
-         * @return self 
+         * @return $this 
          * @static 
          */
         public static function setDefaultPathAndDomain($path, $domain){
@@ -2821,17 +2688,6 @@ namespace {
 
 
     class Crypt extends \Illuminate\Support\Facades\Crypt{
-        
-        /**
-         * Create a new encrypter instance.
-         *
-         * @param string $key
-         * @return void 
-         * @static 
-         */
-        public static function __construct($key){
-            \Illuminate\Encryption\Encrypter::__construct($key);
-        }
         
         /**
          * Encrypt the given value.
@@ -2894,18 +2750,6 @@ namespace {
     class DB extends \Illuminate\Support\Facades\DB{
         
         /**
-         * Create a new database manager instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @param \Illuminate\Database\Connectors\ConnectionFactory $factory
-         * @return void 
-         * @static 
-         */
-        public static function __construct($app, $factory){
-            \Illuminate\Database\DatabaseManager::__construct($app, $factory);
-        }
-        
-        /**
          * Get a database connection instance.
          *
          * @param string $name
@@ -2917,14 +2761,14 @@ namespace {
         }
         
         /**
-         * Reconnect to the given database.
+         * Disconnect from the given database and remove from local cache.
          *
          * @param string $name
-         * @return \Illuminate\Database\Connection 
+         * @return void 
          * @static 
          */
-        public static function reconnect($name = null){
-            return \Illuminate\Database\DatabaseManager::reconnect($name);
+        public static function purge($name = null){
+            \Illuminate\Database\DatabaseManager::purge($name);
         }
         
         /**
@@ -2936,6 +2780,17 @@ namespace {
          */
         public static function disconnect($name = null){
             \Illuminate\Database\DatabaseManager::disconnect($name);
+        }
+        
+        /**
+         * Reconnect to the given database.
+         *
+         * @param string $name
+         * @return \Illuminate\Database\Connection 
+         * @static 
+         */
+        public static function reconnect($name = null){
+            return \Illuminate\Database\DatabaseManager::reconnect($name);
         }
         
         /**
@@ -2982,15 +2837,706 @@ namespace {
         }
         
         /**
-         * Dynamically pass methods to the default connection.
+         * Get a schema builder instance for the connection.
          *
-         * @param string $method
-         * @param array $parameters
+         * @return \Illuminate\Database\Schema\MySqlBuilder 
+         * @static 
+         */
+        public static function getSchemaBuilder(){
+            return \Illuminate\Database\MySqlConnection::getSchemaBuilder();
+        }
+        
+        /**
+         * Set the query grammar to the default implementation.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function useDefaultQueryGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::useDefaultQueryGrammar();
+        }
+        
+        /**
+         * Set the schema grammar to the default implementation.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function useDefaultSchemaGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::useDefaultSchemaGrammar();
+        }
+        
+        /**
+         * Set the query post processor to the default implementation.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function useDefaultPostProcessor(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::useDefaultPostProcessor();
+        }
+        
+        /**
+         * Begin a fluent query against a database table.
+         *
+         * @param string $table
+         * @return \Illuminate\Database\Query\Builder 
+         * @static 
+         */
+        public static function table($table){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::table($table);
+        }
+        
+        /**
+         * Get a new raw query expression.
+         *
+         * @param mixed $value
+         * @return \Illuminate\Database\Query\Expression 
+         * @static 
+         */
+        public static function raw($value){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::raw($value);
+        }
+        
+        /**
+         * Run a select statement and return a single result.
+         *
+         * @param string $query
+         * @param array $bindings
          * @return mixed 
          * @static 
          */
-        public static function __call($method, $parameters){
-            return \Illuminate\Database\DatabaseManager::__call($method, $parameters);
+        public static function selectOne($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::selectOne($query, $bindings);
+        }
+        
+        /**
+         * Run a select statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return array 
+         * @static 
+         */
+        public static function selectFromWriteConnection($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::selectFromWriteConnection($query, $bindings);
+        }
+        
+        /**
+         * Run a select statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @param bool $useReadPdo
+         * @return array 
+         * @static 
+         */
+        public static function select($query, $bindings = array(), $useReadPdo = true){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::select($query, $bindings, $useReadPdo);
+        }
+        
+        /**
+         * Run an insert statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return bool 
+         * @static 
+         */
+        public static function insert($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::insert($query, $bindings);
+        }
+        
+        /**
+         * Run an update statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return int 
+         * @static 
+         */
+        public static function update($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::update($query, $bindings);
+        }
+        
+        /**
+         * Run a delete statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return int 
+         * @static 
+         */
+        public static function delete($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::delete($query, $bindings);
+        }
+        
+        /**
+         * Execute an SQL statement and return the boolean result.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return bool 
+         * @static 
+         */
+        public static function statement($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::statement($query, $bindings);
+        }
+        
+        /**
+         * Run an SQL statement and get the number of rows affected.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return int 
+         * @static 
+         */
+        public static function affectingStatement($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::affectingStatement($query, $bindings);
+        }
+        
+        /**
+         * Run a raw, unprepared query against the PDO connection.
+         *
+         * @param string $query
+         * @return bool 
+         * @static 
+         */
+        public static function unprepared($query){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::unprepared($query);
+        }
+        
+        /**
+         * Prepare the query bindings for execution.
+         *
+         * @param array $bindings
+         * @return array 
+         * @static 
+         */
+        public static function prepareBindings($bindings){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::prepareBindings($bindings);
+        }
+        
+        /**
+         * Execute a Closure within a transaction.
+         *
+         * @param \Closure $callback
+         * @return mixed 
+         * @throws \Exception
+         * @static 
+         */
+        public static function transaction($callback){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::transaction($callback);
+        }
+        
+        /**
+         * Start a new database transaction.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function beginTransaction(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::beginTransaction();
+        }
+        
+        /**
+         * Commit the active database transaction.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function commit(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::commit();
+        }
+        
+        /**
+         * Rollback the active database transaction.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function rollBack(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::rollBack();
+        }
+        
+        /**
+         * Get the number of active transactions.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function transactionLevel(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::transactionLevel();
+        }
+        
+        /**
+         * Execute the given callback in "dry run" mode.
+         *
+         * @param \Closure $callback
+         * @return array 
+         * @static 
+         */
+        public static function pretend($callback){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::pretend($callback);
+        }
+        
+        /**
+         * Log a query in the connection's query log.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @param $time
+         * @return void 
+         * @static 
+         */
+        public static function logQuery($query, $bindings, $time = null){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::logQuery($query, $bindings, $time);
+        }
+        
+        /**
+         * Register a database query listener with the connection.
+         *
+         * @param \Closure $callback
+         * @return void 
+         * @static 
+         */
+        public static function listen($callback){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::listen($callback);
+        }
+        
+        /**
+         * Get a Doctrine Schema Column instance.
+         *
+         * @param string $table
+         * @param string $column
+         * @return \Doctrine\DBAL\Schema\Column 
+         * @static 
+         */
+        public static function getDoctrineColumn($table, $column){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDoctrineColumn($table, $column);
+        }
+        
+        /**
+         * Get the Doctrine DBAL schema manager for the connection.
+         *
+         * @return \Doctrine\DBAL\Schema\AbstractSchemaManager 
+         * @static 
+         */
+        public static function getDoctrineSchemaManager(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDoctrineSchemaManager();
+        }
+        
+        /**
+         * Get the Doctrine DBAL database connection instance.
+         *
+         * @return \Doctrine\DBAL\Connection 
+         * @static 
+         */
+        public static function getDoctrineConnection(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDoctrineConnection();
+        }
+        
+        /**
+         * Get the current PDO connection.
+         *
+         * @return \PDO 
+         * @static 
+         */
+        public static function getPdo(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getPdo();
+        }
+        
+        /**
+         * Get the current PDO connection used for reading.
+         *
+         * @return \PDO 
+         * @static 
+         */
+        public static function getReadPdo(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getReadPdo();
+        }
+        
+        /**
+         * Set the PDO connection.
+         *
+         * @param \PDO|null $pdo
+         * @return $this 
+         * @static 
+         */
+        public static function setPdo($pdo){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::setPdo($pdo);
+        }
+        
+        /**
+         * Set the PDO connection used for reading.
+         *
+         * @param \PDO|null $pdo
+         * @return $this 
+         * @static 
+         */
+        public static function setReadPdo($pdo){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::setReadPdo($pdo);
+        }
+        
+        /**
+         * Set the reconnect instance on the connection.
+         *
+         * @param callable $reconnector
+         * @return $this 
+         * @static 
+         */
+        public static function setReconnector($reconnector){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::setReconnector($reconnector);
+        }
+        
+        /**
+         * Get the database connection name.
+         *
+         * @return string|null 
+         * @static 
+         */
+        public static function getName(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getName();
+        }
+        
+        /**
+         * Get an option from the configuration options.
+         *
+         * @param string $option
+         * @return mixed 
+         * @static 
+         */
+        public static function getConfig($option){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getConfig($option);
+        }
+        
+        /**
+         * Get the PDO driver name.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDriverName(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDriverName();
+        }
+        
+        /**
+         * Get the query grammar used by the connection.
+         *
+         * @return \Illuminate\Database\Query\Grammars\Grammar 
+         * @static 
+         */
+        public static function getQueryGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getQueryGrammar();
+        }
+        
+        /**
+         * Set the query grammar used by the connection.
+         *
+         * @param \Illuminate\Database\Query\Grammars\Grammar
+         * @return void 
+         * @static 
+         */
+        public static function setQueryGrammar($grammar){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setQueryGrammar($grammar);
+        }
+        
+        /**
+         * Get the schema grammar used by the connection.
+         *
+         * @return \Illuminate\Database\Query\Grammars\Grammar 
+         * @static 
+         */
+        public static function getSchemaGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getSchemaGrammar();
+        }
+        
+        /**
+         * Set the schema grammar used by the connection.
+         *
+         * @param \Illuminate\Database\Schema\Grammars\Grammar
+         * @return void 
+         * @static 
+         */
+        public static function setSchemaGrammar($grammar){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setSchemaGrammar($grammar);
+        }
+        
+        /**
+         * Get the query post processor used by the connection.
+         *
+         * @return \Illuminate\Database\Query\Processors\Processor 
+         * @static 
+         */
+        public static function getPostProcessor(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getPostProcessor();
+        }
+        
+        /**
+         * Set the query post processor used by the connection.
+         *
+         * @param \Illuminate\Database\Query\Processors\Processor
+         * @return void 
+         * @static 
+         */
+        public static function setPostProcessor($processor){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setPostProcessor($processor);
+        }
+        
+        /**
+         * Get the event dispatcher used by the connection.
+         *
+         * @return \Illuminate\Events\Dispatcher 
+         * @static 
+         */
+        public static function getEventDispatcher(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getEventDispatcher();
+        }
+        
+        /**
+         * Set the event dispatcher instance on the connection.
+         *
+         * @param \Illuminate\Events\Dispatcher
+         * @return void 
+         * @static 
+         */
+        public static function setEventDispatcher($events){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setEventDispatcher($events);
+        }
+        
+        /**
+         * Get the paginator environment instance.
+         *
+         * @return \Illuminate\Pagination\Factory 
+         * @static 
+         */
+        public static function getPaginator(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getPaginator();
+        }
+        
+        /**
+         * Set the pagination environment instance.
+         *
+         * @param \Illuminate\Pagination\Factory|\Closure $paginator
+         * @return void 
+         * @static 
+         */
+        public static function setPaginator($paginator){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setPaginator($paginator);
+        }
+        
+        /**
+         * Get the cache manager instance.
+         *
+         * @return \Illuminate\Cache\CacheManager 
+         * @static 
+         */
+        public static function getCacheManager(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getCacheManager();
+        }
+        
+        /**
+         * Set the cache manager instance on the connection.
+         *
+         * @param \Illuminate\Cache\CacheManager|\Closure $cache
+         * @return void 
+         * @static 
+         */
+        public static function setCacheManager($cache){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setCacheManager($cache);
+        }
+        
+        /**
+         * Determine if the connection in a "dry run".
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function pretending(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::pretending();
+        }
+        
+        /**
+         * Get the default fetch mode for the connection.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function getFetchMode(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getFetchMode();
+        }
+        
+        /**
+         * Set the default fetch mode for the connection.
+         *
+         * @param int $fetchMode
+         * @return int 
+         * @static 
+         */
+        public static function setFetchMode($fetchMode){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::setFetchMode($fetchMode);
+        }
+        
+        /**
+         * Get the connection query log.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getQueryLog(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getQueryLog();
+        }
+        
+        /**
+         * Clear the query log.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function flushQueryLog(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::flushQueryLog();
+        }
+        
+        /**
+         * Enable the query log on the connection.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function enableQueryLog(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::enableQueryLog();
+        }
+        
+        /**
+         * Disable the query log on the connection.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function disableQueryLog(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::disableQueryLog();
+        }
+        
+        /**
+         * Determine whether we're logging queries.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function logging(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::logging();
+        }
+        
+        /**
+         * Get the name of the connected database.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDatabaseName(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDatabaseName();
+        }
+        
+        /**
+         * Set the name of the connected database.
+         *
+         * @param string $database
+         * @return string 
+         * @static 
+         */
+        public static function setDatabaseName($database){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::setDatabaseName($database);
+        }
+        
+        /**
+         * Get the table prefix for the connection.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getTablePrefix(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getTablePrefix();
+        }
+        
+        /**
+         * Set the table prefix in use by the connection.
+         *
+         * @param string $prefix
+         * @return void 
+         * @static 
+         */
+        public static function setTablePrefix($prefix){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setTablePrefix($prefix);
+        }
+        
+        /**
+         * Set the table prefix and return the grammar.
+         *
+         * @param \Illuminate\Database\Grammar $grammar
+         * @return \Illuminate\Database\Grammar 
+         * @static 
+         */
+        public static function withTablePrefix($grammar){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::withTablePrefix($grammar);
         }
         
     }
@@ -3026,7 +3572,7 @@ namespace {
          *
          * @param array $columns
          * @return \Illuminate\Database\Eloquent\Model|static 
-         * @throws ModelNotFoundException
+         * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
          * @static 
          */
         public static function firstOrFail($columns = array()){
@@ -3096,7 +3642,6 @@ namespace {
          * 
          * This is more efficient on larger data-sets, etc.
          *
-         * @param \Illuminate\Pagination\Factory $paginator
          * @param int $perPage
          * @param array $columns
          * @return \Illuminate\Pagination\Paginator 
@@ -3104,42 +3649,6 @@ namespace {
          */
         public static function simplePaginate($perPage = null, $columns = array()){
             return \Illuminate\Database\Eloquent\Builder::simplePaginate($perPage, $columns);
-        }
-        
-        /**
-         * Increment a column's value by a given amount.
-         *
-         * @param string $column
-         * @param int $amount
-         * @param array $extra
-         * @return int 
-         * @static 
-         */
-        public static function increment($column, $amount = 1, $extra = array()){
-            return \Illuminate\Database\Eloquent\Builder::increment($column, $amount, $extra);
-        }
-        
-        /**
-         * Decrement a column's value by a given amount.
-         *
-         * @param string $column
-         * @param int $amount
-         * @param array $extra
-         * @return int 
-         * @static 
-         */
-        public static function decrement($column, $amount = 1, $extra = array()){
-            return \Illuminate\Database\Eloquent\Builder::decrement($column, $amount, $extra);
-        }
-        
-        /**
-         * Run the default delete function on the builder.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function forceDelete(){
-            return \Illuminate\Database\Eloquent\Builder::forceDelete();
         }
         
         /**
@@ -3157,7 +3666,7 @@ namespace {
          * Get the hydrated models without eager loading.
          *
          * @param array $columns
-         * @return array|static[] 
+         * @return \Illuminate\Database\Eloquent\Model[] 
          * @static 
          */
         public static function getModels($columns = array()){
@@ -3182,7 +3691,7 @@ namespace {
          * @param string $operator
          * @param mixed $value
          * @param string $boolean
-         * @return \Illuminate\Database\Eloquent\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function where($column, $operator = null, $value = null, $boolean = 'and'){
@@ -3314,7 +3823,7 @@ namespace {
          * Set a model instance for the model being queried.
          *
          * @param \Illuminate\Database\Eloquent\Model $model
-         * @return \Illuminate\Database\Eloquent\Builder 
+         * @return $this 
          * @static 
          */
         public static function setModel($model){
@@ -3348,7 +3857,7 @@ namespace {
          * Set the columns to be selected.
          *
          * @param array $columns
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function select($columns = array()){
@@ -3370,7 +3879,7 @@ namespace {
          * Add a new select column to the query.
          *
          * @param mixed $column
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function addSelect($column){
@@ -3380,7 +3889,7 @@ namespace {
         /**
          * Force the query to only return distinct results.
          *
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function distinct(){
@@ -3391,7 +3900,7 @@ namespace {
          * Set the table which the query is targeting.
          *
          * @param string $table
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function from($table){
@@ -3402,12 +3911,12 @@ namespace {
          * Add a join clause to the query.
          *
          * @param string $table
-         * @param string $first
+         * @param string $one
          * @param string $operator
          * @param string $two
          * @param string $type
          * @param bool $where
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function join($table, $one, $operator = null, $two = null, $type = 'inner', $where = false){
@@ -3418,7 +3927,7 @@ namespace {
          * Add a "join where" clause to the query.
          *
          * @param string $table
-         * @param string $first
+         * @param string $one
          * @param string $operator
          * @param string $two
          * @param string $type
@@ -3447,7 +3956,7 @@ namespace {
          * Add a "join where" clause to the query.
          *
          * @param string $table
-         * @param string $first
+         * @param string $one
          * @param string $operator
          * @param string $two
          * @return \Illuminate\Database\Query\Builder|static 
@@ -3475,7 +3984,7 @@ namespace {
          * Add a "right join where" clause to the query.
          *
          * @param string $table
-         * @param string $first
+         * @param string $one
          * @param string $operator
          * @param string $two
          * @return \Illuminate\Database\Query\Builder|static 
@@ -3491,7 +4000,7 @@ namespace {
          * @param string $sql
          * @param array $bindings
          * @param string $boolean
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function whereRaw($sql, $bindings = array(), $boolean = 'and'){
@@ -3517,7 +4026,7 @@ namespace {
          * @param array $values
          * @param string $boolean
          * @param bool $not
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function whereBetween($column, $values, $boolean = 'and', $not = false){
@@ -3578,7 +4087,7 @@ namespace {
          *
          * @param \Illuminate\Database\Query\Builder|static $query
          * @param string $boolean
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function addNestedWhereQuery($query, $boolean = 'and'){
@@ -3591,7 +4100,7 @@ namespace {
          * @param \Closure $callback
          * @param string $boolean
          * @param bool $not
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function whereExists($callback, $boolean = 'and', $not = false){
@@ -3640,7 +4149,7 @@ namespace {
          * @param mixed $values
          * @param string $boolean
          * @param bool $not
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function whereIn($column, $values, $boolean = 'and', $not = false){
@@ -3690,7 +4199,7 @@ namespace {
          * @param string $column
          * @param string $boolean
          * @param bool $not
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function whereNull($column, $boolean = 'and', $not = false){
@@ -3778,7 +4287,7 @@ namespace {
          *
          * @param string $method
          * @param string $parameters
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function dynamicWhere($method, $parameters){
@@ -3788,8 +4297,7 @@ namespace {
         /**
          * Add a "group by" clause to the query.
          *
-         * @param mixed $columns
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function groupBy(){
@@ -3803,7 +4311,7 @@ namespace {
          * @param string $operator
          * @param string $value
          * @param string $boolean
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function having($column, $operator = null, $value = null, $boolean = 'and'){
@@ -3829,7 +4337,7 @@ namespace {
          * @param string $sql
          * @param array $bindings
          * @param string $boolean
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function havingRaw($sql, $bindings = array(), $boolean = 'and'){
@@ -3853,7 +4361,7 @@ namespace {
          *
          * @param string $column
          * @param string $direction
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function orderBy($column, $direction = 'asc'){
@@ -3887,7 +4395,7 @@ namespace {
          *
          * @param string $sql
          * @param array $bindings
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function orderByRaw($sql, $bindings = array()){
@@ -3898,7 +4406,7 @@ namespace {
          * Set the "offset" value of the query.
          *
          * @param int $value
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function offset($value){
@@ -3920,7 +4428,7 @@ namespace {
          * Set the "limit" value of the query.
          *
          * @param int $value
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function limit($value){
@@ -3976,8 +4484,8 @@ namespace {
         /**
          * Lock the selected rows in the table.
          *
-         * @param bool $update
-         * @return \Illuminate\Database\Query\Builder 
+         * @param bool $value
+         * @return $this 
          * @static 
          */
         public static function lock($value = true){
@@ -4019,7 +4527,7 @@ namespace {
          *
          * @param \DateTime|int $minutes
          * @param string $key
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function remember($minutes, $key = null){
@@ -4041,7 +4549,7 @@ namespace {
          * Indicate that the results, if cached, should use the given cache tags.
          *
          * @param array|mixed $cacheTags
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function cacheTags($cacheTags){
@@ -4052,7 +4560,7 @@ namespace {
          * Indicate that the results, if cached, should use the given cache driver.
          *
          * @param string $cacheDriver
-         * @return \Illuminate\Database\Query\Builder|static 
+         * @return $this 
          * @static 
          */
         public static function cacheDriver($cacheDriver){
@@ -4294,7 +4802,8 @@ namespace {
          *
          * @param array $bindings
          * @param string $type
-         * @return \Illuminate\Database\Query\Builder 
+         * @return $this 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function setBindings($bindings, $type = 'where'){
@@ -4306,7 +4815,8 @@ namespace {
          *
          * @param mixed $value
          * @param string $type
-         * @return \Illuminate\Database\Query\Builder 
+         * @return $this 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function addBinding($value, $type = 'where'){
@@ -4317,7 +4827,7 @@ namespace {
          * Merge an array of bindings into our bindings.
          *
          * @param \Illuminate\Database\Query\Builder $query
-         * @return \Illuminate\Database\Query\Builder 
+         * @return $this 
          * @static 
          */
         public static function mergeBindings($query){
@@ -4350,20 +4860,9 @@ namespace {
     class Event extends \Illuminate\Support\Facades\Event{
         
         /**
-         * Create a new event dispatcher instance.
-         *
-         * @param \Illuminate\Container\Container $container
-         * @return void 
-         * @static 
-         */
-        public static function __construct($container = null){
-            \Illuminate\Events\Dispatcher::__construct($container);
-        }
-        
-        /**
          * Register an event listener with the dispatcher.
          *
-         * @param string|array $event
+         * @param string|array $events
          * @param mixed $listener
          * @param int $priority
          * @return void 
@@ -4495,6 +4994,16 @@ namespace {
          */
         public static function forget($event){
             \Illuminate\Events\Dispatcher::forget($event);
+        }
+        
+        /**
+         * Forget all of the queued listeners.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function forgetQueued(){
+            \Illuminate\Events\Dispatcher::forgetQueued();
         }
         
     }
@@ -4799,8 +5308,32 @@ namespace {
     class Form extends \Bootstrapper\Facades\Form{
         
         /**
-         * 
+         * Create a submit button element.
          *
+         * @param string|null $value The value of the submit button
+         * @param array $options The options
+         * @return string 
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function submit($value = null, $options = array()){
+            return \Bootstrapper\Form::submit($value, $options);
+        }
+        
+        /**
+         * Create a form label element.
+         *
+         * @param string $name The name of the object this label will be
+         *                             attached to
+         * @param string|null $value The text of the label
+         * @param array $options The options of the label
+         * @return string 
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
          * @static 
          */
         public static function label($name, $value = null, $options = array()){
@@ -4808,8 +5341,10 @@ namespace {
         }
         
         /**
-         * 
+         * Opens an inline form
          *
+         * @param array $attributes The attributes of the array
+         * @return string 
          * @static 
          */
         public static function inline($attributes = array()){
@@ -4817,8 +5352,10 @@ namespace {
         }
         
         /**
-         * 
+         * Opens a horizontal form
          *
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function horizontal($attributes = array()){
@@ -4826,8 +5363,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a validation block
          *
+         * @param string $type The type of validation
+         * @param string $label The label
+         * @param string $input The input
+         * @param array $attributes The attributes of the validation block
+         * @return string 
          * @static 
          */
         public static function validation($type, $label, $input, $attributes = array()){
@@ -4835,8 +5377,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a success validation block
          *
+         * @param string $label The label
+         * @param string $input The input
+         * @param array $attributes The attributes of the validation block
+         * @return string 
+         * @see Bootstrapper\\Form::validation()
          * @static 
          */
         public static function success($label, $input, $attributes = array()){
@@ -4844,8 +5391,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a warning validation block
          *
+         * @param string $label The label
+         * @param string $input The input
+         * @param array $attributes The attributes of the validation block
+         * @return string 
+         * @see Bootstrapper\\Form::validation()
          * @static 
          */
         public static function warning($label, $input, $attributes = array()){
@@ -4853,8 +5405,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an error validation block
          *
+         * @param string $label The label
+         * @param string $input The input
+         * @param array $attributes The attributes of the validation block
+         * @return string 
+         * @see Bootstrapper\\Form::validation()
          * @static 
          */
         public static function error($label, $input, $attributes = array()){
@@ -4862,8 +5419,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a feedback block with an icon
          *
+         * @param string $label The label
+         * @param string $input The input
+         * @param string $icon The icon
+         * @param array $attributes The attributes of the block
+         * @return string 
          * @static 
          */
         public static function feedback($label, $input, $icon, $attributes = array()){
@@ -4871,8 +5433,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a help block
          *
+         * @param string $helpText The help text
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function help($helpText, $attributes = array()){
@@ -4880,8 +5445,13 @@ namespace {
         }
         
         /**
-         * 
+         * Opens a horizontal form with a given model
          *
+         * @param mixed $model
+         * @param array $attributes
+         * @return string 
+         * @see Bootstrapper\Form::horizontal()
+         * @see Illuminate\Html::model()
          * @static 
          */
         public static function horizontalModel($model, $attributes = array()){
@@ -4889,8 +5459,13 @@ namespace {
         }
         
         /**
-         * 
+         * Opens a inline form with a given model
          *
+         * @param mixed $model
+         * @param array $attributes
+         * @return string 
+         * @see Bootstrapper\Form::inline()
+         * @see Illuminate\Html::model()
          * @static 
          */
         public static function inlineModel($model, $attributes = array()){
@@ -4898,17 +5473,35 @@ namespace {
         }
         
         /**
-         * 
+         * Create a select box field.
          *
+         * @param string $name
+         * @param array $list
+         * @param null $selected
+         * @param array $attributes
+         * @return string 
+         * @param string $name
+         * @param array $list
+         * @param string $selected
+         * @param array $options
+         * @return string 
          * @static 
          */
-        public static function select($name, $list = array(), $selected = null, $options = array()){
-            return \Bootstrapper\Form::select($name, $list, $selected, $options);
+        public static function select($name, $list = array(), $selected = null, $attributes = array()){
+            return \Bootstrapper\Form::select($name, $list, $selected, $attributes);
         }
         
         /**
-         * 
+         * Create a textarea input field.
          *
+         * @param string $name The name of the text area
+         * @param string|null $value The default value
+         * @param array $attributes The attributes of the text area
+         * @return string 
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
          * @static 
          */
         public static function textarea($name, $value = null, $attributes = array()){
@@ -4916,8 +5509,14 @@ namespace {
         }
         
         /**
-         * 
+         * Create a password input field.
          *
+         * @param string $name The name of the password input
+         * @param array $attributes The attributes of the input
+         * @return string 
+         * @param string $name
+         * @param array $options
+         * @return string 
          * @static 
          */
         public static function password($name, $attributes = array()){
@@ -4925,8 +5524,16 @@ namespace {
         }
         
         /**
-         * 
+         * Create a text input field.
          *
+         * @param string $name The name of the text input
+         * @param string|null $value The default value
+         * @param array $attributes The attributes of the input
+         * @return string 
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
          * @static 
          */
         public static function text($name, $value = null, $attributes = array()){
@@ -4934,8 +5541,16 @@ namespace {
         }
         
         /**
-         * 
+         * Create an e-mail input field.
          *
+         * @param string $name The name of the email input
+         * @param string|null $value The default value of the input
+         * @param array $attributes The attributes of the email input
+         * @return string 
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
          * @static 
          */
         public static function email($name, $value = null, $attributes = array()){
@@ -4943,8 +5558,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a datetime form element
          *
+         * @param string $name The name of the element
+         * @param null $value The value
+         * @param array $attributes The attributes
+         * @return string 
+         * @see Illuminate\FormBuilder\input()
          * @static 
          */
         public static function datetime($name, $value = null, $attributes = array()){
@@ -4952,8 +5572,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a datetime local element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
+         * @see Illuminate\FormBuilder\input()
          * @static 
          */
         public static function datetimelocal($name, $value = null, $attributes = array()){
@@ -4961,8 +5586,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a date input
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function date($name, $value = null, $attributes = array()){
@@ -4970,8 +5599,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a month input
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function month($name, $value = null, $attributes = array()){
@@ -4979,8 +5612,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a week form element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function week($name, $value = null, $attributes = array()){
@@ -4988,8 +5625,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a time form element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function time($name, $value = null, $attributes = array()){
@@ -4997,8 +5638,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a number form element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function number($name, $value = null, $attributes = array()){
@@ -5006,8 +5651,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a url form element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function url($name, $value = null, $attributes = array()){
@@ -5015,8 +5664,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a search element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function search($name, $value = null, $attributes = array()){
@@ -5024,8 +5677,12 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a tel element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function tel($name, $value = null, $attributes = array()){
@@ -5033,26 +5690,16 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a color element
          *
+         * @param string $name The name of the element
+         * @param null $value
+         * @param array $attributes
+         * @return string 
          * @static 
          */
         public static function color($name, $value = null, $attributes = array()){
             return \Bootstrapper\Form::color($name, $value, $attributes);
-        }
-        
-        /**
-         * Create a new form builder instance.
-         *
-         * @param \Illuminate\Routing\UrlGenerator $url
-         * @param \Illuminate\Html\HtmlBuilder $html
-         * @param string $csrfToken
-         * @return void 
-         * @static 
-         */
-        public static function __construct($html, $url, $csrfToken){
-            //Method inherited from \Illuminate\Html\FormBuilder            
-            \Bootstrapper\Form::__construct($html, $url, $csrfToken);
         }
         
         /**
@@ -5275,19 +5922,6 @@ namespace {
         }
         
         /**
-         * Create a submit button element.
-         *
-         * @param string $value
-         * @param array $options
-         * @return string 
-         * @static 
-         */
-        public static function submit($value = null, $options = array()){
-            //Method inherited from \Illuminate\Html\FormBuilder            
-            return \Bootstrapper\Form::submit($value, $options);
-        }
-        
-        /**
          * Create a button element.
          *
          * @param string $value
@@ -5364,7 +5998,7 @@ namespace {
          * Set the session store implementation.
          *
          * @param \Illuminate\Session\Store $session
-         * @return \Illuminate\Html\FormBuilder 
+         * @return $this 
          * @static 
          */
         public static function setSessionStore($session){
@@ -5395,34 +6029,6 @@ namespace {
         public static function hasMacro($name){
             //Method inherited from \Illuminate\Html\FormBuilder            
             return \Bootstrapper\Form::hasMacro($name);
-        }
-        
-        /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
-        public static function __callStatic($method, $parameters){
-            //Method inherited from \Illuminate\Html\FormBuilder            
-            return \Bootstrapper\Form::__callStatic($method, $parameters);
-        }
-        
-        /**
-         * Dynamically handle calls to the form builder.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            //Method inherited from \Illuminate\Html\FormBuilder            
-            return \Bootstrapper\Form::__call($method, $parameters);
         }
         
     }
@@ -5472,17 +6078,6 @@ namespace {
 
 
     class HTML extends \Illuminate\Support\Facades\HTML{
-        
-        /**
-         * Create a new HTML builder instance.
-         *
-         * @param \Illuminate\Routing\UrlGenerator $url
-         * @return void 
-         * @static 
-         */
-        public static function __construct($url = null){
-            \Illuminate\Html\HtmlBuilder::__construct($url);
-        }
         
         /**
          * Convert an HTML string to entities.
@@ -5721,32 +6316,6 @@ namespace {
             return \Illuminate\Html\HtmlBuilder::hasMacro($name);
         }
         
-        /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
-        public static function __callStatic($method, $parameters){
-            return \Illuminate\Html\HtmlBuilder::__callStatic($method, $parameters);
-        }
-        
-        /**
-         * Dynamically handle calls to the form builder.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Illuminate\Html\HtmlBuilder::__call($method, $parameters);
-        }
-        
     }
 
 
@@ -5755,7 +6324,7 @@ namespace {
         /**
          * Return the Request instance.
          *
-         * @return \Illuminate\Http\Request 
+         * @return $this 
          * @static 
          */
         public static function instance(){
@@ -5873,6 +6442,26 @@ namespace {
          */
         public static function secure(){
             return \Illuminate\Http\Request::secure();
+        }
+        
+        /**
+         * Returns the client IP address.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function ip(){
+            return \Illuminate\Http\Request::ip();
+        }
+        
+        /**
+         * Returns the client IP addresses.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function ips(){
+            return \Illuminate\Http\Request::ips();
         }
         
         /**
@@ -6136,6 +6725,7 @@ namespace {
         /**
          * Get the data format expected in the response.
          *
+         * @param string $default
          * @return string 
          * @static 
          */
@@ -6163,24 +6753,6 @@ namespace {
          */
         public static function session(){
             return \Illuminate\Http\Request::session();
-        }
-        
-        /**
-         * Constructor.
-         *
-         * @param array $query The GET parameters
-         * @param array $request The POST parameters
-         * @param array $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
-         * @param array $cookies The COOKIE parameters
-         * @param array $files The FILES parameters
-         * @param array $server The SERVER parameters
-         * @param string $content The raw body data
-         * @api 
-         * @static 
-         */
-        public static function __construct($query = array(), $request = array(), $attributes = array(), $cookies = array(), $files = array(), $server = array(), $content = null){
-            //Method inherited from \Symfony\Component\HttpFoundation\Request            
-            \Illuminate\Http\Request::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
         }
         
         /**
@@ -6268,17 +6840,6 @@ namespace {
         public static function duplicate($query = null, $request = null, $attributes = null, $cookies = null, $files = null, $server = null){
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
             return \Illuminate\Http\Request::duplicate($query, $request, $attributes, $cookies, $files, $server);
-        }
-        
-        /**
-         * Returns the request as a string.
-         *
-         * @return string The request
-         * @static 
-         */
-        public static function __toString(){
-            //Method inherited from \Symfony\Component\HttpFoundation\Request            
-            return \Illuminate\Http\Request::__toString();
         }
         
         /**
@@ -6690,9 +7251,9 @@ namespace {
         }
         
         /**
-         * Returns the requested URI.
+         * Returns the requested URI (path and query string).
          *
-         * @return string The raw URI (i.e. not urldecoded)
+         * @return string The raw URI (i.e. not URI decoded)
          * @api 
          * @static 
          */
@@ -6716,9 +7277,9 @@ namespace {
         }
         
         /**
-         * Generates a normalized URI for the Request.
+         * Generates a normalized URI (URL) for the Request.
          *
-         * @return string A normalized URI for the Request
+         * @return string A normalized URI (URL) for the Request
          * @see getQueryString()
          * @api 
          * @static 
@@ -6938,6 +7499,17 @@ namespace {
         }
         
         /**
+         * Get the default locale.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDefaultLocale(){
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getDefaultLocale();
+        }
+        
+        /**
          * Sets the locale.
          *
          * @param string $locale
@@ -7099,18 +7671,6 @@ namespace {
 
 
     class Lang extends \Illuminate\Support\Facades\Lang{
-        
-        /**
-         * Create a new translator instance.
-         *
-         * @param \Illuminate\Translation\LoaderInterface $loader
-         * @param string $locale
-         * @return void 
-         * @static 
-         */
-        public static function __construct($loader, $locale){
-            \Illuminate\Translation\Translator::__construct($loader, $locale);
-        }
         
         /**
          * Determine if a translation exists.
@@ -7414,18 +7974,6 @@ namespace {
         }
         
         /**
-         * Create a new log writer instance.
-         *
-         * @param \Monolog\Logger $monolog
-         * @param \Illuminate\Events\Dispatcher $dispatcher
-         * @return void 
-         * @static 
-         */
-        public static function __construct($monolog, $dispatcher = null){
-            \Illuminate\Log\Writer::__construct($monolog, $dispatcher);
-        }
-        
-        /**
          * Register a file log handler.
          *
          * @param string $path
@@ -7453,8 +8001,8 @@ namespace {
         /**
          * Register an error_log handler.
          *
-         * @param integer $messageType
          * @param string $level
+         * @param integer $messageType
          * @return void 
          * @static 
          */
@@ -7517,35 +8065,10 @@ namespace {
             return \Illuminate\Log\Writer::write();
         }
         
-        /**
-         * Dynamically handle error additions.
-         *
-         * @param string $method
-         * @param mixed $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Illuminate\Log\Writer::__call($method, $parameters);
-        }
-        
     }
 
 
     class Mail extends \Illuminate\Support\Facades\Mail{
-        
-        /**
-         * Create a new Mailer instance.
-         *
-         * @param \Illuminate\View\Factory $views
-         * @param \Swift_Mailer $swift
-         * @return void 
-         * @static 
-         */
-        public static function __construct($views, $swift, $events = null){
-            \Illuminate\Mail\Mailer::__construct($views, $swift, $events);
-        }
         
         /**
          * Set the global from address and name.
@@ -7592,11 +8115,11 @@ namespace {
          * @param array $data
          * @param \Closure|string $callback
          * @param string $queue
-         * @return void 
+         * @return mixed 
          * @static 
          */
         public static function queue($view, $data, $callback, $queue = null){
-            \Illuminate\Mail\Mailer::queue($view, $data, $callback, $queue);
+            return \Illuminate\Mail\Mailer::queue($view, $data, $callback, $queue);
         }
         
         /**
@@ -7606,11 +8129,11 @@ namespace {
          * @param string|array $view
          * @param array $data
          * @param \Closure|string $callback
-         * @return void 
+         * @return mixed 
          * @static 
          */
         public static function queueOn($queue, $view, $data, $callback){
-            \Illuminate\Mail\Mailer::queueOn($queue, $view, $data, $callback);
+            return \Illuminate\Mail\Mailer::queueOn($queue, $view, $data, $callback);
         }
         
         /**
@@ -7621,11 +8144,11 @@ namespace {
          * @param array $data
          * @param \Closure|string $callback
          * @param string $queue
-         * @return void 
+         * @return mixed 
          * @static 
          */
         public static function later($delay, $view, $data, $callback, $queue = null){
-            \Illuminate\Mail\Mailer::later($delay, $view, $data, $callback, $queue);
+            return \Illuminate\Mail\Mailer::later($delay, $view, $data, $callback, $queue);
         }
         
         /**
@@ -7636,11 +8159,11 @@ namespace {
          * @param string|array $view
          * @param array $data
          * @param \Closure|string $callback
-         * @return void 
+         * @return mixed 
          * @static 
          */
         public static function laterOn($queue, $delay, $view, $data, $callback){
-            \Illuminate\Mail\Mailer::laterOn($queue, $delay, $view, $data, $callback);
+            return \Illuminate\Mail\Mailer::laterOn($queue, $delay, $view, $data, $callback);
         }
         
         /**
@@ -7721,7 +8244,7 @@ namespace {
          * Set the log writer instance.
          *
          * @param \Illuminate\Log\Writer $logger
-         * @return \Illuminate\Mail\Mailer 
+         * @return $this 
          * @static 
          */
         public static function setLogger($logger){
@@ -7732,7 +8255,7 @@ namespace {
          * Set the queue manager instance.
          *
          * @param \Illuminate\Queue\QueueManager $queue
-         * @return \Illuminate\Mail\Mailer 
+         * @return $this 
          * @static 
          */
         public static function setQueue($queue){
@@ -7754,20 +8277,6 @@ namespace {
 
 
     class Paginator extends \Illuminate\Support\Facades\Paginator{
-        
-        /**
-         * Create a new pagination factory.
-         *
-         * @param \Symfony\Component\HttpFoundation\Request $request
-         * @param \Illuminate\View\Factory $view
-         * @param \Symfony\Component\Translation\TranslatorInterface $trans
-         * @param string $pageName
-         * @return void 
-         * @static 
-         */
-        public static function __construct($request, $view, $trans, $pageName = 'page'){
-            \Illuminate\Pagination\Factory::__construct($request, $view, $trans, $pageName);
-        }
         
         /**
          * Get a new paginator instance.
@@ -7955,18 +8464,72 @@ namespace {
     }
 
 
-    class Queue extends \Illuminate\Support\Facades\Queue{
+    class Password extends \Illuminate\Support\Facades\Password{
         
         /**
-         * Create a new queue manager instance.
+         * Send a password reminder to a user.
          *
-         * @param \Illuminate\Foundation\Application $app
+         * @param array $credentials
+         * @param \Closure $callback
+         * @return string 
+         * @static 
+         */
+        public static function remind($credentials, $callback = null){
+            return \Illuminate\Auth\Reminders\PasswordBroker::remind($credentials, $callback);
+        }
+        
+        /**
+         * Send the password reminder e-mail.
+         *
+         * @param \Illuminate\Auth\Reminders\RemindableInterface $user
+         * @param string $token
+         * @param \Closure $callback
+         * @return int 
+         * @static 
+         */
+        public static function sendReminder($user, $token, $callback = null){
+            return \Illuminate\Auth\Reminders\PasswordBroker::sendReminder($user, $token, $callback);
+        }
+        
+        /**
+         * Reset the password for the given token.
+         *
+         * @param array $credentials
+         * @param \Closure $callback
+         * @return mixed 
+         * @static 
+         */
+        public static function reset($credentials, $callback){
+            return \Illuminate\Auth\Reminders\PasswordBroker::reset($credentials, $callback);
+        }
+        
+        /**
+         * Set a custom password validator.
+         *
+         * @param \Closure $callback
          * @return void 
          * @static 
          */
-        public static function __construct($app){
-            \Illuminate\Queue\QueueManager::__construct($app);
+        public static function validator($callback){
+            \Illuminate\Auth\Reminders\PasswordBroker::validator($callback);
         }
+        
+        /**
+         * Get the user for the given credentials.
+         *
+         * @param array $credentials
+         * @return \Illuminate\Auth\Reminders\RemindableInterface 
+         * @throws \UnexpectedValueException
+         * @static 
+         */
+        public static function getUser($credentials){
+            return \Illuminate\Auth\Reminders\PasswordBroker::getUser($credentials);
+        }
+        
+    }
+
+
+    class Queue extends \Illuminate\Support\Facades\Queue{
         
         /**
          * Register an event listener for the daemon queue loop.
@@ -8080,15 +8643,13 @@ namespace {
         }
         
         /**
-         * Dynamically pass calls to the default connection.
+         * Determine if the application is in maintenance mode.
          *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
+         * @return bool 
          * @static 
          */
-        public static function __call($method, $parameters){
-            return \Illuminate\Queue\QueueManager::__call($method, $parameters);
+        public static function isDownForMaintenance(){
+            return \Illuminate\Queue\QueueManager::isDownForMaintenance();
         }
         
         /**
@@ -8206,17 +8767,6 @@ namespace {
 
 
     class Redirect extends \Illuminate\Support\Facades\Redirect{
-        
-        /**
-         * Create a new Redirector instance.
-         *
-         * @param \Illuminate\Routing\UrlGenerator $generator
-         * @return void 
-         * @static 
-         */
-        public static function __construct($generator){
-            \Illuminate\Routing\Redirector::__construct($generator);
-        }
         
         /**
          * Create a new redirect response to the "home" route.
@@ -8376,21 +8926,10 @@ namespace {
     class Redis extends \Illuminate\Support\Facades\Redis{
         
         /**
-         * Create a new Redis connection instance.
-         *
-         * @param array $servers
-         * @return void 
-         * @static 
-         */
-        public static function __construct($servers = array()){
-            \Illuminate\Redis\Database::__construct($servers);
-        }
-        
-        /**
          * Get a specific Redis connection instance.
          *
          * @param string $name
-         * @return \Predis\Connection\SingleConnectionInterface 
+         * @return \Predis\ClientInterface 
          * @static 
          */
         public static function connection($name = 'default'){
@@ -8409,18 +8948,6 @@ namespace {
             return \Illuminate\Redis\Database::command($method, $parameters);
         }
         
-        /**
-         * Dynamically make a Redis command.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Illuminate\Redis\Database::__call($method, $parameters);
-        }
-        
     }
 
 
@@ -8429,7 +8956,7 @@ namespace {
         /**
          * Return the Request instance.
          *
-         * @return \Illuminate\Http\Request 
+         * @return $this 
          * @static 
          */
         public static function instance(){
@@ -8547,6 +9074,26 @@ namespace {
          */
         public static function secure(){
             return \Illuminate\Http\Request::secure();
+        }
+        
+        /**
+         * Returns the client IP address.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function ip(){
+            return \Illuminate\Http\Request::ip();
+        }
+        
+        /**
+         * Returns the client IP addresses.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function ips(){
+            return \Illuminate\Http\Request::ips();
         }
         
         /**
@@ -8810,6 +9357,7 @@ namespace {
         /**
          * Get the data format expected in the response.
          *
+         * @param string $default
          * @return string 
          * @static 
          */
@@ -8837,24 +9385,6 @@ namespace {
          */
         public static function session(){
             return \Illuminate\Http\Request::session();
-        }
-        
-        /**
-         * Constructor.
-         *
-         * @param array $query The GET parameters
-         * @param array $request The POST parameters
-         * @param array $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
-         * @param array $cookies The COOKIE parameters
-         * @param array $files The FILES parameters
-         * @param array $server The SERVER parameters
-         * @param string $content The raw body data
-         * @api 
-         * @static 
-         */
-        public static function __construct($query = array(), $request = array(), $attributes = array(), $cookies = array(), $files = array(), $server = array(), $content = null){
-            //Method inherited from \Symfony\Component\HttpFoundation\Request            
-            \Illuminate\Http\Request::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
         }
         
         /**
@@ -8942,17 +9472,6 @@ namespace {
         public static function duplicate($query = null, $request = null, $attributes = null, $cookies = null, $files = null, $server = null){
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
             return \Illuminate\Http\Request::duplicate($query, $request, $attributes, $cookies, $files, $server);
-        }
-        
-        /**
-         * Returns the request as a string.
-         *
-         * @return string The request
-         * @static 
-         */
-        public static function __toString(){
-            //Method inherited from \Symfony\Component\HttpFoundation\Request            
-            return \Illuminate\Http\Request::__toString();
         }
         
         /**
@@ -9364,9 +9883,9 @@ namespace {
         }
         
         /**
-         * Returns the requested URI.
+         * Returns the requested URI (path and query string).
          *
-         * @return string The raw URI (i.e. not urldecoded)
+         * @return string The raw URI (i.e. not URI decoded)
          * @api 
          * @static 
          */
@@ -9390,9 +9909,9 @@ namespace {
         }
         
         /**
-         * Generates a normalized URI for the Request.
+         * Generates a normalized URI (URL) for the Request.
          *
-         * @return string A normalized URI for the Request
+         * @return string A normalized URI (URL) for the Request
          * @see getQueryString()
          * @api 
          * @static 
@@ -9612,6 +10131,17 @@ namespace {
         }
         
         /**
+         * Get the default locale.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDefaultLocale(){
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getDefaultLocale();
+        }
+        
+        /**
          * Sets the locale.
          *
          * @param string $locale
@@ -9778,18 +10308,6 @@ namespace {
 
 
     class Route extends \Illuminate\Support\Facades\Route{
-        
-        /**
-         * Create a new Router instance.
-         *
-         * @param \Illuminate\Events\Dispatcher $events
-         * @param \Illuminate\Container\Container $container
-         * @return void 
-         * @static 
-         */
-        public static function __construct($events, $container = null){
-            \Illuminate\Routing\Router::__construct($events, $container);
-        }
         
         /**
          * Register a new GET route with the router.
@@ -10007,7 +10525,7 @@ namespace {
         /**
          * Register a route matched event listener.
          *
-         * @param callable $callback
+         * @param string|callable $callback
          * @return void 
          * @static 
          */
@@ -10018,7 +10536,7 @@ namespace {
         /**
          * Register a new "before" filter with the router.
          *
-         * @param mixed $callback
+         * @param string|callable $callback
          * @return void 
          * @static 
          */
@@ -10029,7 +10547,7 @@ namespace {
         /**
          * Register a new "after" filter with the router.
          *
-         * @param mixed $callback
+         * @param string|callable $callback
          * @return void 
          * @static 
          */
@@ -10041,7 +10559,7 @@ namespace {
          * Register a new filter with the router.
          *
          * @param string $name
-         * @param mixed $callback
+         * @param string|callable $callback
          * @return void 
          * @static 
          */
@@ -10055,10 +10573,11 @@ namespace {
          * @param string $pattern
          * @param string $name
          * @param array|null $methods
+         * @return void 
          * @static 
          */
         public static function when($pattern, $name, $methods = null){
-            return \Illuminate\Routing\Router::when($pattern, $name, $methods);
+            \Illuminate\Routing\Router::when($pattern, $name, $methods);
         }
         
         /**
@@ -10092,12 +10611,23 @@ namespace {
          * Add a new route parameter binder.
          *
          * @param string $key
-         * @param callable $binder
+         * @param string|callable $binder
          * @return void 
          * @static 
          */
         public static function bind($key, $binder){
             \Illuminate\Routing\Router::bind($key, $binder);
+        }
+        
+        /**
+         * Create a class based binding using the IoC container.
+         *
+         * @param string $binding
+         * @return \Closure 
+         * @static 
+         */
+        public static function createClassBinding($binding){
+            return \Illuminate\Routing\Router::createClassBinding($binding);
         }
         
         /**
@@ -10377,11 +10907,151 @@ namespace {
          * Get the response for a given request.
          *
          * @param \Symfony\Component\HttpFoundation\Request $request
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @param int $type
+         * @param bool $catch
+         * @return \Illuminate\Http\Response 
          * @static 
          */
         public static function handle($request, $type = 1, $catch = true){
             return \Illuminate\Routing\Router::handle($request, $type, $catch);
+        }
+        
+    }
+
+
+    class Schema extends \Illuminate\Support\Facades\Schema{
+        
+        /**
+         * Determine if the given table exists.
+         *
+         * @param string $table
+         * @return bool 
+         * @static 
+         */
+        public static function hasTable($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
+        }
+        
+        /**
+         * Get the column listing for a given table.
+         *
+         * @param string $table
+         * @return array 
+         * @static 
+         */
+        public static function getColumnListing($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
+        }
+        
+        /**
+         * Determine if the given table has a given column.
+         *
+         * @param string $table
+         * @param string $column
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumn($table, $column){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
+        }
+        
+        /**
+         * Modify a table on the schema.
+         *
+         * @param string $table
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Schema\Blueprint 
+         * @static 
+         */
+        public static function table($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::table($table, $callback);
+        }
+        
+        /**
+         * Create a new table on the schema.
+         *
+         * @param string $table
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Schema\Blueprint 
+         * @static 
+         */
+        public static function create($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::create($table, $callback);
+        }
+        
+        /**
+         * Drop a table from the schema.
+         *
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
+         * @static 
+         */
+        public static function drop($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::drop($table);
+        }
+        
+        /**
+         * Drop a table from the schema if it exists.
+         *
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
+         * @static 
+         */
+        public static function dropIfExists($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::dropIfExists($table);
+        }
+        
+        /**
+         * Rename a table on the schema.
+         *
+         * @param string $from
+         * @param string $to
+         * @return \Illuminate\Database\Schema\Blueprint 
+         * @static 
+         */
+        public static function rename($from, $to){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::rename($from, $to);
+        }
+        
+        /**
+         * Get the database connection instance.
+         *
+         * @return \Illuminate\Database\Connection 
+         * @static 
+         */
+        public static function getConnection(){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::getConnection();
+        }
+        
+        /**
+         * Set the database connection instance.
+         *
+         * @param \Illuminate\Database\Connection
+         * @return $this 
+         * @static 
+         */
+        public static function setConnection($connection){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::setConnection($connection);
+        }
+        
+        /**
+         * Set the Schema Blueprint resolver callback.
+         *
+         * @param \Closure $resolver
+         * @return void 
+         * @static 
+         */
+        public static function blueprintResolver($resolver){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            \Illuminate\Database\Schema\MySqlBuilder::blueprintResolver($resolver);
         }
         
     }
@@ -10426,18 +11096,6 @@ namespace {
         }
         
         /**
-         * Create a new manager instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function __construct($app){
-            //Method inherited from \Illuminate\Support\Manager            
-            \Illuminate\Session\SessionManager::__construct($app);
-        }
-        
-        /**
          * Get a driver instance.
          *
          * @param string $driver
@@ -10454,7 +11112,7 @@ namespace {
          *
          * @param string $driver
          * @param \Closure $callback
-         * @return \Illuminate\Support\Manager|static 
+         * @return $this 
          * @static 
          */
         public static function extend($driver, $callback){
@@ -10471,19 +11129,6 @@ namespace {
         public static function getDrivers(){
             //Method inherited from \Illuminate\Support\Manager            
             return \Illuminate\Session\SessionManager::getDrivers();
-        }
-        
-        /**
-         * Dynamically call the default driver instance.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Illuminate\Session\SessionManager::__call($method, $parameters);
         }
         
         /**
@@ -10518,6 +11163,17 @@ namespace {
          */
         public static function setId($id){
             return \Illuminate\Session\Store::setId($id);
+        }
+        
+        /**
+         * Determine if this is a valid session ID.
+         *
+         * @param string $id
+         * @return bool 
+         * @static 
+         */
+        public static function isValidId($id){
+            return \Illuminate\Session\Store::isValidId($id);
         }
         
         /**
@@ -10691,7 +11347,7 @@ namespace {
          * @return void 
          * @static 
          */
-        public static function put($key, $value){
+        public static function put($key, $value = null){
             \Illuminate\Session\Store::put($key, $value);
         }
         
@@ -10945,17 +11601,6 @@ namespace {
     class SSH extends \Illuminate\Support\Facades\SSH{
         
         /**
-         * Create a new remote manager instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function __construct($app){
-            \Illuminate\Remote\RemoteManager::__construct($app);
-        }
-        
-        /**
          * Get a remote connection instance.
          *
          * @param string|array|mixed $name
@@ -11029,18 +11674,6 @@ namespace {
          */
         public static function setDefaultConnection($name){
             \Illuminate\Remote\RemoteManager::setDefaultConnection($name);
-        }
-        
-        /**
-         * Dynamically pass methods to the default connection.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Illuminate\Remote\RemoteManager::__call($method, $parameters);
         }
         
         /**
@@ -11188,18 +11821,6 @@ namespace {
 
 
     class URL extends \Illuminate\Support\Facades\URL{
-        
-        /**
-         * Create a new URL Generator instance.
-         *
-         * @param \Illuminate\Routing\RouteCollection $routes
-         * @param \Symfony\Component\HttpFoundation\Request $request
-         * @return void 
-         * @static 
-         */
-        public static function __construct($routes, $request){
-            \Illuminate\Routing\UrlGenerator::__construct($routes, $request);
-        }
         
         /**
          * Get the full URL for the current request.
@@ -11353,7 +11974,7 @@ namespace {
         /**
          * Set the current request instance.
          *
-         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param \Illuminate\Http\Request $request
          * @return void 
          * @static 
          */
@@ -11365,18 +11986,6 @@ namespace {
 
 
     class Validator extends \Illuminate\Support\Facades\Validator{
-        
-        /**
-         * Create a new Validator factory instance.
-         *
-         * @param \Symfony\Component\Translation\TranslatorInterface $translator
-         * @param \Illuminate\Container\Container $container
-         * @return void 
-         * @static 
-         */
-        public static function __construct($translator, $container = null){
-            \Illuminate\Validation\Factory::__construct($translator, $container);
-        }
         
         /**
          * Create a new Validator instance.
@@ -11478,19 +12087,6 @@ namespace {
     class View extends \Illuminate\Support\Facades\View{
         
         /**
-         * Create a new view factory instance.
-         *
-         * @param \Illuminate\View\Engines\EngineResolver $engines
-         * @param \Illuminate\View\ViewFinderInterface $finder
-         * @param \Illuminate\Events\Dispatcher $events
-         * @return void 
-         * @static 
-         */
-        public static function __construct($engines, $finder, $events){
-            \Illuminate\View\Factory::__construct($engines, $finder, $events);
-        }
-        
-        /**
          * Get the evaluated view contents for the given view.
          *
          * @param string $view
@@ -11569,6 +12165,7 @@ namespace {
          *
          * @param string $path
          * @return \Illuminate\View\Engines\EngineInterface 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function getEngineFromPath($path){
@@ -11615,6 +12212,7 @@ namespace {
          *
          * @param array|string $views
          * @param \Closure|string $callback
+         * @param int|null $priority
          * @return array 
          * @static 
          */
@@ -11842,6 +12440,7 @@ namespace {
         /**
          * Set the view finder instance.
          *
+         * @param \Illuminate\View\ViewFinderInterface $finder
          * @return void 
          * @static 
          */
@@ -11939,8 +12538,10 @@ namespace {
     class Accordion extends \Bootstrapper\Facades\Accordion{
         
         /**
-         * 
+         * Name the accordion
          *
+         * @param $name The name of the accordion
+         * @return $this 
          * @static 
          */
         public static function named($name){
@@ -11948,17 +12549,16 @@ namespace {
         }
         
         /**
-         * 
+         * Add the contents for the accordion. Should be an array of arrays
+         * <strong>Expected Keys</strong>:
+         * <ul>
+         * <li>title</li>
+         * <li>contents</li>
+         * <li>attributes (optional)</li>
+         * </ul>
          *
-         * @static 
-         */
-        public static function render(){
-            return \Bootstrapper\Accordion::render();
-        }
-        
-        /**
-         * 
-         *
+         * @param array $contents
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -11966,17 +12566,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets which panel should be opened. Numbering begins from 0.
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Accordion::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @param $integer int
+         * @return $this 
          * @static 
          */
         public static function open($integer){
@@ -11984,107 +12577,25 @@ namespace {
         }
         
         /**
-         * 
+         * Renders the accordion
          *
+         * @return string 
          * @static 
          */
-        public static function __toString(){
+        public static function render(){
+            return \Bootstrapper\Accordion::render();
+        }
+        
+        /**
+         * Set the attributes of the object
+         *
+         * @param array $attributes The attributes to use
+         * @return $this 
+         * @static 
+         */
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Accordion::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Accordion::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Accordion::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Accordion::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Accordion::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Accordion::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Accordion::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Accordion::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Accordion::__callStatic($method, $args);
+            return \Bootstrapper\Accordion::withAttributes($attributes);
         }
         
     }
@@ -12093,8 +12604,20 @@ namespace {
     class Alert extends \Bootstrapper\Facades\Alert{
         
         /**
-         * 
+         * Sets the type of the alert. The alert prefix is not assumed.
          *
+         * @param $type string
+         * @return $this 
+         * @static 
+         */
+        public static function setType($type){
+            return \Bootstrapper\Alert::setType($type);
+        }
+        
+        /**
+         * Renders the alert
+         *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -12102,8 +12625,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an info alert box
          *
+         * @param string $contents
+         * @return $this 
          * @static 
          */
         public static function info($contents = ''){
@@ -12111,8 +12636,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a success alert box
          *
+         * @param string $contents
+         * @return $this 
          * @static 
          */
         public static function success($contents = ''){
@@ -12120,8 +12647,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a warning alert box
          *
+         * @param string $contents
+         * @return $this 
          * @static 
          */
         public static function warning($contents = ''){
@@ -12129,8 +12658,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a danger alert box
          *
+         * @param string $contents
+         * @return $this 
          * @static 
          */
         public static function danger($contents = ''){
@@ -12138,8 +12669,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the alert box
          *
+         * @param $contents
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -12147,8 +12680,10 @@ namespace {
         }
         
         /**
-         * 
+         * Adds a close button with the given text
          *
+         * @param string $closer
+         * @return $this 
          * @static 
          */
         public static function close($closer = '&times;'){
@@ -12156,116 +12691,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
         public static function withAttributes($attributes){
-            return \Bootstrapper\Alert::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function __toString(){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Alert::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Alert::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Alert::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Alert::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Alert::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Alert::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Alert::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Alert::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Alert::__callStatic($method, $args);
+            return \Bootstrapper\Alert::withAttributes($attributes);
         }
         
     }
@@ -12274,8 +12708,9 @@ namespace {
     class Badge extends \Bootstrapper\Facades\Badge{
         
         /**
-         * 
+         * Renders the badge
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -12283,8 +12718,10 @@ namespace {
         }
         
         /**
-         * 
+         * Adds contents to the badge
          *
+         * @param $contents
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -12292,116 +12729,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
         public static function withAttributes($attributes){
-            return \Bootstrapper\Badge::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function __toString(){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Badge::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Badge::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Badge::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Badge::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Badge::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Badge::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Badge::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Badge::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Badge::__callStatic($method, $args);
+            return \Bootstrapper\Badge::withAttributes($attributes);
         }
         
     }
@@ -12410,8 +12746,9 @@ namespace {
     class Breadcrumb extends \Bootstrapper\Facades\Breadcrumb{
         
         /**
-         * 
+         * Renders the breadcrumb
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -12419,8 +12756,14 @@ namespace {
         }
         
         /**
-         * 
+         * Set the links for the breadcrumbs. Expects an array of the following:
+         * <ul>
+         * <li>An array, with keys <code>link</code> and <code>text</code></li>
+         * <li>A string for the active link
+         * </ul>
          *
+         * @param $links array
+         * @return $this 
          * @static 
          */
         public static function withLinks($links){
@@ -12428,107 +12771,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Breadcrumb::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Breadcrumb::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Breadcrumb::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Breadcrumb::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Breadcrumb::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Breadcrumb::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Breadcrumb::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Breadcrumb::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Breadcrumb::__callStatic($method, $args);
+            return \Bootstrapper\Breadcrumb::withAttributes($attributes);
         }
         
     }
@@ -12537,8 +12788,10 @@ namespace {
     class Button extends \Bootstrapper\Facades\Button{
         
         /**
-         * 
+         * Sets the type of the button
          *
+         * @param $type string The new type of the button. Assumes that the btn-
+         *              prefix is there
          * @static 
          */
         public static function setType($type){
@@ -12546,8 +12799,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size of the button
          *
+         * @param $size string The new size of the button. Assumes that the btn-
+         *              prefix is there
          * @static 
          */
         public static function setSize($size){
@@ -12555,8 +12810,9 @@ namespace {
         }
         
         /**
-         * 
+         * Renders the button
          *
+         * @return string as a string
          * @static 
          */
         public static function render(){
@@ -12564,8 +12820,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a button with class .btn-default and the given contents
          *
+         * @param string $contents The contents of the button The contents of the
+         *                         button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function normal($contents = ''){
@@ -12573,8 +12832,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-primary and the given contents
          *
+         * @param string $contents The contents of the button The contents of the
+         *                         button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function primary($contents = ''){
@@ -12582,8 +12844,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-success and the given contents
          *
+         * @param string $contents The contents of the button The contents of the
+         *                         button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function success($contents = ''){
@@ -12591,8 +12856,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-info and the given contents
          *
+         * @param string $contents The contents of the button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function info($contents = ''){
@@ -12600,8 +12867,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-warning and the given contents
          *
+         * @param string $contents The contents of the button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function warning($contents = ''){
@@ -12609,8 +12878,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-danger and the given contents
          *
+         * @param string $contents The contents of the button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function danger($contents = ''){
@@ -12618,8 +12889,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an button with class .btn-link and the given contents
          *
+         * @param string $contents The contents of the button
+         * @return \Bootstrapper\Button 
          * @static 
          */
         public static function link($contents = ''){
@@ -12627,17 +12900,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button to be a block button
          *
-         * @static 
-         */
-        public static function __toString(){
-            return \Bootstrapper\Button::__toString();
-        }
-        
-        /**
-         * 
-         *
+         * @return $this 
          * @static 
          */
         public static function block(){
@@ -12645,8 +12910,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the button a submit button
          *
+         * @return $this 
          * @static 
          */
         public static function submit(){
@@ -12654,8 +12920,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the button a reset button
          *
+         * @return $this 
          * @static 
          */
         public static function reset(){
@@ -12663,17 +12930,20 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the value of the button
          *
+         * @param $value string The new value of the button
+         * @return $this 
          * @static 
          */
-        public static function withValue($value){
+        public static function withValue($value = ''){
             return \Bootstrapper\Button::withValue($value);
         }
         
         /**
-         * 
+         * Sets the button to be a large button
          *
+         * @return $this 
          * @static 
          */
         public static function large(){
@@ -12681,8 +12951,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button to be a small button
          *
+         * @return $this 
          * @static 
          */
         public static function small(){
@@ -12690,8 +12961,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button to be an extra small button
          *
+         * @return $this 
          * @static 
          */
         public static function extraSmall(){
@@ -12699,17 +12971,11 @@ namespace {
         }
         
         /**
-         * 
+         * More descriptive version of withAttributes
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Button::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @see withAttributes
+         * @param array $attributes The attributes to add
+         * @return $this 
          * @static 
          */
         public static function addAttributes($attributes){
@@ -12717,8 +12983,9 @@ namespace {
         }
         
         /**
-         * 
+         * Disables the button
          *
+         * @return $this 
          * @static 
          */
         public static function disable(){
@@ -12726,8 +12993,12 @@ namespace {
         }
         
         /**
-         * 
+         * Adds an icon to the button
          *
+         * @param $icon string The icon to add
+         * @param bool $append Whether the icon should be added after the text or
+         *                     before
+         * @return $this 
          * @static 
          */
         public static function withIcon($icon, $append = true){
@@ -12735,8 +13006,11 @@ namespace {
         }
         
         /**
-         * 
+         * Descriptive version of withIcon(). Adds the icon after the text
          *
+         * @see withIcon
+         * @param $icon string The icon to add
+         * @return $this 
          * @static 
          */
         public static function appendIcon($icon){
@@ -12744,8 +13018,10 @@ namespace {
         }
         
         /**
-         * 
+         * Descriptive version of withIcon(). Adds the icon before the text
          *
+         * @param $icon string The icon to add
+         * @return $this 
          * @static 
          */
         public static function prependIcon($icon){
@@ -12753,8 +13029,10 @@ namespace {
         }
         
         /**
-         * 
+         * Adds a url to the button, making it a link. This will generate an <a> tag
          *
+         * @param $url string The url to link to
+         * @return $this 
          * @static 
          */
         public static function asLinkTo($url){
@@ -12762,8 +13040,9 @@ namespace {
         }
         
         /**
-         * 
+         * Get the type of the button
          *
+         * @return string 
          * @static 
          */
         public static function getType(){
@@ -12771,8 +13050,9 @@ namespace {
         }
         
         /**
-         * 
+         * Get the value of the button. Does not return the value with the icon
          *
+         * @return string 
          * @static 
          */
         public static function getValue(){
@@ -12780,97 +13060,25 @@ namespace {
         }
         
         /**
-         * Hotswap the underlying instance behind the facade.
+         * Gets the attributes of the button
          *
-         * @param mixed $instance
-         * @return void 
+         * @return array 
          * @static 
          */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Button::swap($instance);
+        public static function getAttributes(){
+            return \Bootstrapper\Button::getAttributes();
         }
         
         /**
-         * Initiate a mock expectation on the facade.
+         * Set the attributes of the object
          *
-         * @param mixed
-         * @return \Mockery\Expectation 
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Button::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Button::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Button::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Button::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Button::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Button::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Button::__callStatic($method, $args);
+        public static function withAttributes($attributes){
+            //Method inherited from \Bootstrapper\RenderedObject            
+            return \Bootstrapper\Button::withAttributes($attributes);
         }
         
     }
@@ -12879,8 +13087,9 @@ namespace {
     class ButtonGroup extends \Bootstrapper\Facades\ButtonGroup{
         
         /**
-         * 
+         * Renders the button group
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -12888,8 +13097,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size of the button group
          *
+         * @param $size
          * @static 
          */
         public static function setSize($size){
@@ -12897,8 +13107,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be large
          *
+         * @return $this 
          * @static 
          */
         public static function large(){
@@ -12906,8 +13117,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be small
          *
+         * @return $this 
          * @static 
          */
         public static function small(){
@@ -12915,8 +13127,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be extra small
          *
+         * @return $this 
          * @static 
          */
         public static function extraSmall(){
@@ -12924,8 +13137,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be radio
          *
+         * @param array $contents
+         * @return $this 
          * @static 
          */
         public static function radio($contents){
@@ -12933,8 +13148,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be a checkbox
          *
+         * @param array $contents
+         * @return $this 
          * @static 
          */
         public static function checkbox($contents){
@@ -12942,8 +13159,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the button group
          *
+         * @param array $contents
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -12951,8 +13170,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button group to be vertical
          *
+         * @return $this 
          * @static 
          */
         public static function vertical(){
@@ -12960,8 +13180,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the button group
          *
+         * @param $type
+         * @return $this 
          * @static 
          */
         public static function asType($type){
@@ -12969,7 +13191,7 @@ namespace {
         }
         
         /**
-         * 
+         * Renders the contents of the button group
          *
          * @return string 
          * @static 
@@ -12979,107 +13201,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\ButtonGroup::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ButtonGroup::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ButtonGroup::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ButtonGroup::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ButtonGroup::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ButtonGroup::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ButtonGroup::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ButtonGroup::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ButtonGroup::__callStatic($method, $args);
+            return \Bootstrapper\ButtonGroup::withAttributes($attributes);
         }
         
     }
@@ -13088,8 +13218,10 @@ namespace {
     class Carousel extends \Bootstrapper\Facades\Carousel{
         
         /**
-         * 
+         * Names the carousel
          *
+         * @param string $name The name of the carousel
+         * @return $this 
          * @static 
          */
         public static function named($name){
@@ -13097,17 +13229,12 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the carousel
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Carousel::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @param array $contents The new contents. Should be an array of arrays,
+         *                        with the inner keys being "image", "alt" and
+         *                        (optionally) "caption"
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -13115,8 +13242,9 @@ namespace {
         }
         
         /**
-         * 
+         * Renders the carousel
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -13124,107 +13252,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Carousel::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Carousel::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Carousel::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Carousel::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Carousel::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Carousel::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Carousel::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Carousel::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Carousel::__callStatic($method, $args);
+            return \Bootstrapper\Carousel::withAttributes($attributes);
         }
         
     }
@@ -13233,17 +13269,9 @@ namespace {
     class ControlGroup extends \Bootstrapper\Facades\ControlGroup{
         
         /**
-         * 
+         * Renders the control group
          *
-         * @static 
-         */
-        public static function __construct($formBuilder){
-            \Bootstrapper\ControlGroup::__construct($formBuilder);
-        }
-        
-        /**
-         * 
-         *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -13251,8 +13279,10 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the control group
          *
+         * @param array $attributes The attributes array
+         * @return $this 
          * @static 
          */
         public static function withAttributes($attributes){
@@ -13260,26 +13290,38 @@ namespace {
         }
         
         /**
-         * 
+         * Adds the contents to the control group
          *
+         * @param string $contents The contents of the control group
+         * @param null $controlSize |int The size of the form control
+         * @return $this 
+         * @throws ControlGroupException If is $controlSize set and not between 1
+         *                            and 12
          * @static 
          */
-        public static function withContents($contents){
-            return \Bootstrapper\ControlGroup::withContents($contents);
+        public static function withContents($contents, $controlSize = null){
+            return \Bootstrapper\ControlGroup::withContents($contents, $controlSize);
         }
         
         /**
-         * 
+         * Sets the label of the control group
          *
+         * @param string $label The label
+         * @param null $labelSize |int The size of the label
+         * @return $this 
+         * @throws ControlGroupException If is $labelSize set and not between 1
+         *                          and 12
          * @static 
          */
-        public static function withLabel($label, $labelSize = 2){
+        public static function withLabel($label, $labelSize = null){
             return \Bootstrapper\ControlGroup::withLabel($label, $labelSize);
         }
         
         /**
-         * 
+         * Adds a help block
          *
+         * @param string $help The help information
+         * @return $this 
          * @static 
          */
         public static function withHelp($help){
@@ -13287,116 +13329,39 @@ namespace {
         }
         
         /**
-         * 
+         * Generates a full control group with a label, control and help block
          *
+         * @param string $label The label
+         * @param string $control The form control
+         * @param string $help The help text
+         * @param int $labelSize The size of the label
+         * @param int $controlSize The size of the form control
+         * @return $this 
+         * @throws ControlGroupException if the sizes are invalid
          * @static 
          */
-        public static function generate($label, $control, $help = null, $labelSize = 2){
-            return \Bootstrapper\ControlGroup::generate($label, $control, $help, $labelSize);
+        public static function generate($label, $control, $help = null, $labelSize = null, $controlSize = null){
+            return \Bootstrapper\ControlGroup::generate($label, $control, $help, $labelSize, $controlSize);
         }
         
         /**
-         * 
+         * Renders the label
          *
+         * @return string 
          * @static 
          */
-        public static function __toString(){
-            //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\ControlGroup::__toString();
+        public static function renderLabel(){
+            return \Bootstrapper\ControlGroup::renderLabel();
         }
         
         /**
-         * Hotswap the underlying instance behind the facade.
+         * Creates the div to surround the form control
          *
-         * @param mixed $instance
-         * @return void 
+         * @return string 
          * @static 
          */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ControlGroup::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ControlGroup::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ControlGroup::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ControlGroup::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ControlGroup::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ControlGroup::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ControlGroup::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ControlGroup::__callStatic($method, $args);
+        public static function createControlDiv(){
+            return \Bootstrapper\ControlGroup::createControlDiv();
         }
         
     }
@@ -13405,8 +13370,10 @@ namespace {
     class DropdownButton extends \Bootstrapper\Facades\DropdownButton{
         
         /**
-         * 
+         * Set the label of the button
          *
+         * @param $label
+         * @return $this 
          * @static 
          */
         public static function labelled($label){
@@ -13414,8 +13381,10 @@ namespace {
         }
         
         /**
-         * 
+         * Set the contents of the button
          *
+         * @param array $contents The contents of the dropdown button
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -13423,8 +13392,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the button
          *
+         * @param string $type The type of the button
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -13432,8 +13403,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size of the button
          *
+         * @param string $size The size of the button
+         * @return $this 
          * @static 
          */
         public static function setSize($size){
@@ -13441,8 +13414,9 @@ namespace {
         }
         
         /**
-         * 
+         * Splits the button
          *
+         * @return $this 
          * @static 
          */
         public static function split(){
@@ -13450,8 +13424,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button to drop up
          *
+         * @return $this 
          * @static 
          */
         public static function dropup(){
@@ -13459,8 +13434,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a normal dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function normal($label = ''){
@@ -13468,8 +13445,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a primary dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function primary($label = ''){
@@ -13477,8 +13456,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a danger dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function danger($label = ''){
@@ -13486,8 +13467,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a warning dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function warning($label = ''){
@@ -13495,8 +13478,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a success dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function success($label = ''){
@@ -13504,8 +13489,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a info dropdown button
          *
+         * @param string $label The label
+         * @return $this 
          * @static 
          */
         public static function info($label = ''){
@@ -13513,8 +13500,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size to large
          *
+         * @return $this 
          * @static 
          */
         public static function large(){
@@ -13522,8 +13510,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size to small
          *
+         * @return $this 
          * @static 
          */
         public static function small(){
@@ -13531,8 +13520,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size to extra small
          *
+         * @return $this 
          * @static 
          */
         public static function extraSmall(){
@@ -13540,8 +13530,9 @@ namespace {
         }
         
         /**
-         * 
+         * Renders the dropdown button
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -13549,107 +13540,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\DropdownButton::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\DropdownButton::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\DropdownButton::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\DropdownButton::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\DropdownButton::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\DropdownButton::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\DropdownButton::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\DropdownButton::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\DropdownButton::__callStatic($method, $args);
+            return \Bootstrapper\DropdownButton::withAttributes($attributes);
         }
         
     }
@@ -13658,17 +13557,10 @@ namespace {
     class Helpers extends \Bootstrapper\Facades\Helpers{
         
         /**
-         * 
+         * Slugifies a string
          *
-         * @static 
-         */
-        public static function __construct($config){
-            \Bootstrapper\Helpers::__construct($config);
-        }
-        
-        /**
-         * 
-         *
+         * @param string $string
+         * @return mixed 
          * @static 
          */
         public static function slug($string){
@@ -13676,21 +13568,36 @@ namespace {
         }
         
         /**
-         * 
+         * Outputs a link to the Bootstrap CDN
          *
+         * @param bool $withTheme Gets the bootstrap theme as well
+         * @return string 
          * @static 
          */
-        public static function css($helper = true){
-            return \Bootstrapper\Helpers::css($helper);
+        public static function css($withTheme = true){
+            return \Bootstrapper\Helpers::css($withTheme);
         }
         
         /**
-         * 
+         * Outputs a link to the Jquery and Bootstrap CDN
          *
+         * @return string 
          * @static 
          */
         public static function js(){
             return \Bootstrapper\Helpers::js();
+        }
+        
+        /**
+         * Generate an id of the form "x-class-name-x". These should always be
+         * unique.
+         *
+         * @param \Bootstrapper\RenderedObject $caller The object that called this
+         * @return string A unique id
+         * @static 
+         */
+        public static function generateId($caller){
+            return \Bootstrapper\Helpers::generateId($caller);
         }
         
     }
@@ -13699,30 +13606,14 @@ namespace {
     class Icon extends \Bootstrapper\Facades\Icon{
         
         /**
-         * 
+         * Creates a span link with the correct icon link
          *
-         * @static 
-         */
-        public static function __construct($config){
-            \Bootstrapper\Icon::__construct($config);
-        }
-        
-        /**
-         * 
-         *
+         * @param string $icon The icon name
+         * @return string 
          * @static 
          */
         public static function create($icon){
             return \Bootstrapper\Icon::create($icon);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function __call($method, $parameters){
-            return \Bootstrapper\Icon::__call($method, $parameters);
         }
         
     }
@@ -13731,8 +13622,9 @@ namespace {
     class InputGroup extends \Bootstrapper\Facades\InputGroup{
         
         /**
-         * 
+         * Renders the input group
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -13740,8 +13632,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the input group
          *
+         * @param string $contents The new contents
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -13749,17 +13643,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the size of the input group
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\InputGroup::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @param string $size The new size
+         * @return $this 
          * @static 
          */
         public static function setSize($size){
@@ -13767,8 +13654,11 @@ namespace {
         }
         
         /**
-         * 
+         * Prepends something to the input
          *
+         * @param string $prepend The value to prepend
+         * @param bool $isButton Whether the value is a button
+         * @return $this 
          * @static 
          */
         public static function prepend($prepend, $isButton = false){
@@ -13776,8 +13666,10 @@ namespace {
         }
         
         /**
-         * 
+         * Prepend a button
          *
+         * @param string $button The button to prepend
+         * @return $this 
          * @static 
          */
         public static function prependButton($button){
@@ -13785,8 +13677,11 @@ namespace {
         }
         
         /**
-         * 
+         * Appends something to the input
          *
+         * @param string $append The value to append
+         * @param bool $isButton Whether the value is a button
+         * @return $this 
          * @static 
          */
         public static function append($append, $isButton = false){
@@ -13794,8 +13689,10 @@ namespace {
         }
         
         /**
-         * 
+         * Append a button
          *
+         * @param string $button The button to append
+         * @return $this 
          * @static 
          */
         public static function appendButton($button){
@@ -13803,8 +13700,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the input group large
          *
+         * @return $this 
          * @static 
          */
         public static function large(){
@@ -13812,8 +13710,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the input group small
          *
+         * @return $this 
          * @static 
          */
         public static function small(){
@@ -13821,107 +13720,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\InputGroup::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\InputGroup::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\InputGroup::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\InputGroup::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\InputGroup::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\InputGroup::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\InputGroup::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\InputGroup::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\InputGroup::__callStatic($method, $args);
+            return \Bootstrapper\InputGroup::withAttributes($attributes);
         }
         
     }
@@ -13930,8 +13737,10 @@ namespace {
     class Image extends \Bootstrapper\Facades\Image{
         
         /**
-         * 
+         * Renders the image
          *
+         * @return string 
+         * @throws ImageException If the image source is not set
          * @static 
          */
         public static function render(){
@@ -13939,8 +13748,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the source of the image
          *
+         * @param string $source The source of the image
+         * @return $this 
          * @static 
          */
         public static function withSource($source){
@@ -13948,8 +13759,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the alt text of the image
          *
+         * @param string $alt The alt text of the image
+         * @return $this 
          * @static 
          */
         public static function withAlt($alt){
@@ -13957,17 +13770,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the image to be responsive
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Image::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @return $this 
          * @static 
          */
         public static function responsive(){
@@ -13975,8 +13780,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a rounded image
          *
+         * @param null|string $src The source of the image. Pass null to use the
+         *                         previous value of the source
+         * @param null|string $alt The alt text of the image. Pass null to use
+         *                         the previous value
+         * @return $this 
          * @static 
          */
         public static function rounded($src = null, $alt = null){
@@ -13984,8 +13794,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a circle image
          *
+         * @param null|string $src The source of the image. Pass null to use the
+         *                         previous value of the source
+         * @param null|string $alt The alt text of the image. Pass null to use
+         *                         the previous value
+         * @return $this 
          * @static 
          */
         public static function circle($src = null, $alt = null){
@@ -13993,8 +13808,13 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a thumbnail image
          *
+         * @param null|string $src The source of the image. Pass null to use the
+         *                         previous value of the source
+         * @param null|string $alt The alt text of the image. Pass null to use
+         *                         the previous value
+         * @return $this 
          * @static 
          */
         public static function thumbnail($src = null, $alt = null){
@@ -14002,8 +13822,11 @@ namespace {
         }
         
         /**
-         * 
+         * Adds a class to the attributes
          *
+         * @param string $class The class we need to add to the image
+         * @internal Normally we'd use the Attributes object but we don't have
+         *                      access to it at this point :-(
          * @static 
          */
         public static function addClass($class){
@@ -14011,107 +13834,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Image::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Image::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Image::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Image::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Image::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Image::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Image::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Image::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Image::__callStatic($method, $args);
+            return \Bootstrapper\Image::withAttributes($attributes);
         }
         
     }
@@ -14120,8 +13851,9 @@ namespace {
     class Label extends \Bootstrapper\Facades\Label{
         
         /**
-         * 
+         * Renders the label
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -14129,8 +13861,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the label
          *
+         * @param string $contents The new contents of the label
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -14138,17 +13872,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the label. Assumes that the label- prefix is already set
          *
-         * @static 
-         */
-        public static function primary($contents = ''){
-            return \Bootstrapper\Label::primary($contents);
-        }
-        
-        /**
-         * 
-         *
+         * @param string $type The new type
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -14156,8 +13883,21 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a primary label
          *
+         * @param string $contents The contents of the label
+         * @return $this 
+         * @static 
+         */
+        public static function primary($contents = ''){
+            return \Bootstrapper\Label::primary($contents);
+        }
+        
+        /**
+         * Creates a success label
+         *
+         * @param string $contents The contents of the label
+         * @return $this 
          * @static 
          */
         public static function success($contents = ''){
@@ -14165,8 +13905,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an info label
          *
+         * @param string $contents The contents of the label
+         * @return $this 
          * @static 
          */
         public static function info($contents = ''){
@@ -14174,8 +13916,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a warning label
          *
+         * @param string $contents The contents of the label
+         * @return $this 
          * @static 
          */
         public static function warning($contents = ''){
@@ -14183,8 +13927,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a danger label
          *
+         * @param string $contents The contents of the label
+         * @return $this 
          * @static 
          */
         public static function danger($contents = ''){
@@ -14192,8 +13938,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a label
          *
+         * @param string $contents The contents of the label
+         * @param string $type The type to use
+         * @return $this 
          * @static 
          */
         public static function create($contents, $type = 'label-default'){
@@ -14201,8 +13950,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a normal label
          *
+         * @param string $contents The contents of the label
+         * @return $this 
          * @static 
          */
         public static function normal($contents = ''){
@@ -14210,107 +13961,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Label::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Label::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Label::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Label::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Label::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Label::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Label::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Label::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Label::__callStatic($method, $args);
+            return \Bootstrapper\Label::withAttributes($attributes);
         }
         
     }
@@ -14319,8 +13978,10 @@ namespace {
     class MediaObject extends \Bootstrapper\Facades\MediaObject{
         
         /**
-         * 
+         * Renders the media object
          *
+         * @return string 
+         * @throws MediaObjectException if there is no contents
          * @static 
          */
         public static function render(){
@@ -14328,8 +13989,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the media object
          *
+         * @param array $contents The contents of the media object
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -14337,8 +14000,9 @@ namespace {
         }
         
         /**
-         * 
+         * Force the media object to become a list
          *
+         * @return $this 
          * @static 
          */
         public static function asList(){
@@ -14346,107 +14010,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\MediaObject::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\MediaObject::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\MediaObject::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\MediaObject::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\MediaObject::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\MediaObject::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\MediaObject::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\MediaObject::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\MediaObject::__callStatic($method, $args);
+            return \Bootstrapper\MediaObject::withAttributes($attributes);
         }
         
     }
@@ -14455,8 +14027,9 @@ namespace {
     class Modal extends \Bootstrapper\Facades\Modal{
         
         /**
-         * 
+         * Renders the modal
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -14464,17 +14037,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the title of the modal
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Modal::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @param string $title
+         * @return $this 
          * @static 
          */
         public static function withTitle($title){
@@ -14482,8 +14048,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the body of the modal
          *
+         * @param string $body The new body of the modal
+         * @return $this 
          * @static 
          */
         public static function withBody($body){
@@ -14491,8 +14059,10 @@ namespace {
         }
         
         /**
-         * 
+         * Set the footer of the modal
          *
+         * @param string $footer The footer
+         * @return $this 
          * @static 
          */
         public static function withFooter($footer){
@@ -14500,8 +14070,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the name of the modal
          *
+         * @param string $name The name of the modal
+         * @return $this 
          * @static 
          */
         public static function named($name){
@@ -14509,8 +14081,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the button
          *
+         * @param \Bootstrapper\Button $button The button to open the modal with
+         * @return $this 
          * @static 
          */
         public static function withButton($button = null){
@@ -14518,107 +14092,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Modal::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Modal::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Modal::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Modal::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Modal::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Modal::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Modal::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Modal::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Modal::__callStatic($method, $args);
+            return \Bootstrapper\Modal::withAttributes($attributes);
         }
         
     }
@@ -14627,17 +14109,9 @@ namespace {
     class Navbar extends \Bootstrapper\Facades\Navbar{
         
         /**
-         * 
+         * Renders the navbar
          *
-         * @static 
-         */
-        public static function __construct($url){
-            \Bootstrapper\Navbar::__construct($url);
-        }
-        
-        /**
-         * 
-         *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -14645,8 +14119,12 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the brand of the navbar
          *
+         * @param string $brand The brand
+         * @param null|string $link The link. If not set we default to linking to
+         *                           '/' using the UrlGenerator
+         * @return $this 
          * @static 
          */
         public static function withBrand($brand, $link = null){
@@ -14654,17 +14132,12 @@ namespace {
         }
         
         /**
-         * 
+         * Adds some content to the navbar
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Navbar::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @param mixed $content Anything that can become a string! If you pass in a
+         *                       Bootstrapper\Navigation object we'll make sure
+         *                       it's a navbar on render.
+         * @return $this 
          * @static 
          */
         public static function withContent($content){
@@ -14672,8 +14145,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the navbar to be inverse
          *
+         * @return $this 
          * @static 
          */
         public static function inverse(){
@@ -14681,8 +14155,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the position to top
          *
+         * @return $this 
          * @static 
          */
         public static function staticTop(){
@@ -14690,8 +14165,11 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the navbar
          *
+         * @param string $type The type of the navbar. Assumes that the navbar-
+         *                     prefix is there
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -14699,8 +14177,11 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the position of the navbar
          *
+         * @param string $position The position of the navbar. Assumes that the
+         *                         navbar- prefix is there
+         * @return $this 
          * @static 
          */
         public static function setPosition($position){
@@ -14708,8 +14189,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the position of the navbar to the top
          *
+         * @return $this 
          * @static 
          */
         public static function top(){
@@ -14717,8 +14199,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the position of the navbar to the bottom
          *
+         * @return $this 
          * @static 
          */
         public static function bottom(){
@@ -14726,8 +14209,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a navbar with a position and attributes
          *
+         * @param string $position The position of the navbar
+         * @param array $attributes The attributes of the navbar
+         * @return $this 
          * @static 
          */
         public static function create($position, $attributes = array()){
@@ -14735,107 +14221,25 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the navbar to be fluid
          *
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function fluid(){
+            return \Bootstrapper\Navbar::fluid();
+        }
+        
+        /**
+         * Set the attributes of the object
+         *
+         * @param array $attributes The attributes to use
+         * @return $this 
+         * @static 
+         */
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Navbar::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navbar::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navbar::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navbar::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navbar::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navbar::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navbar::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navbar::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navbar::__callStatic($method, $args);
+            return \Bootstrapper\Navbar::withAttributes($attributes);
         }
         
     }
@@ -14844,17 +14248,9 @@ namespace {
     class Navigation extends \Bootstrapper\Facades\Navigation{
         
         /**
-         * 
+         * Renders the navigation object
          *
-         * @static 
-         */
-        public static function __construct($urlGenerator){
-            \Bootstrapper\Navigation::__construct($urlGenerator);
-        }
-        
-        /**
-         * 
-         *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -14862,26 +14258,25 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a pills navigation block
          *
+         * @param array $links The links
+         * @param array $attributes The attributes. Does not overwrite the
+         *                          previous values if not set
+         * @see Bootstrapper\Navigatation::$links
+         * @return $this 
          * @static 
          */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Navigation::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function pills($links = array(), $attributes = array()){
+        public static function pills($links = array(), $attributes = null){
             return \Bootstrapper\Navigation::pills($links, $attributes);
         }
         
         /**
-         * 
+         * Sets the links of the navigation object
          *
+         * @param array $links The links
+         * @return $this 
+         * @see Bootstrapper\Navigation::$links
          * @static 
          */
         public static function links($links){
@@ -14889,17 +14284,23 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a navigation tab object.
          *
+         * @param array $links The links to be passed in
+         * @param array $attributes The attributes of the navigation object. Will
+         *                          overwrite unless not set.
+         * @return $this 
          * @static 
          */
-        public static function tabs($links = array(), $attributes = array()){
+        public static function tabs($links = array(), $attributes = null){
             return \Bootstrapper\Navigation::tabs($links, $attributes);
         }
         
         /**
-         * 
+         * Sets the autorouting. Pass false to turn it off, true to turn it on
          *
+         * @param bool $autoroute Whether the autorouting should be on
+         * @return $this 
          * @static 
          */
         public static function autoroute($autoroute){
@@ -14907,8 +14308,9 @@ namespace {
         }
         
         /**
-         * 
+         * Turns the navigation object into one for navbars
          *
+         * @return $this 
          * @static 
          */
         public static function navbar(){
@@ -14916,8 +14318,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the navigation links justified
          *
+         * @return $this 
          * @static 
          */
         public static function justified(){
@@ -14925,8 +14328,9 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the navigation stacked
          *
+         * @return $this 
          * @static 
          */
         public static function stacked(){
@@ -14934,107 +14338,25 @@ namespace {
         }
         
         /**
-         * 
+         * Makes the navigation links float right
          *
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function right(){
+            return \Bootstrapper\Navigation::right();
+        }
+        
+        /**
+         * Set the attributes of the object
+         *
+         * @param array $attributes The attributes to use
+         * @return $this 
+         * @static 
+         */
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Navigation::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navigation::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navigation::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navigation::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navigation::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navigation::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navigation::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Navigation::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Navigation::__callStatic($method, $args);
+            return \Bootstrapper\Navigation::withAttributes($attributes);
         }
         
     }
@@ -15043,8 +14365,9 @@ namespace {
     class Panel extends \Bootstrapper\Facades\Panel{
         
         /**
-         * 
+         * Renders the panel
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -15052,17 +14375,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a primary panel
          *
-         * @static 
-         */
-        public static function withAttributes($attributes){
-            return \Bootstrapper\Panel::withAttributes($attributes);
-        }
-        
-        /**
-         * 
-         *
+         * @return $this 
          * @static 
          */
         public static function primary(){
@@ -15070,8 +14385,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a success panel
          *
+         * @return $this 
          * @static 
          */
         public static function success(){
@@ -15079,8 +14395,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an info panel
          *
+         * @return $this 
          * @static 
          */
         public static function info(){
@@ -15088,8 +14405,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an warning panel
          *
+         * @return $this 
          * @static 
          */
         public static function warning(){
@@ -15097,8 +14415,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an danger panel
          *
+         * @return $this 
          * @static 
          */
         public static function danger(){
@@ -15106,8 +14425,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the panel
          *
+         * @param string $type The new type. Assume the panel- prefix
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -15115,8 +14436,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the header of the panel
          *
+         * @param string $header The header
+         * @return $this 
          * @static 
          */
         public static function withHeader($header){
@@ -15124,8 +14447,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the body of the panel
          *
+         * @param string $body The body
+         * @return $this 
          * @static 
          */
         public static function withBody($body){
@@ -15133,8 +14458,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the footer
          *
+         * @param string $footer The new footer
+         * @return $this 
          * @static 
          */
         public static function withFooter($footer){
@@ -15142,8 +14469,9 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a normal panel
          *
+         * @return $this 
          * @static 
          */
         public static function normal(){
@@ -15151,107 +14479,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Panel::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Panel::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Panel::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Panel::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Panel::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Panel::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Panel::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Panel::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Panel::__callStatic($method, $args);
+            return \Bootstrapper\Panel::withAttributes($attributes);
         }
         
     }
@@ -15260,8 +14496,9 @@ namespace {
     class ProgressBar extends \Bootstrapper\Facades\ProgressBar{
         
         /**
-         * 
+         * Renders the progress bar
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -15269,8 +14506,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the type of the progress bar
          *
+         * @param string $type The type
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -15278,8 +14517,11 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the value of the progress bar
          *
+         * @param int $value The value of the progress bar The value of the
+         *                   progress bar
+         * @return $this 
          * @static 
          */
         public static function value($value){
@@ -15287,17 +14529,23 @@ namespace {
         }
         
         /**
-         * 
+         * Whether the amount should be visible
          *
+         * @param string $string The string to show to the user. We internally
+         *                       will use sprintf to show this, so you must
+         *                       include a %s somewhere so we can add this in
+         * @return $this 
          * @static 
          */
-        public static function visible(){
-            return \Bootstrapper\ProgressBar::visible();
+        public static function visible($string = '%s%%'){
+            return \Bootstrapper\ProgressBar::visible($string);
         }
         
         /**
-         * 
+         * Creates a success progress bar
          *
+         * @param int $value The value of the progress bar
+         * @return $this 
          * @static 
          */
         public static function success($value = 0){
@@ -15305,8 +14553,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates an info progress bar
          *
+         * @param int $value The value of the progress bar
+         * @return $this 
          * @static 
          */
         public static function info($value = 0){
@@ -15314,8 +14564,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a warning progress bar
          *
+         * @param int $value The value of the progress bar
+         * @return $this 
          * @static 
          */
         public static function warning($value = 0){
@@ -15323,8 +14575,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a danger progress bar
          *
+         * @param int $value The value of the progress bar
+         * @return $this 
          * @static 
          */
         public static function danger($value = 0){
@@ -15332,8 +14586,10 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a normal progress bar
          *
+         * @param int $value The value of the progress bar
+         * @return $this 
          * @static 
          */
         public static function normal($value = 0){
@@ -15341,8 +14597,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the progress bar to be striped
          *
+         * @return $this 
          * @static 
          */
         public static function striped(){
@@ -15350,8 +14607,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the progress bar to be animated
          *
+         * @return $this 
          * @static 
          */
         public static function animated(){
@@ -15359,8 +14617,11 @@ namespace {
         }
         
         /**
-         * 
+         * Stacks several progress bars together
          *
+         * @param array $items The progress bars. Should be an array of arrays,
+         *                     which are a list of methods and parameters.
+         * @return string 
          * @static 
          */
         public static function stack($items){
@@ -15368,107 +14629,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\ProgressBar::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ProgressBar::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ProgressBar::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ProgressBar::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ProgressBar::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ProgressBar::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ProgressBar::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\ProgressBar::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\ProgressBar::__callStatic($method, $args);
+            return \Bootstrapper\ProgressBar::withAttributes($attributes);
         }
         
     }
@@ -15477,17 +14646,9 @@ namespace {
     class Tabbable extends \Bootstrapper\Facades\Tabbable{
         
         /**
-         * 
+         * Renders the tabbable object
          *
-         * @static 
-         */
-        public static function __construct($links){
-            \Bootstrapper\Tabbable::__construct($links);
-        }
-        
-        /**
-         * 
-         *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -15495,8 +14656,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates content with a tabbed navigation
          *
+         * @param array $contents The content
+         * @return $this 
+         * @see Bootstrapper\Navigation::$contents
          * @static 
          */
         public static function tabs($contents = array()){
@@ -15504,8 +14668,11 @@ namespace {
         }
         
         /**
-         * 
+         * Creates content with a pill navigation
          *
+         * @param array $contents
+         * @return $this 
+         * @see Bootstrapper\Navigation::$contents
          * @static 
          */
         public static function pills($contents = array()){
@@ -15513,8 +14680,11 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents
          *
+         * @param array $contents An array of arrays
+         * @return $this 
+         * @see Bootstrapper\Navigation::$contents
          * @static 
          */
         public static function withContents($contents){
@@ -15522,8 +14692,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets which tab should be active
          *
+         * @param int $active
+         * @return $this 
          * @static 
          */
         public static function active($active){
@@ -15531,8 +14703,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the tabbable objects to fade in
          *
+         * @return $this 
          * @static 
          */
         public static function fade(){
@@ -15540,107 +14713,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Tabbable::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Tabbable::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Tabbable::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Tabbable::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Tabbable::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Tabbable::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Tabbable::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Tabbable::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Tabbable::__callStatic($method, $args);
+            return \Bootstrapper\Tabbable::withAttributes($attributes);
         }
         
     }
@@ -15649,8 +14730,9 @@ namespace {
     class Table extends \Bootstrapper\Facades\Table{
         
         /**
-         * 
+         * Renders the table
          *
+         * @return string 
          * @static 
          */
         public static function render(){
@@ -15658,8 +14740,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the table type
          *
+         * @param string $type The type of the table
+         * @return $this 
          * @static 
          */
         public static function setType($type){
@@ -15667,8 +14751,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the table to be striped
          *
+         * @return $this 
          * @static 
          */
         public static function striped(){
@@ -15676,8 +14761,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the table to be bordered
          *
+         * @return $this 
          * @static 
          */
         public static function bordered(){
@@ -15685,8 +14771,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the table to have an active hover state
          *
+         * @return $this 
          * @static 
          */
         public static function hover(){
@@ -15694,8 +14781,9 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the table to be condensed
          *
+         * @return $this 
          * @static 
          */
         public static function condensed(){
@@ -15703,8 +14791,12 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the contents of the table
          *
+         * @param array|\Bootstrapper\Traversable $contents The contents of the table. We expect
+         *                                    either an array of arrays or an
+         *                                    array of eloquent models
+         * @return $this 
          * @static 
          */
         public static function withContents($contents){
@@ -15712,107 +14804,62 @@ namespace {
         }
         
         /**
-         * 
+         * Creates a list of columns to ignore
          *
+         * @param array $ignores The ignored columns
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function ignore($ignores){
+            return \Bootstrapper\Table::ignore($ignores);
+        }
+        
+        /**
+         * Adds a callback
+         *
+         * @param string $index The column name for the callback
+         * @param callable $function The callback function,
+         *                           which should be of the form
+         *                           function($column, $row).
+         * @return $this 
+         * @static 
+         */
+        public static function callback($index, $function){
+            return \Bootstrapper\Table::callback($index, $function);
+        }
+        
+        /**
+         * Sets which columns we can return
+         *
+         * @param array $only
+         * @return $this 
+         * @static 
+         */
+        public static function only($only){
+            return \Bootstrapper\Table::only($only);
+        }
+        
+        /**
+         * Sets content to be rendered in to the table footer
+         *
+         * @param string $footer
+         * @return $this 
+         * @static 
+         */
+        public static function withFooter($footer){
+            return \Bootstrapper\Table::withFooter($footer);
+        }
+        
+        /**
+         * Set the attributes of the object
+         *
+         * @param array $attributes The attributes to use
+         * @return $this 
+         * @static 
+         */
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Table::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Table::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Table::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Table::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Table::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Table::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Table::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Table::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Table::__callStatic($method, $args);
+            return \Bootstrapper\Table::withAttributes($attributes);
         }
         
     }
@@ -15821,8 +14868,10 @@ namespace {
     class Thumbnail extends \Bootstrapper\Facades\Thumbnail{
         
         /**
-         * 
+         * Renders the thumbnail
          *
+         * @return string 
+         * @throws ThumbnailException if the image is not specified
          * @static 
          */
         public static function render(){
@@ -15830,8 +14879,11 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the image for the thumbnail
          *
+         * @param string $image The image source
+         * @param array $attributes The attributes
+         * @return $this 
          * @static 
          */
         public static function image($image, $attributes = array()){
@@ -15839,8 +14891,10 @@ namespace {
         }
         
         /**
-         * 
+         * Sets the caption for the thumbnail
          *
+         * @param string $caption The new caption
+         * @return $this 
          * @static 
          */
         public static function caption($caption){
@@ -15848,107 +14902,15 @@ namespace {
         }
         
         /**
-         * 
+         * Set the attributes of the object
          *
+         * @param array $attributes The attributes to use
+         * @return $this 
          * @static 
          */
-        public static function __toString(){
+        public static function withAttributes($attributes){
             //Method inherited from \Bootstrapper\RenderedObject            
-            return \Bootstrapper\Thumbnail::__toString();
-        }
-        
-        /**
-         * Hotswap the underlying instance behind the facade.
-         *
-         * @param mixed $instance
-         * @return void 
-         * @static 
-         */
-        public static function swap($instance){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Thumbnail::swap($instance);
-        }
-        
-        /**
-         * Initiate a mock expectation on the facade.
-         *
-         * @param mixed
-         * @return \Mockery\Expectation 
-         * @static 
-         */
-        public static function shouldReceive(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Thumbnail::shouldReceive();
-        }
-        
-        /**
-         * Get the root object behind the facade.
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getFacadeRoot(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Thumbnail::getFacadeRoot();
-        }
-        
-        /**
-         * Clear a resolved facade instance.
-         *
-         * @param string $name
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstance($name){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Thumbnail::clearResolvedInstance($name);
-        }
-        
-        /**
-         * Clear all of the resolved instances.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function clearResolvedInstances(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Thumbnail::clearResolvedInstances();
-        }
-        
-        /**
-         * Get the application instance behind the facade.
-         *
-         * @return \Illuminate\Foundation\Application 
-         * @static 
-         */
-        public static function getFacadeApplication(){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Thumbnail::getFacadeApplication();
-        }
-        
-        /**
-         * Set the application instance.
-         *
-         * @param \Illuminate\Foundation\Application $app
-         * @return void 
-         * @static 
-         */
-        public static function setFacadeApplication($app){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            \Bootstrapper\Thumbnail::setFacadeApplication($app);
-        }
-        
-        /**
-         * Handle dynamic, static calls to the object.
-         *
-         * @param string $method
-         * @param array $args
-         * @return mixed 
-         * @static 
-         */
-        public static function __callStatic($method, $args){
-            //Method inherited from \Illuminate\Support\Facades\Facade            
-            return \Bootstrapper\Thumbnail::__callStatic($method, $args);
+            return \Bootstrapper\Thumbnail::withAttributes($attributes);
         }
         
     }
