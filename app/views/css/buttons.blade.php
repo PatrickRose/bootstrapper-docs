@@ -279,4 +279,20 @@ Button::danger('Danger Link')->asLinkTo('#')
 Button::primary('Block level button')->block()
 </pre>
 
+    <h3>
+        Submit Buttons
+    </h3>
+
+    <p>
+        Use the <code>submit()</code> method to create a submit button.
+    </p>
+
+    <p>
+        {{ Button::primary('Submit Me!')->submit() }}
+    </p>
+
+<pre class="prettyprint linenums">
+Button::primary('Submit Me!')->submit()
+</pre>
+
 </section>
