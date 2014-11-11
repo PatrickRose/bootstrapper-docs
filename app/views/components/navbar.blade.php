@@ -168,4 +168,16 @@ Navbar::FIX_BOTTOM
       <code>.search-query</code> to the input for specialized styles
       in the navbar. See the form in the large sample above.
     </p>
+
+    <h2>
+        Fluid Containers
+    </h2>
+
+    <p>
+        If you require the container to be fluid, the <code>.container</code>
+         class can be replaced with <code>.container-fluid</code> by use of
+         the <code>fluid()</code> method
+    </p>
+
+    {{ Navbar::withBrand('Fluid Navbar', '#')->fluid() }}
 </section>
