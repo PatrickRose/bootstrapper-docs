@@ -473,7 +473,51 @@ Table::withContents([
 
     <p>
         You can add a footer with the <code>withFooter()</code> method. This
-        should be the <strong>exact</strong> footer that you wish to use. 
+        should be the <strong>exact</strong> footer that you wish to use.
     </p>
+
+{{ Table::withContents(
+[
+    [
+        'Item' => 'Bread',
+        'Cost' => '1.20',
+    ],
+    [
+        'Item' => 'Cheese',
+        'Cost' => '2.30',
+    ],
+    [
+        'Item' => 'Tomatoes',
+        'Cost' => '2.15',
+    ],
+    [
+        'Item' => 'Lettuce',
+        'Cost' => '2.50',
+    ],
+]
+)->withFooter('<tr><td>Total</td><td>8.15</td></td>') }}
+
+<pre class="prettyprint linenums">
+Table::withContents(
+[
+    [
+        'Item' => 'Bread',
+        'Cost' => '1.20',
+    ],
+    [
+        'Item' => 'Cheese',
+        'Cost' => '2.30',
+    ],
+    [
+        'Item' => 'Tomatoes',
+        'Cost' => '2.15',
+    ],
+    [
+        'Item' => 'Lettuce',
+        'Cost' => '2.50',
+    ],
+]
+)->withFooter('&lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;8.15&lt;/td&gt;&lt;/td&gt;')
+</pre>
 
   </section>
