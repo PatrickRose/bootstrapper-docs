@@ -379,13 +379,19 @@ Table::body($body)->ignore('id', 'password')
 </pre>
 
     <p>
-        You can also only only return the contents of certain column with the
+        You can also only return the contents of certain column with the
         <code>only()</code> method.
     </p>
     <pre class="prettyprint linenums">
 Table::body($body)
      ->only(["foo", "bar"])
 </pre>
+
+<div class="alert alert-info">
+    {{ Label::info('Heads Up!') }} The <code>only()</code> method takes
+    priority over everything. We'll return the table in the order given by
+    <code>only</code>, and also ignore the <code>ignore()</code> values.
+</div>
 
  <p>
    You can dynamically set columns to either append columns to the table or replace
@@ -462,5 +468,12 @@ Table::withContents([
 </pre>
 
 {{ Alert::info('Your callback should accept two arguments. The first is the actual <em>value</em> during render. The second is the entire row.') }}
+
+    <h2>Table Footers</h2>
+
+    <p>
+        You can add a footer with the <code>withFooter()</code> method. This
+        should be the <strong>exact</strong> footer that you wish to use. 
+    </p>
 
   </section>
