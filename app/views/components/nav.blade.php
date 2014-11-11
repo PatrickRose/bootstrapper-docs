@@ -407,4 +407,59 @@ Navigation::tabs(
         ]
     ]
 )
-</pre></section>
+</pre>
+
+    <h2>
+        Callbacks
+    </h2>
+
+    <p>
+        The <code>callback</code> array key can be used to store a function.
+        If the function returns <code>false</code>, then the given item will
+        not display
+    </p>
+
+    {{ Navigation::tabs(
+    [
+        [
+            'title' => 'First',
+            'link' => '#',
+        ],
+        [
+            'title' => 'Second',
+            'link' => '#',
+            'callback' => function()
+            {
+                return false;
+            }
+        ],
+    ]
+) }}
+
+<pre class="prettyprint linenums">
+Navigation::tabs(
+    [
+        [
+            'title' => 'First',
+            'link' => '#',
+        ],
+        [
+            'title' => 'Second',
+            'link' => '#',
+            'callback' => function()
+            {
+                return false;
+            }
+        ],
+    ]
+)
+</pre>
+
+    <div class="alert alert-danger">
+        {{ Label::danger('Heads Up') }} The function must return
+        <strong>exactly</strong> <code>false</code>. Returning
+        <code>null</code> or anything else that PHP would cast to
+        <code>false</code> will still cause the item to be displayed.
+    </div>
+
+</section>
