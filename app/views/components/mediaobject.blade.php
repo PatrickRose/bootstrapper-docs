@@ -94,22 +94,16 @@ MediaObject::withContents(
               ) }}
           </p>
           <pre class="prettyprint linenums">
-    MediaObject::withContents(
-        [
-            'image' => '//placehold.it/64x64',
-            'link' => '#',
-            'heading' => 'Nesting a Media Object',
-            'body' => 'Oh boy, here comes a nested object!',
-            'nest' => MediaObject::withContents(
-                [
-                    'image' => '//placehold.it/64x64',
-                    'link' => '#',
-                    'heading' => 'Cras sit amet',
-                    'body' => 'I am all nested and other things like that'
-                ])
-        ]
-    )
-    </pre>
+MediaObject::withContents(
+    [
+        'image' => '//placehold.it/64x64',
+        'link' => '#',
+        'heading' => 'Media Object on the right',
+        'body' => 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.',
+        'position' => 'right'
+    ]
+)
+</pre>
 
     <h3>As List</h3>
          <p>
