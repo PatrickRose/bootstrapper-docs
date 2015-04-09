@@ -116,6 +116,12 @@
 )
 </pre>
 
+      <div class="alert alert-info">
+          If you are using Laravel 5, then you will need to use the Laravel 5
+          Service Provider instead:
+          <code>Bootstrapper\BootstrapperServiceProvider</code>
+      </div>
+
     <p>
       This means you'll get to use all the juicy goodness that Bootstrapper provides.
     </p>

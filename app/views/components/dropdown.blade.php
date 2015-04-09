@@ -254,4 +254,31 @@ DropdownButton::normal('Dropup')
 </pre>
 </div>
 </div>
+    <h3>
+        Dividers
+    </h3>
+    <p>
+        You can use a divider inside a Dropdown button.
+    </p>
+    <div class="row">
+        <div class="col-sm-2">
+            {{ DropdownButton::normal('Divider')
+                             ->withContents([
+                                 ['url' => '#', 'label' => 'First'],
+                                 DropdownButton::DIVIDER,
+                                 ['url' => '#', 'label' => 'Second']
+                             ])
+            }}
+        </div>
+        <div class="col-sm-10">
+            <pre class="prettyprint linenums">
+DropdownButton::normal('Divider')
+              ->withContents([
+                  ['url' => '#', 'label' => 'First'],
+                  DropdownButton::DIVIDER,
+                  ['url' => '#', 'label' => 'Second']
+              ])
+</pre>
+        </div>
+    </div>
 </section>
